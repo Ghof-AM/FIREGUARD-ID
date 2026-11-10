@@ -6,7 +6,7 @@ A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Predi
 
 | Komponen | Isian |
 |---|---|
-| Nama / NIM | Ghofur Akbar M. / [Isi NIM] |
+| Nama / NIM | Ghofur Akbar M. / 244311042, Moch. Arrizal Syach Putra / 244311047 |
 | Judul ide | FIREGUARD ID: A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Prediction and Emergency Response Infrastructure Optimization in Riau Province, Indonesia |
 | SDG & target | SDG 13 – Climate Action, Target 13.1 |
 | Masalah nyata | Risiko kebakaran hutan dan lahan di Riau serta kebutuhan peningkatan kesiapsiagaan dan distribusi sumber daya tanggap darurat. |
@@ -21,7 +21,7 @@ A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Predi
 | Risiko dan etika | Ketidakseimbangan kelas, false negative, keterbatasan deteksi satelit, data leakage, bias geografis, dan ketidakpastian rekomendasi operasional. |
 | Referensi awal | Eaturu & Vadrevu (2025); Accuracy of tropical peat and non-peat fire forecasts enhanced by simulating hydrology (2023). |
 
-**Repository GitHub:** [Isi URL repository setelah dibuat]
+**Repository GitHub:** https://github.com/Ghof-AM/FIREGUARD-ID.git
 
 **Status dataset:** Sumber telah diidentifikasi; audit ketersediaan, ukuran, lisensi, dan kualitas masih diperlukan.
 
@@ -182,7 +182,7 @@ FIREGUARD-ID/
 
 ## 7. Contact / Project Owner
 
-- Nama: Ghofur Akbar M.
+- Nama: Ghofur Akbar M. , Moch. Arrizal SP
 - Proyek: FIREGUARD ID
 - Topik: Machine Learning for Climate Action and Disaster Preparedness
 
