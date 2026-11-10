@@ -1,0 +1,27 @@
+# FORMULIR PENGAJUAN IDE
+
+| Komponen | Isian |
+|---|---|
+| Nama / NIM | Ghofur Akbar M. / [244311042] , Moch. Arrizal Syach Putra / [244311047] |
+| Judul ide | FIREGUARD ID: A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Prediction and Emergency Response Infrastructure Optimization in Riau Province, Indonesia |
+| SDG & target | SDG 13 – Climate Action, Target 13.1 |
+| Masalah nyata | Risiko kebakaran hutan dan lahan di Riau serta kebutuhan peningkatan kesiapsiagaan dan distribusi sumber daya tanggap darurat. |
+| Tugas ML | Binary Classification: prediksi kemunculan deteksi hotspot dalam tiga hari berikutnya pada grid geografis harian. |
+| Objective | Menghasilkan probabilitas kemunculan hotspot berdasarkan faktor meteorologi, hidrologi, vegetasi, dan historis kebakaran. |
+| Metrik utama | PR-AUC |
+| Metrik tambahan | Recall, Precision, F1-score, Brier Score |
+| Dataset | NASA FIRMS VIIRS, Copernicus ERA5-Land, CHIRPS, MODIS Land Cover/NDVI, data geospasial BIG dan OpenStreetMap. |
+| Baseline Model | Logistic Regression |
+| Advanced ML Model | XGBoost Classifier |
+| Deep Learning Model | LSTM |
+| Risiko dan etika | Ketidakseimbangan kelas, false negative, keterbatasan deteksi satelit, data leakage, bias geografis, dan ketidakpastian rekomendasi operasional. |
+| Referensi awal | Eaturu & Vadrevu (2025); Accuracy of tropical peat and non-peat fire forecasts enhanced by simulating hydrology (2023). |
+
+**Repository GitHub:https://github.com/Ghof-AM/FIREGUARD-ID.git
+
+**Kriteria persetujuan dosen:**
+- [ ] Ide berasal dari mahasiswa dan tidak duplikat
+- [ ] Selaras jelas dengan satu SDG dan targetnya
+- [ ] Dapat dirumuskan sebagai masalah ML dengan target yang jelas
+- [ ] Dataset tersedia, legal/etis digunakan, dan cukup besar
+- [ ] Layak untuk tiga model termasuk deep learning dalam 6 minggu
