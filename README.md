@@ -1,68 +1,71 @@
 # FIREGUARD ID
 
-A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Prediction and Emergency Response Infrastructure Optimization in Riau Province, Indonesia
+Forest & Land Fire Intelligence, Response, and Resource Optimization System  
+_A Geospatial Analytics, Unsupervised Learning, and Resource Optimization Decision Support Framework for Riau Province, Indonesia_
+
+---
 
 ## 1. FORMULIR PENGAJUAN IDE
 
-| Komponen | Isian |
-|---|---|
-| Nama / NIM | Ghofur Akbar M. / 244311042, Moch. Arrizal Syach Putra / 244311047 |
-| Judul ide | FIREGUARD ID: A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Prediction and Emergency Response Infrastructure Optimization in Riau Province, Indonesia |
-| SDG & target | SDG 13 – Climate Action, Target 13.1 |
-| Masalah nyata | Risiko kebakaran hutan dan lahan di Riau serta kebutuhan peningkatan kesiapsiagaan dan distribusi sumber daya tanggap darurat. |
-| Tugas ML | Binary Classification: prediksi kemunculan deteksi hotspot dalam tiga hari berikutnya pada grid geografis harian. |
-| Objective | Menghasilkan probabilitas kemunculan hotspot berdasarkan faktor meteorologi, hidrologi, vegetasi, dan historis kebakaran. |
-| Metrik utama | PR-AUC |
-| Metrik tambahan | Recall, Precision, F1-score, Brier Score |
-| Dataset | NASA FIRMS VIIRS, Copernicus ERA5-Land, CHIRPS, MODIS Land Cover/NDVI, data geospasial BIG dan OpenStreetMap. |
-| Baseline Model | Logistic Regression |
-| Advanced ML Model | XGBoost Classifier |
-| Deep Learning Model | LSTM |
-| Risiko dan etika | Ketidakseimbangan kelas, false negative, keterbatasan deteksi satelit, data leakage, bias geografis, dan ketidakpastian rekomendasi operasional. |
-| Referensi awal | Eaturu & Vadrevu (2025); Accuracy of tropical peat and non-peat fire forecasts enhanced by simulating hydrology (2023). |
+| Komponen                | Isian                                                                                                                                                                                                                                                           |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nama / NIM**          | Ghofur Akbar M. / 244311042, Moch. Arrizal Syach Putra / 244311047                                                                                                                                                                                              |
+| **Judul ide**           | **FIREGUARD ID: Forest & Land Fire Intelligence, Response, and Resource Optimization System**                                                                                                                                                                   |
+| **SDG & target**        | **SDG 13 – Climate Action, Target 13.1** (Memperkuat ketahanan dan kapasitas adaptasi terhadap bencana iklim)                                                                                                                                                   |
+| **Masalah nyata**       | Kerawanan Kebakaran Hutan dan Lahan (Karhutla) di Riau yang berulang, penyebaran risiko yang tidak merata, serta perlunya alokasi penempatan infrastruktur dan sumber daya tanggap darurat yang optimal dan berbasis data.                                      |
+| **Tugas ML**            | **Unsupervised Learning & Spatial Clustering**: Pengelompokan wilayah berdasarkan profil kerawanan historis-lingkungan jangka panjang dan optimasi penempatan markas tanggap darurat (MCLP/MILP).                                                               |
+| **Objective**           | Mengelompokkan grid wilayah menurut kemiripan profil kerawanan karhutla, menentukan zona prioritas mitigasi, serta mengoptimalkan penempatan fasilitas respons darurat.                                                                                         |
+| **Metrik utama**        | **Silhouette Score, Davies-Bouldin Index, Calinski-Harabasz Index**                                                                                                                                                                                             |
+| **Metrik tambahan**     | Spatial Coherence, Cluster Stability, Coverage Ratio, Response Radius Efficiency                                                                                                                                                                                |
+| **Dataset**             | NASA FIRMS VIIRS (S-NPP/JPSS-1), GADM 4.1 / geoBoundaries Batas Administratif Riau, Copernicus ERA5-Land, CHIRPS, MODIS Land Cover/NDVI, DEMNAS/BIG.                                                                                                            |
+| **Baseline Model**      | **K-Means Clustering**                                                                                                                                                                                                                                          |
+| **Advanced ML Model**   | **HDBSCAN (Density-Based Spatial Clustering)**                                                                                                                                                                                                                  |
+| **Deep Learning Model** | **Deep Embedded Clustering (DEC)**                                                                                                                                                                                                                              |
+| **Risiko dan etika**    | Keterbatasan resolusi satelit, ketidakseimbangan spasial (_spatial imbalance_), risiko _false sense of security_, bias observasi, serta hasil clustering yang tidak boleh dianggap langsung sebagai probabilitas prediksi tanpa interpretasi domain lingkungan. |
+| **Referensi awal**      | Eaturu & Vadrevu (2025); Simulating hydrology for tropical peat fire forecasts (2023); Xie et al. (DEC - Unsupervised Deep Embedding for Clustering Analysis, ICML 2016).                                                                                       |
 
-**Repository GitHub:** https://github.com/Ghof-AM/FIREGUARD-ID.git
-
-**Status dataset:** Sumber telah diidentifikasi; audit ketersediaan, ukuran, lisensi, dan kualitas masih diperlukan.
+**Repository GitHub:** https://github.com/Ghof-AM/FIREGUARD-ID.git  
+**Status Dataset:** Tahap _Data Understanding & Data Preparation (Minggu 2)_ telah selesai. Data titik api VIIRS (2021–2025) berhasil dipotong (_exact polygon clipping_) ke daratan Riau, menghasilkan $15.510$ titik api dan $835$ unit grid spasial 0,1° yang telah dipartisi (_train/val/test_) secara _leakage-free_.
 
 ---
 
 ## 2. Ringkasan Proyek
 
-FIREGUARD ID merupakan kerangka kerja berbasis machine learning dan analisis geospasial untuk memprediksi risiko kebakaran hutan dan lahan di Provinsi Riau. Provinsi ini memiliki ekosistem gambut yang sangat rentan terhadap kebakaran, terutama pada musim kemarau dengan kondisi meteorologi dan hidrologi yang kering. Kebakaran hutan dan lahan tidak hanya merusak lingkungan, tetapi juga menurunkan kualitas udara, mengancam kesehatan masyarakat, dan mengganggu aktivitas ekonomi regional.
+**FIREGUARD ID** merupakan sistem pendukung keputusan (_decision support system_) berbasis kecerdasan buatan, analisis geospasial, dan riset operasi yang dirancang untuk mendukung mitigasi serta penanggulangan kebakaran hutan dan lahan (Karhutla) di Provinsi Riau sebagai wilayah pilot.
 
-Penelitian ini membangun model prediksi hotspot dengan pendekatan yang terstruktur, yaitu: Logistic Regression sebagai baseline, XGBoost sebagai model machine learning yang lebih kuat, dan LSTM sebagai model deep learning yang mampu menangkap pola temporal. Hasil prediksi dipakai sebagai dasar untuk analisis kesiapsiagaan dan optimasi distribusi infrastruktur tanggap darurat, seperti lokasi markas, kebutuhan armada, dan alokasi sumber daya operasional.
+Berbeda dari pendekatan klasifikasi probabilitas jangka pendek harian yang rentan noise musiman, FIREGUARD ID mengadopsi pendekatan **analisis kerawanan jangka panjang melalui unsupervised learning dan spatial clustering**. Sistem membagi daratan Riau menjadi unit analisis **grid spasial 0,1° (~11 km × 11 km)** dan mengelompokkannya berdasarkan indikator akumulasi frekuensi api, hari kebakaran (_fire days_), dan intensitas radiasi energi (_Fire Radiative Power / FRP_).
 
-Dengan pendekatan ini, proyek ini diharapkan dapat membantu pihak pengambil keputusan dalam mengidentifikasi wilayah yang berisiko tinggi serta mengevaluasi kebutuhan kesiapsiagaan secara lebih akurat dan terukur.
+Tiga model clustering dikembangkan dan dikomparasikan:
+
+1. **K-Means Clustering** sebagai _baseline model_.
+2. **HDBSCAN** sebagai _advanced machine learning_ yang mampu menangani densitas tidak seragam dan mengisolasi noise.
+3. **Deep Embedded Clustering (DEC)** sebagai pendekatan _deep learning_ berbasis autoencoder laten untuk representasi fitur kompleks.
+
+Hasil profil zonasi kerawanan selanjutnya menjadi masukan bagi modul optimasi operasional berbasis **Maximal Covering Location Problem (MCLP) / Mixed Integer Linear Programming (MILP)** guna merekomendasikan lokasi posko/markas, kapasitas armada, alokasi personel pemadam, dan efisiensi anggaran tanggap darurat secara transparan dan terukur.
 
 ---
-
-# FIREGUARD ID
-## A Spatio-Temporal Machine Learning Framework for Forest and Land Fire Risk Prediction and Emergency Response Infrastructure Optimization in Riau Province, Indonesia
 
 ### BAB 1. PENDAHULUAN
 
 #### 1.1 Latar Belakang
 
-Kebakaran hutan dan lahan (Karhutla) merupakan salah satu permasalahan lingkungan yang berdampak terhadap ekosistem, kualitas udara, kesehatan masyarakat, dan aktivitas ekonomi. Provinsi Riau menjadi salah satu wilayah yang relevan untuk penelitian ini karena memiliki ekosistem gambut yang rentan terhadap kebakaran, terutama ketika kondisi meteorologi dan hidrologi mengalami kekeringan.
+Provinsi Riau merupakan salah satu wilayah di Indonesia dengan ekosistem lahan gambut terluas yang sangat rentan mengalami Karhutla berulang, terutama pada periode kemarau bimodal (Februari–Maret dan Juli–September). Kebakaran ini melepaskan emisi karbon masif, merusak biodiversitas, menurunkan kualitas udara lintas batas (_transboundary haze_), dan mengganggu perekonomian.
 
-Perkembangan teknologi penginderaan jauh dan machine learning memberikan peluang untuk meningkatkan kemampuan prediksi risiko kebakaran. Data deteksi kebakaran dari satelit VIIRS, yang tersedia melalui NASA Fire Information for Resource Management System (FIRMS), dapat dikombinasikan dengan data meteorologi ERA5-Land, curah hujan, kelembapan tanah, dan karakteristik geografis untuk mempelajari pola kemunculan hotspot.
-
-Penelitian ini mengusulkan FIREGUARD ID, sebuah kerangka sistem pendukung keputusan berbasis machine learning dan analisis geospasial untuk meningkatkan kesiapsiagaan terhadap Karhutla. Sistem ini memiliki dua kontribusi utama, yaitu prediksi probabilitas kemunculan hotspot menggunakan tiga pendekatan machine learning dan pemanfaatan hasil prediksi untuk mendukung optimasi infrastruktur tanggap darurat.
+Penanganan Karhutla selama ini kerap bersifat reaktif di lapangan. Diperlukan transformasi menuju mitigasi preventif berbasis data geospasial objektif. Pemanfaatan data penginderaan jauh seperti **NASA FIRMS VIIRS** beresolusi 375m memungkinkan pemetaan riwayat kejadian secara mikro. Dengan memadukan teknik _unsupervised spatial clustering_ dan pemodelan optimasi matematis, FIREGUARD ID hadir untuk memetakan zonasi kerawanan sekaligus memberikan rekomendasi presisi terkait penempatan infrastruktur penanggulangan bencana.
 
 #### 1.2 Rumusan Masalah
 
-1. Bagaimana membangun model machine learning untuk memprediksi probabilitas kemunculan hotspot Karhutla berdasarkan kondisi meteorologi, hidrologi, vegetasi, dan riwayat kebakaran?
-2. Bagaimana menentukan lokasi dan kapasitas markas tanggap darurat berdasarkan tingkat risiko, aksesibilitas, topografi, dan ketersediaan sumber daya?
-3. Bagaimana mengoptimalkan kebutuhan armada, personel, komunikasi, dan anggaran operasional untuk mendukung kesiapsiagaan penanggulangan Karhutla?
+1. Bagaimana mengidentifikasi karakteristik dan mengelompokkan wilayah kerawanan Karhutla di Provinsi Riau menggunakan _unsupervised spatial clustering_?
+2. Bagaimana perbandingan performa model _baseline_ (K-Means), _advanced ML_ (HDBSCAN), dan _deep learning_ (DEC) dalam menghasilkan klaster kerawanan yang stabil dan koheren secara spasial?
+3. Bagaimana merumuskan model optimasi (_facility location_) untuk menentukan lokasi markas, kapasitas armada, alokasi personel, dan anggaran operasional tanggap darurat berbasis zonasi kerawanan tersebut?
 
 #### 1.3 Tujuan Penelitian
 
-1. Mengembangkan tiga model machine learning untuk prediksi kemunculan hotspot Karhutla.
-2. Membandingkan performa Logistic Regression, XGBoost, dan LSTM menggunakan skema evaluasi yang konsisten.
-3. Menghasilkan peta probabilitas risiko kebakaran berbasis grid geografis.
-4. Mengembangkan pendekatan optimasi untuk penentuan lokasi markas dan kebutuhan sumber daya tanggap darurat.
-5. Menghasilkan prototipe sistem pendukung keputusan yang dapat diperluas untuk wilayah lain di Indonesia.
+1. Membangun pipeline data geospasial untuk ekstraksi dan agregasi fitur Karhutla ke unit grid spasial 0,1°.
+2. Mengembangkan dan mengevaluasi tiga model _unsupervised clustering_ (K-Means, HDBSCAN, dan DEC).
+3. Menghasilkan peta interaktif zonasi kerawanan Karhutla Provinsi Riau.
+4. Mengembangkan formulasi optimasi penempatan fasilitas tanggap darurat (MCLP/MILP) berbasis zona prioritas.
+5. Menyediakan prototipe sistem pendukung keputusan yang teruji, transparan, dan dapat direproduksi (_reproducible_).
 
 ---
 
@@ -70,17 +73,13 @@ Penelitian ini mengusulkan FIREGUARD ID, sebuah kerangka sistem pendukung keputu
 
 #### 2.1 Landasan Penelitian
 
-Penelitian ini didasarkan pada pemanfaatan data penginderaan jauh, meteorologi, dan karakteristik lingkungan untuk mempelajari pola kebakaran secara spasial dan temporal.
-
-Penelitian mengenai prediksi kebakaran lahan gambut di Riau menunjukkan bahwa penambahan variabel hidrologi, seperti kelembapan tanah dan kedalaman muka air tanah, dapat meningkatkan kemampuan prediksi aktivitas kebakaran dibandingkan penggunaan variabel cuaca saja.
-
-Penelitian lain yang membandingkan algoritma machine learning dan deep learning di Asia Tenggara menunjukkan bahwa pemilihan arsitektur model perlu disesuaikan dengan karakteristik spasial dan temporal data kebakaran.
+1. **Geospatial Grid Analysis:** Pemanfaatan kisi berukuran 0,1° (~11 km) menormalisasi bias observasi satelit dan mengubah deteksi titik acak menjadi unit estimasi kerawanan wilayah yang stabil.
+2. **Unsupervised Learning & Spatial Clustering:** Mengakomodasi kompleksitas data lingkungan tanpa ketergantungan pada label manual subjektif. K-Means mengelompokkan partisi berbasis jarak euklidean, HDBSCAN mengidentifikasi klaster berdensitas tinggi serta noise spasial, dan DEC memproyeksikan fitur non-linear ke ruang laten untuk pemisahan klaster yang lebih optimal.
+3. **Resource & Facility Location Optimization:** Mengadaptasi formulasi _Maximal Covering Location Problem (MCLP)_ untuk memaksimalkan proteksi wilayah rawan dengan batasan radius jangkauan respons armada pemadam kebakaran.
 
 #### 2.2 Keterkaitan dengan SDGs
 
-Penelitian ini mendukung Sustainable Development Goal 13 (Climate Action), khususnya Target 13.1, yaitu memperkuat ketahanan dan kapasitas adaptasi terhadap bahaya terkait iklim dan bencana alam.
-
-Kontribusi dilakukan melalui pengembangan sistem prediksi risiko kebakaran dan rekomendasi infrastruktur tanggap darurat berbasis data. Sistem diharapkan membantu identifikasi wilayah prioritas, meningkatkan kesiapsiagaan, serta mendukung alokasi sumber daya penanggulangan bencana secara lebih terukur.
+Mendukung **SDG 13 — Climate Action**, secara spesifik **Target 13.1**: _Memperkuat ketahanan dan kapasitas adaptasi terhadap bahaya terkait iklim dan bencana alam_. FIREGUARD ID berkontribusi langsung pada efisiensi perencanaan mitigasi dan alokasi sumber daya pemadaman berbasis bukti ilmiah (_evidence-based policy_).
 
 ---
 
@@ -88,106 +87,120 @@ Kontribusi dilakukan melalui pengembangan sistem prediksi risiko kebakaran dan r
 
 #### 3.1 Wilayah Penelitian dan Sumber Data
 
-Wilayah penelitian adalah Provinsi Riau, Indonesia. Data utama direncanakan berasal dari:
+- **Wilayah Pilot:** Provinsi Riau, Indonesia (Batas resmi GADM 4.1 Level 1).
+- **NASA FIRMS VIIRS (S-NPP & NOAA-20/JPSS-1):** Deteksi hotspot historis 375m (2021–2025).
+- **Copernicus ERA5-Land & CHIRPS:** Temperatur, curah hujan, komponen angin, dan kelembapan tanah (_soil moisture_).
+- **MODIS (MCD12Q1 & MOD13Q1):** Tutupan lahan (_land cover_) dan indeks vegetasi (NDVI).
+- **OpenStreetMap & DEMNAS:** Topografi/ketinggian dan jaringan aksesibilitas jalan raya.
 
-1. NASA FIRMS VIIRS: data historis deteksi hotspot.
-2. Copernicus ERA5-Land: temperatur, curah hujan, angin, dan kelembapan tanah.
-3. CHIRPS: data curah hujan sebagai sumber pembanding.
-4. MODIS Land Cover dan NDVI: karakteristik tutupan lahan dan vegetasi.
-5. Data geospasial BIG dan OpenStreetMap: topografi, batas wilayah, dan jaringan jalan.
+#### 3.2 Learning Problem & Evaluasi
 
-Periode awal pengumpulan data ditargetkan Januari 2012–Desember 2025, dengan ketersediaan aktual dan kualitas data diverifikasi melalui proses audit dataset.
+| Komponen                | Rancangan                                                                                             |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Pendekatan**          | Unsupervised Learning & Spatial Clustering                                                            |
+| **Unit Data**           | Grid geografis berukuran 0,1° × 0,1° (~11 km × 11 km)                                                 |
+| **Fitur Analisis**      | `hotspot_count`, `fire_days`, `mean_frp`, `max_frp`, `high_conf_count`                                |
+| **Baseline Model**      | K-Means Clustering                                                                                    |
+| **Advanced ML Model**   | HDBSCAN (Hierarchical Density-Based Spatial Clustering of Applications with Noise)                    |
+| **Deep Learning Model** | Deep Embedded Clustering (DEC) dengan Autoencoder                                                     |
+| **Metrik Evaluasi**     | Silhouette Score, Davies-Bouldin Index, Calinski-Harabasz Index, Cluster Stability, Spatial Coherence |
 
-#### 3.2 Learning Problem
-
-| Komponen | Rancangan |
-|---|---|
-| Target | Kemunculan deteksi hotspot dalam tiga hari berikutnya |
-| Jenis tugas | Binary Classification |
-| Unit data | Grid geografis 0,1° per hari |
-| Objective | Memprediksi probabilitas kemunculan hotspot |
-| Metrik utama | PR-AUC |
-| Metrik tambahan | Recall, Precision, F1-score, Brier Score |
-
-Tiga pendekatan model yang akan dibandingkan:
-
-- Baseline Model: Logistic Regression.
-- Advanced ML Model: XGBoost Classifier.
-- Deep Learning Model: Long Short-Term Memory (LSTM).
-
-Evaluasi dilakukan menggunakan pembagian data berbasis waktu dan pengujian spasial untuk mengurangi risiko data leakage.
-
-#### 3.3 Pengembangan Sistem Pendukung Keputusan
-
-Hasil prediksi akan diintegrasikan dengan analisis geospasial dan optimasi matematis untuk mendukung penentuan lokasi markas, kapasitas fasilitas, kebutuhan armada, personel, infrastruktur komunikasi, dan estimasi anggaran.
-
-Analisis optimasi akan mempertimbangkan tingkat risiko, aksesibilitas, topografi, sumber air, infrastruktur pendukung, serta batasan anggaran. Komponen ini merupakan pengembangan sistem lanjutan dan bukan bagian dari target klasifikasi ketiga model ML.
-
-#### 3.4 Evaluasi dan Pertimbangan Etika
-
-Evaluasi mempertimbangkan ketidakseimbangan kelas, kualitas deteksi hotspot, ketidakpastian pengamatan satelit, dan perbedaan resolusi sumber data. Hasil prediksi tidak akan diperlakukan sebagai bukti pasti terjadinya kebakaran.
-
-Rekomendasi infrastruktur dan anggaran akan disertai sumber data, asumsi, serta analisis sensitivitas. FIREGUARD ID dikembangkan sebagai prototipe pendukung keputusan, bukan pengganti otoritas penanggulangan bencana.
-
----
-
-## 4. Referensi Awal
-
-1. Accuracy of tropical peat and non-peat fire forecasts enhanced by simulating hydrology. (2023). *Scientific Reports*. https://doi.org/10.1038/s41598-022-27075-0
-2. Eaturu, A., & Vadrevu, K. P. (2025). Evaluation of machine learning and deep learning algorithms for fire prediction in Southeast Asia. *Scientific Reports, 15*, 18807. https://doi.org/10.1038/s41598-025-00628-9
-3. Unik, M., Sitanggang, I. S., Syaufina, L., & Jaya, I. N. S. (2025). Application of Random Forest Algorithm to Analyze the Confidence Level of Forest Fire Hotspots in Riau Peatland. *Jurnal Pengelolaan Sumberdaya Alam dan Lingkungan, 15*(2). https://doi.org/10.29244/jpsl.15.2.255
-
----
-
-## 5. Project Status
-
-- Status: Proposal draft dan rancangan ide proyek
-- Scope: Prediksi risiko hotspot kebakaran lahan dan hutan di Riau
-- Focus: Spatio-temporal machine learning + disaster preparedness decision support
-- Development Stage: Early conceptual design and proposal preparation
-
----
-
-## 6. Repository Structure (Planned)
+#### 3.3 Alur Pipeline & Sistem Pendukung Keputusan
 
 ```text
-FIREGUARD-ID/
-├── README.md
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── metadata/
-├── notebooks/
-│   ├── 01_data_collection_and_audit.ipynb
-│   ├── 02_eda_and_feature_engineering.ipynb
-│   ├── 03_baseline_modeling.ipynb
-│   ├── 04_advanced_modeling.ipynb
-│   ├── 05_deep_learning_lstm.ipynb
-│   └── 06_evaluation_and_comparison.ipynb
-├── src/
-│   ├── data_loader.py
-│   ├── preprocessing.py
-│   ├── modeling.py
-│   ├── evaluation.py
-│   └── utils.py
-├── reports/
-│   ├── figures/
-│   └── proposal/
-├── requirements.txt
-├── .gitignore
-└── LICENSE
+DATA SATELLITE (VIIRS) & BOUNDARY (GADM)
+                   │
+                   ▼
+       EXACT POLYGON CLIPPING (RIAU)
+                   │
+                   ▼
+     SPATIAL GRID ENGINEERING (0.1°)
+                   │
+                   ▼
+ LEAKAGE-FREE SCALING & TRAIN/VAL/TEST SPLIT
+                   │
+                   ▼
+      UNSUPERVISED CLUSTERING
+    ┌──────────────┼──────────────┐
+    ▼              ▼              ▼
+ K-MEANS        HDBSCAN          DEC
+    └──────────────┬──────────────┘
+                   ▼
+         CLUSTER EVALUATION
+                   │
+                   ▼
+       SPATIAL PRIORITIZATION
+                   │
+                   ▼
+   INFRASTRUCTURE & RESOURCE OPTIMIZATION
+        (MCLP / MILP - Posko & Armada)
+                   │
+                   ▼
+    GEOSPATIAL DECISION SUPPORT SYSTEM
 ```
 
 ---
 
-## 7. Contact / Project Owner
+## 4. Referensi Utama
 
-- Nama: Ghofur Akbar M. , Moch. Arrizal SP
-- Proyek: FIREGUARD ID
-- Topik: Machine Learning for Climate Action and Disaster Preparedness
+1. Eaturu, A., & Vadrevu, K. P. (2025). Evaluation of machine learning and deep learning algorithms for fire prediction in Southeast Asia. _Scientific Reports_, 15, 18807.
+2. Accuracy of tropical peat and non-peat fire forecasts enhanced by simulating hydrology. (2023). _Scientific Reports_. https://doi.org/10.1038/s41598-022-27075-0
+3. Xie, J., Girshick, R., & Farhadi, A. (2016). Unsupervised Deep Embedding for Clustering Analysis. _Proceedings of the 33rd International Conference on Machine Learning (ICML)_, PMLR 48:478-487.
+4. Church, R., & ReVelle, C. (1974). The Maximal Covering Location Problem. _Papers of the Regional Science Association_, 32, 101-118.
 
 ---
 
-## 8. Catatan
+## 5. Perkembangan Proyek Saat Ini (Progress Minggu 12)
 
-Dokumen ini merupakan draft proposal awal yang mengadaptasi formulir pengajuan ide dan kerangka perancangan proyek untuk tugas EAS / laporan proyek ML LMOP. Isi dapat dikembangkan lebih lanjut menjadi laporan lengkap sesuai kebutuhan mata kuliah, termasuk Bab 4–10 (Data Preparation, Modeling, Evaluation, Conclusion, Reproducibility, Timeline, dan Rubrik).
+- [x] **Data Sourcing & Cleaning:** Berhasil melakukan audit dan _exact polygon clipping_ 595.676 hotspot Indonesia menjadi **15.510 rekaman titik api murni di daratan/pulau Riau** (2021–2025).
+- [x] **Spatial Grid Formulation:** Membentuk **835 unit grid sel 0,1°** yang mencakup seluruh Provinsi Riau beserta rekayasa fitur akumulasi apinya.
+- [x] **Visualisasi Interaktif:** Menghasilkan peta sebaran titik api (`peta_titik_api_riau.html`) dan peta choropleth kerawanan grid (`peta_kerawanan_grid_riau.html`) yang bebas watermark.
+- [x] **Data Understanding & EDA:** Analisis tren temporal tahunan, siklus musiman, dan distribusi ketimpangan kelas spasial (`outputs/figures/`).
+- [x] **Data Preparation (Leakage-Free):** Pemisahan dataset grid menjadi **Train (584)**, **Validation (125)**, dan **Test (126)** dengan `StandardScaler` yang di-fit murni pada set training.
+- [ ] **Next Steps :** Eksperimen komparasi K-Means vs HDBSCAN vs DEC, evaluasi Silhouette/Davies-Bouldin, penentuan zona prioritas, dan pemodelan optimasi MCLP.
+
+---
+
+## 6. Struktur Direktori Proyek
+
+```text
+FIREGUARD-ID/
+├── README.md                                  # Dokumentasi utama proyek
+├── RINGKASAN_MINGGU_12.md                      # Ringkasan Bab 4 & 5 (Apa-Mengapa-Bagaimana)
+├── riau_boundary.geojson                      # Batas resmi administratif Provinsi Riau
+├── riau_viirs_hotspots_2021_2025.csv          # Dataset titik api Riau hasil clipping (15.510 baris)
+├── riau_vulnerability_grid_01deg.csv          # Dataset profil kerawanan 835 grid 0.1°
+│
+├── data/
+│   └── split/                                 # Data partisi siap latih (Leakage-Free)
+│       ├── train_raw.csv / train_scaled.csv   # Training set (584 sampel)
+│       ├── val_raw.csv / val_scaled.csv       # Validation set (125 sampel)
+│       ├── test_raw.csv / test_scaled.csv     # Test set terisolasi (126 sampel)
+│       └── scaler.joblib                      # StandardScaler hasil fit pada training
+│
+├── notebooks/
+│   ├── 01_learning_problem_eda.ipynb          # Notebook EDA & analisis kualitas data
+│   └── 02_data_preparation.ipynb              # Notebook data splitting & feature scaling
+│
+├── outputs/
+│   ├── figures/                               # Visualisasi hasil EDA (Tren tahunan, musiman, grid)
+│   └── maps/                                  # Visualisasi peta interaktif (Leaflet)
+│       ├── peta_titik_api_riau.html           # Peta sebaran titik api historis
+│       └── peta_kerawanan_grid_riau.html      # Peta zonasi kerawanan grid 0.1°
+│
+└── src/
+    ├── process_riau_hotspots.py               # Skrip spatial clipping data satelit
+    ├── generate_map.py                        # Skrip pembuat peta titik api
+    ├── spatial_grid_clustering.py             # Skrip fishnet grid 0.1° & baseline K-Means
+    ├── eda_pipeline.py                        # Pipeline generate grafik EDA
+    └── data_preparation_pipeline.py           # Pipeline splitting dan scaling data
+```
+
+---
+
+## 7. Anggota Tim
+
+- **Ghofur Akbar M.** — NIM: 244311042
+- **Moch. Arrizal Syach Putra** — NIM: 244311047
+- **Mata Kuliah:** Data Science / Machine Learning
+- **Fokus Riset:** _Geospatial Data Science, Climate Action (SDG 13), & Disaster Emergency Optimization_
