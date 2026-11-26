@@ -1,0 +1,252 @@
+{
+  "project": "FIREGUARD-ID",
+  "version": "2.0.0",
+  "executed_at_utc": "2026-11-26T09:14:42.148058+00:00",
+  "stages_executed": [
+    "data",
+    "features",
+    "eda",
+    "clustering",
+    "vulnerability",
+    "prioritization",
+    "optimization",
+    "visualization"
+  ],
+  "timings_seconds": {
+    "data": 1.178,
+    "features": 0.571,
+    "eda": 1.922,
+    "clustering": 187.332,
+    "vulnerability": 0.368,
+    "prioritization": 0.062,
+    "optimization": 45.826,
+    "visualization": 1.362
+  },
+  "stage_summaries": {
+    "data": {
+      "clipped_records": 15510
+    },
+    "features": {
+      "n_grid_cells": 853,
+      "features": [
+        "hotspot_density_km2",
+        "fire_days",
+        "active_years_count",
+        "frp_total_density_mw_km2"
+      ]
+    },
+    "eda": {
+      "n_hotspots": 15510,
+      "n_grids": 853,
+      "zero_detection_grids": 249,
+      "yearly_counts": {
+        "2021": 3081,
+        "2022": 1715,
+        "2023": 3308,
+        "2024": 3402,
+        "2025": 4004
+      },
+      "peak_month": 7,
+      "morans_i_log_density": 0.202
+    },
+    "clustering": {
+      "recommendation": "K-Means (k=3)"
+    },
+    "vulnerability": {
+      "n_cells": 853,
+      "kmeans_cluster_to_tier_mapping": {
+        "1": "Low Observed Activity",
+        "0": "Moderate / Recurrent",
+        "2": "High / Chronic-Intense"
+      },
+      "vulnerability_class_counts": {
+        "Moderate / Recurrent": 329,
+        "No Detections Observed (QA Caveat)": 249,
+        "Low / Sporadic Observed": 197,
+        "High / Chronic-Intense": 78
+      },
+      "kmeans_dec_tier_agreement_pct": 87.34,
+      "weight_sensitivity": [
+        {
+          "scheme": "equal_weights_25_25_25_25",
+          "weights": {
+            "hotspot_density_km2": 0.25,
+            "fire_days": 0.25,
+            "active_years_count": 0.25,
+            "frp_total_density_mw_km2": 0.25
+          },
+          "spearman_rho_vs_equal": 1.0,
+          "top80_jaccard_vs_equal": 1.0
+        },
+        {
+          "scheme": "density_heavy_45_20_15_20",
+          "weights": {
+            "hotspot_density_km2": 0.45,
+            "fire_days": 0.2,
+            "active_years_count": 0.15,
+            "frp_total_density_mw_km2": 0.2
+          },
+          "spearman_rho_vs_equal": 0.997733,
+          "top80_jaccard_vs_equal": 0.9277
+        },
+        {
+          "scheme": "persistence_heavy_15_40_30_15",
+          "weights": {
+            "hotspot_density_km2": 0.15,
+            "fire_days": 0.4,
+            "active_years_count": 0.3,
+            "frp_total_density_mw_km2": 0.15
+          },
+          "spearman_rho_vs_equal": 0.997117,
+          "top80_jaccard_vs_equal": 0.7778
+        },
+        {
+          "scheme": "intensity_heavy_20_20_15_45",
+          "weights": {
+            "hotspot_density_km2": 0.2,
+            "fire_days": 0.2,
+            "active_years_count": 0.15,
+            "frp_total_density_mw_km2": 0.45
+          },
+          "spearman_rho_vs_equal": 0.995799,
+          "top80_jaccard_vs_equal": 0.8824
+        }
+      ]
+    },
+    "prioritization": {
+      "n_cells": 853,
+      "priority_class_counts": {
+        "Tier 4 (Baseline Monitoring - Bottom 50%)": 427,
+        "Tier 3 (Elevated Priority - Top 25-50%)": 213,
+        "Tier 2 (High Priority - Top 10-25%)": 128,
+        "Tier 1 (Critical Priority - Top 10%)": 85
+      },
+      "baseline_weights": {
+        "vuln": 0.45,
+        "persistence": 0.25,
+        "corridor": 0.2,
+        "remoteness": 0.1
+      },
+      "vulnerability_vs_priority_spearman": 0.973754,
+      "sensitivity": [
+        {
+          "scenario": "balanced_operational",
+          "vuln": 0.45,
+          "persistence": 0.25,
+          "corridor": 0.2,
+          "remoteness": 0.1,
+          "spearman_rho_vs_base": 1.0,
+          "top85_jaccard_vs_base": 1.0,
+          "max_rank_shift_cells": 0
+        },
+        {
+          "scenario": "vulnerability_dominant",
+          "vuln": 0.7,
+          "persistence": 0.15,
+          "corridor": 0.1,
+          "remoteness": 0.05,
+          "spearman_rho_vs_base": 0.996523,
+          "top85_jaccard_vs_base": 0.7526,
+          "max_rank_shift_cells": 85
+        },
+        {
+          "scenario": "corridor_containment",
+          "vuln": 0.35,
+          "persistence": 0.2,
+          "corridor": 0.35,
+          "remoteness": 0.1,
+          "spearman_rho_vs_base": 0.993496,
+          "top85_jaccard_vs_base": 0.8085,
+          "max_rank_shift_cells": 99
+        },
+        {
+          "scenario": "remote_access_focus",
+          "vuln": 0.4,
+          "persistence": 0.2,
+          "corridor": 0.15,
+          "remoteness": 0.25,
+          "spearman_rho_vs_base": 0.987407,
+          "top85_jaccard_vs_base": 0.7172,
+          "max_rank_shift_cells": 119
+        }
+      ]
+    },
+    "optimization": {
+      "is_synthetic_scenario": true,
+      "n_selected_bases": 10,
+      "module1_status": "ok",
+      "module2_status": "ok",
+      "module3_status": "ok",
+      "module4_status": "ok",
+      "module5_status": "ok",
+      "module6_status": "ok"
+    },
+    "visualization": {
+      "n_primary_maps": 8,
+      "n_total_files": 10,
+      "manifest_path": "reports/visualization_manifest.json",
+      "maps": [
+        {
+          "filename": "01_historical_hotspots.html",
+          "path": "outputs/maps/01_historical_hotspots.html",
+          "size_bytes": 773902,
+          "classification": "raw_observations"
+        },
+        {
+          "filename": "peta_titik_api_riau.html",
+          "path": "outputs/maps/peta_titik_api_riau.html",
+          "size_bytes": 773902,
+          "classification": "raw_observations"
+        },
+        {
+          "filename": "02_spatial_grid.html",
+          "path": "outputs/maps/02_spatial_grid.html",
+          "size_bytes": 409971,
+          "classification": "derived_indicators"
+        },
+        {
+          "filename": "03_clustering_comparison.html",
+          "path": "outputs/maps/03_clustering_comparison.html",
+          "size_bytes": 390979,
+          "classification": "derived_indicators"
+        },
+        {
+          "filename": "04_vulnerability_assessment.html",
+          "path": "outputs/maps/04_vulnerability_assessment.html",
+          "size_bytes": 576652,
+          "classification": "derived_indicators"
+        },
+        {
+          "filename": "peta_kerawanan_grid_riau.html",
+          "path": "outputs/maps/peta_kerawanan_grid_riau.html",
+          "size_bytes": 576652,
+          "classification": "derived_indicators"
+        },
+        {
+          "filename": "05_spatial_prioritization.html",
+          "path": "outputs/maps/05_spatial_prioritization.html",
+          "size_bytes": 444346,
+          "classification": "derived_indicators"
+        },
+        {
+          "filename": "06_infrastructure_gaps.html",
+          "path": "outputs/maps/06_infrastructure_gaps.html",
+          "size_bytes": 432658,
+          "classification": "gap_analysis_real_inventory_absent_with_synthetic_proxy"
+        },
+        {
+          "filename": "07_optimized_infrastructure.html",
+          "path": "outputs/maps/07_optimized_infrastructure.html",
+          "size_bytes": 362018,
+          "classification": "synthetic_optimization_scenario"
+        },
+        {
+          "filename": "08_coverage_comparison.html",
+          "path": "outputs/maps/08_coverage_comparison.html",
+          "size_bytes": 324343,
+          "classification": "synthetic_optimization_scenario"
+        }
+      ]
+    }
+  }
+}
