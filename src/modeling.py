@@ -1,11 +1,9 @@
 """
-Modeling Module for FIREGUARD ID.
-Baseline (K-Means), Advanced (HDBSCAN), and Deep Embedded Clustering (DEC).
+Modeling Module Facade for FIREGUARD ID.
+Exposes K-Means, HDBSCAN, and Deep Embedded Clustering (DEC) pipelines.
 """
-from sklearn.cluster import KMeans
+from src.models.dec_model import DECModel, SymmetricAutoencoder, run_dec_pipeline
+from src.models.hdbscan_model import run_hdbscan_pipeline
+from src.models.kmeans_model import run_kmeans_pipeline
 
-def train_kmeans(X, n_clusters=4, random_state=42):
-    """Fits K-Means baseline model."""
-    model = KMeans(n_clusters=n_clusters, random_state=random_state, n_init=10)
-    labels = model.fit_predict(X)
-    return model, labels
+__all__ = ["SymmetricAutoencoder", "DECModel", "run_kmeans_pipeline", "run_hdbscan_pipeline", "run_dec_pipeline"]

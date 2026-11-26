@@ -1,0 +1,1821 @@
+{
+  "model_family": "DEC",
+  "reference": "Xie et al. (2016) + IDEC joint reconstruction (Guo et al., 2017)",
+  "device": {
+    "type": "cuda",
+    "name": "NVIDIA GeForce RTX 4050 Laptop GPU"
+  },
+  "input_matrix": {
+    "path": "data/processed/clustering_matrix_scaled.parquet",
+    "n_samples": 853,
+    "n_features": 4,
+    "feature_columns": [
+      "hotspot_density_km2_scaled",
+      "fire_days_scaled",
+      "active_years_count_scaled",
+      "frp_total_density_mw_km2_scaled"
+    ]
+  },
+  "architecture": {
+    "encoder": [
+      4,
+      32,
+      16,
+      4
+    ],
+    "decoder": [
+      4,
+      16,
+      32,
+      4
+    ],
+    "hidden_activation": "ReLU",
+    "latent_activation": "Linear",
+    "output_activation": "Linear",
+    "student_t_alpha": 1.0,
+    "gamma_recon": 0.1
+  },
+  "hyperparameters": {
+    "latent_dim": 4,
+    "hidden_dims": [
+      32,
+      16
+    ],
+    "n_clusters_candidates": [
+      3,
+      4,
+      5
+    ],
+    "pretrain_epochs": 120,
+    "pretrain_lr": 0.001,
+    "finetune_max_iter": 300,
+    "finetune_lr": 0.0005,
+    "batch_size": 64,
+    "update_interval": 10,
+    "tol": 0.001,
+    "alpha": 1.0,
+    "gamma_recon": 0.1
+  },
+  "seeds_stability": [
+    42,
+    101,
+    202,
+    303,
+    404
+  ],
+  "n_clusters_sweep": {
+    "3": {
+      "n_clusters": 3,
+      "primary_seed": 42,
+      "primary_pretrain": {
+        "initial_mse": 1.057939,
+        "final_mse": 0.000843,
+        "history_sampled": [
+          {
+            "epoch": 1,
+            "mse": 0.965804
+          },
+          {
+            "epoch": 30,
+            "mse": 0.010754
+          },
+          {
+            "epoch": 60,
+            "mse": 0.00491
+          },
+          {
+            "epoch": 90,
+            "mse": 0.003329
+          },
+          {
+            "epoch": 120,
+            "mse": 0.000904
+          }
+        ]
+      },
+      "primary_init_kmeans_latent_ari_vs_q0": 1.0,
+      "primary_init_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.532098,
+        "davies_bouldin_index": 0.739353,
+        "calinski_harabasz_index": 1200.7919,
+        "cluster_sizes": {
+          "0": 492,
+          "1": 279,
+          "2": 82
+        },
+        "min_cluster_share": 0.096131,
+        "max_cluster_share": 0.576788
+      },
+      "primary_init_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.534739,
+        "davies_bouldin_index": 0.74561,
+        "calinski_harabasz_index": 1198.1177,
+        "cluster_sizes": {
+          "0": 492,
+          "1": 279,
+          "2": 82
+        },
+        "min_cluster_share": 0.096131,
+        "max_cluster_share": 0.576788
+      },
+      "primary_finetune": {
+        "epochs_run": 200,
+        "converged": true,
+        "stop_reason": "delta_label (0.000000) < tol (0.001)",
+        "final_kl_loss": 0.047778,
+        "final_recon_mse": 0.019519,
+        "final_total_loss": 0.04973,
+        "convergence_history": [
+          {
+            "epoch": 10,
+            "kl_loss": 0.0612,
+            "recon_mse": 0.003665,
+            "total_loss": 0.061567,
+            "delta_label": 0.032825,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 20,
+            "kl_loss": 0.070998,
+            "recon_mse": 0.008622,
+            "total_loss": 0.07186,
+            "delta_label": 0.026964,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 30,
+            "kl_loss": 0.074263,
+            "recon_mse": 0.017784,
+            "total_loss": 0.076042,
+            "delta_label": 0.017585,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 40,
+            "kl_loss": 0.076531,
+            "recon_mse": 0.022123,
+            "total_loss": 0.078743,
+            "delta_label": 0.009379,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 50,
+            "kl_loss": 0.077576,
+            "recon_mse": 0.025919,
+            "total_loss": 0.080168,
+            "delta_label": 0.003517,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 60,
+            "kl_loss": 0.077443,
+            "recon_mse": 0.024696,
+            "total_loss": 0.079912,
+            "delta_label": 0.008206,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 70,
+            "kl_loss": 0.076204,
+            "recon_mse": 0.023555,
+            "total_loss": 0.07856,
+            "delta_label": 0.007034,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 80,
+            "kl_loss": 0.074318,
+            "recon_mse": 0.02292,
+            "total_loss": 0.07661,
+            "delta_label": 0.008206,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 90,
+            "kl_loss": 0.072114,
+            "recon_mse": 0.02078,
+            "total_loss": 0.074192,
+            "delta_label": 0.004689,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 100,
+            "kl_loss": 0.069665,
+            "recon_mse": 0.020185,
+            "total_loss": 0.071683,
+            "delta_label": 0.001172,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 110,
+            "kl_loss": 0.06709,
+            "recon_mse": 0.021191,
+            "total_loss": 0.069209,
+            "delta_label": 0.005862,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 120,
+            "kl_loss": 0.064383,
+            "recon_mse": 0.020573,
+            "total_loss": 0.06644,
+            "delta_label": 0.008206,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 130,
+            "kl_loss": 0.061277,
+            "recon_mse": 0.021557,
+            "total_loss": 0.063432,
+            "delta_label": 0.002345,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 140,
+            "kl_loss": 0.058415,
+            "recon_mse": 0.021199,
+            "total_loss": 0.060534,
+            "delta_label": 0.007034,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 150,
+            "kl_loss": 0.056097,
+            "recon_mse": 0.020823,
+            "total_loss": 0.05818,
+            "delta_label": 0.004689,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 160,
+            "kl_loss": 0.05406,
+            "recon_mse": 0.019299,
+            "total_loss": 0.05599,
+            "delta_label": 0.002345,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 170,
+            "kl_loss": 0.052295,
+            "recon_mse": 0.019615,
+            "total_loss": 0.054256,
+            "delta_label": 0.002345,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 180,
+            "kl_loss": 0.050679,
+            "recon_mse": 0.01948,
+            "total_loss": 0.052627,
+            "delta_label": 0.004689,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 190,
+            "kl_loss": 0.049296,
+            "recon_mse": 0.020313,
+            "total_loss": 0.051327,
+            "delta_label": 0.001172,
+            "active_clusters": 3
+          },
+          {
+            "epoch": 200,
+            "kl_loss": 0.047778,
+            "recon_mse": 0.019519,
+            "total_loss": 0.04973,
+            "delta_label": 0.0,
+            "active_clusters": 3
+          }
+        ]
+      },
+      "primary_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48023,
+        "davies_bouldin_index": 0.847784,
+        "calinski_harabasz_index": 969.6476,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516
+      },
+      "primary_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.877685,
+        "davies_bouldin_index": 0.206775,
+        "calinski_harabasz_index": 14645.9131,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516
+      },
+      "primary_assignment_confidence": {
+        "mean": 0.929214,
+        "median": 0.949687,
+        "p10": 0.902032,
+        "min": 0.4805
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.514402,
+        "random_baseline": 0.389353,
+        "coherence_lift": 1.3212,
+        "neighbor_pairs": 6388
+      },
+      "multi_seed_stability": {
+        "mean_ari": 0.685752,
+        "min_ari": 0.440994,
+        "mean_nmi": 0.689648,
+        "n_pairs": 10,
+        "silhouette_feature_mean": 0.467444,
+        "silhouette_feature_std": 0.009021,
+        "silhouette_latent_mean": 0.874869,
+        "silhouette_latent_std": 0.020254
+      },
+      "seed_runs": [
+        {
+          "seed": 42,
+          "converged": true,
+          "epochs_run": 200,
+          "final_kl_loss": 0.047778,
+          "final_recon_mse": 0.019519,
+          "silhouette_feature_space": 0.48023,
+          "davies_bouldin_feature_space": 0.847784,
+          "calinski_harabasz_feature_space": 969.6476,
+          "silhouette_latent_space": 0.877685,
+          "min_cluster_share": 0.198124,
+          "cluster_sizes": {
+            "0": 444,
+            "1": 240,
+            "2": 169
+          }
+        },
+        {
+          "seed": 101,
+          "converged": true,
+          "epochs_run": 250,
+          "final_kl_loss": 0.035602,
+          "final_recon_mse": 0.013356,
+          "silhouette_feature_space": 0.452267,
+          "davies_bouldin_feature_space": 0.889997,
+          "calinski_harabasz_feature_space": 914.6011,
+          "silhouette_latent_space": 0.837246,
+          "min_cluster_share": 0.174678,
+          "cluster_sizes": {
+            "0": 510,
+            "1": 149,
+            "2": 194
+          }
+        },
+        {
+          "seed": 202,
+          "converged": true,
+          "epochs_run": 190,
+          "final_kl_loss": 0.052208,
+          "final_recon_mse": 0.010046,
+          "silhouette_feature_space": 0.468309,
+          "davies_bouldin_feature_space": 0.846229,
+          "calinski_harabasz_feature_space": 782.4715,
+          "silhouette_latent_space": 0.875538,
+          "min_cluster_share": 0.289566,
+          "cluster_sizes": {
+            "0": 247,
+            "1": 342,
+            "2": 264
+          }
+        },
+        {
+          "seed": 303,
+          "converged": true,
+          "epochs_run": 180,
+          "final_kl_loss": 0.053218,
+          "final_recon_mse": 0.02127,
+          "silhouette_feature_space": 0.465849,
+          "davies_bouldin_feature_space": 0.833685,
+          "calinski_harabasz_feature_space": 940.1788,
+          "silhouette_latent_space": 0.887216,
+          "min_cluster_share": 0.193435,
+          "cluster_sizes": {
+            "0": 490,
+            "1": 165,
+            "2": 198
+          }
+        },
+        {
+          "seed": 404,
+          "converged": false,
+          "epochs_run": 300,
+          "final_kl_loss": 0.032119,
+          "final_recon_mse": 0.011534,
+          "silhouette_feature_space": 0.470567,
+          "davies_bouldin_feature_space": 0.87156,
+          "calinski_harabasz_feature_space": 925.4926,
+          "silhouette_latent_space": 0.896661,
+          "min_cluster_share": 0.205158,
+          "cluster_sizes": {
+            "0": 448,
+            "1": 175,
+            "2": 230
+          }
+        }
+      ],
+      "selection_composite_score": 0.61642
+    },
+    "4": {
+      "n_clusters": 4,
+      "primary_seed": 42,
+      "primary_pretrain": {
+        "initial_mse": 1.057939,
+        "final_mse": 0.000843,
+        "history_sampled": [
+          {
+            "epoch": 1,
+            "mse": 0.965804
+          },
+          {
+            "epoch": 30,
+            "mse": 0.010754
+          },
+          {
+            "epoch": 60,
+            "mse": 0.00491
+          },
+          {
+            "epoch": 90,
+            "mse": 0.003329
+          },
+          {
+            "epoch": 120,
+            "mse": 0.000904
+          }
+        ]
+      },
+      "primary_init_kmeans_latent_ari_vs_q0": 1.0,
+      "primary_init_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 4,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.518462,
+        "davies_bouldin_index": 0.806524,
+        "calinski_harabasz_index": 1246.0796,
+        "cluster_sizes": {
+          "0": 388,
+          "1": 134,
+          "2": 287,
+          "3": 44
+        },
+        "min_cluster_share": 0.051583,
+        "max_cluster_share": 0.454865
+      },
+      "primary_init_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 4,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.536457,
+        "davies_bouldin_index": 0.729699,
+        "calinski_harabasz_index": 1355.1632,
+        "cluster_sizes": {
+          "0": 388,
+          "1": 134,
+          "2": 287,
+          "3": 44
+        },
+        "min_cluster_share": 0.051583,
+        "max_cluster_share": 0.454865
+      },
+      "primary_finetune": {
+        "epochs_run": 160,
+        "converged": true,
+        "stop_reason": "delta_label (0.000000) < tol (0.001)",
+        "final_kl_loss": 0.087448,
+        "final_recon_mse": 0.019467,
+        "final_total_loss": 0.089395,
+        "convergence_history": [
+          {
+            "epoch": 10,
+            "kl_loss": 0.082653,
+            "recon_mse": 0.004893,
+            "total_loss": 0.083142,
+            "delta_label": 0.041032,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 20,
+            "kl_loss": 0.098394,
+            "recon_mse": 0.010299,
+            "total_loss": 0.099424,
+            "delta_label": 0.025791,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 30,
+            "kl_loss": 0.105402,
+            "recon_mse": 0.017012,
+            "total_loss": 0.107103,
+            "delta_label": 0.021102,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 40,
+            "kl_loss": 0.106918,
+            "recon_mse": 0.019089,
+            "total_loss": 0.108827,
+            "delta_label": 0.012896,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 50,
+            "kl_loss": 0.107292,
+            "recon_mse": 0.022564,
+            "total_loss": 0.109548,
+            "delta_label": 0.017585,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 60,
+            "kl_loss": 0.107713,
+            "recon_mse": 0.022892,
+            "total_loss": 0.110002,
+            "delta_label": 0.009379,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 70,
+            "kl_loss": 0.106873,
+            "recon_mse": 0.023932,
+            "total_loss": 0.109266,
+            "delta_label": 0.009379,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 80,
+            "kl_loss": 0.105618,
+            "recon_mse": 0.022984,
+            "total_loss": 0.107916,
+            "delta_label": 0.009379,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 90,
+            "kl_loss": 0.1036,
+            "recon_mse": 0.023417,
+            "total_loss": 0.105941,
+            "delta_label": 0.008206,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 100,
+            "kl_loss": 0.10143,
+            "recon_mse": 0.022256,
+            "total_loss": 0.103655,
+            "delta_label": 0.005862,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 110,
+            "kl_loss": 0.098866,
+            "recon_mse": 0.021979,
+            "total_loss": 0.101064,
+            "delta_label": 0.002345,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 120,
+            "kl_loss": 0.096221,
+            "recon_mse": 0.021661,
+            "total_loss": 0.098387,
+            "delta_label": 0.002345,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 130,
+            "kl_loss": 0.093933,
+            "recon_mse": 0.021982,
+            "total_loss": 0.096131,
+            "delta_label": 0.004689,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 140,
+            "kl_loss": 0.091731,
+            "recon_mse": 0.020475,
+            "total_loss": 0.093778,
+            "delta_label": 0.001172,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 150,
+            "kl_loss": 0.089448,
+            "recon_mse": 0.022202,
+            "total_loss": 0.091668,
+            "delta_label": 0.001172,
+            "active_clusters": 4
+          },
+          {
+            "epoch": 160,
+            "kl_loss": 0.087448,
+            "recon_mse": 0.019467,
+            "total_loss": 0.089395,
+            "delta_label": 0.0,
+            "active_clusters": 4
+          }
+        ]
+      },
+      "primary_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 4,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.474487,
+        "davies_bouldin_index": 0.961312,
+        "calinski_harabasz_index": 976.137,
+        "cluster_sizes": {
+          "0": 379,
+          "1": 144,
+          "2": 226,
+          "3": 104
+        },
+        "min_cluster_share": 0.121923,
+        "max_cluster_share": 0.444314
+      },
+      "primary_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 4,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.805496,
+        "davies_bouldin_index": 0.393,
+        "calinski_harabasz_index": 5227.1221,
+        "cluster_sizes": {
+          "0": 379,
+          "1": 144,
+          "2": 226,
+          "3": 104
+        },
+        "min_cluster_share": 0.121923,
+        "max_cluster_share": 0.444314
+      },
+      "primary_assignment_confidence": {
+        "mean": 0.85861,
+        "median": 0.894288,
+        "p10": 0.699513,
+        "min": 0.445094
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.431747,
+        "random_baseline": 0.310976,
+        "coherence_lift": 1.3884,
+        "neighbor_pairs": 6388
+      },
+      "multi_seed_stability": {
+        "mean_ari": 0.703986,
+        "min_ari": 0.545039,
+        "mean_nmi": 0.708862,
+        "n_pairs": 10,
+        "silhouette_feature_mean": 0.448759,
+        "silhouette_feature_std": 0.013255,
+        "silhouette_latent_mean": 0.820723,
+        "silhouette_latent_std": 0.013276
+      },
+      "seed_runs": [
+        {
+          "seed": 42,
+          "converged": true,
+          "epochs_run": 160,
+          "final_kl_loss": 0.087448,
+          "final_recon_mse": 0.019467,
+          "silhouette_feature_space": 0.474487,
+          "davies_bouldin_feature_space": 0.961312,
+          "calinski_harabasz_feature_space": 976.137,
+          "silhouette_latent_space": 0.805496,
+          "min_cluster_share": 0.121923,
+          "cluster_sizes": {
+            "0": 379,
+            "1": 144,
+            "2": 226,
+            "3": 104
+          }
+        },
+        {
+          "seed": 101,
+          "converged": false,
+          "epochs_run": 300,
+          "final_kl_loss": 0.054887,
+          "final_recon_mse": 0.010401,
+          "silhouette_feature_space": 0.441591,
+          "davies_bouldin_feature_space": 1.050707,
+          "calinski_harabasz_feature_space": 904.6495,
+          "silhouette_latent_space": 0.821051,
+          "min_cluster_share": 0.096131,
+          "cluster_sizes": {
+            "0": 446,
+            "1": 114,
+            "2": 82,
+            "3": 211
+          }
+        },
+        {
+          "seed": 202,
+          "converged": true,
+          "epochs_run": 200,
+          "final_kl_loss": 0.082616,
+          "final_recon_mse": 0.011861,
+          "silhouette_feature_space": 0.437346,
+          "davies_bouldin_feature_space": 1.04853,
+          "calinski_harabasz_feature_space": 747.7411,
+          "silhouette_latent_space": 0.818882,
+          "min_cluster_share": 0.165299,
+          "cluster_sizes": {
+            "0": 141,
+            "1": 226,
+            "2": 340,
+            "3": 146
+          }
+        },
+        {
+          "seed": 303,
+          "converged": true,
+          "epochs_run": 260,
+          "final_kl_loss": 0.082052,
+          "final_recon_mse": 0.016647,
+          "silhouette_feature_space": 0.447353,
+          "davies_bouldin_feature_space": 0.999873,
+          "calinski_harabasz_feature_space": 795.8983,
+          "silhouette_latent_space": 0.844996,
+          "min_cluster_share": 0.159437,
+          "cluster_sizes": {
+            "0": 227,
+            "1": 148,
+            "2": 342,
+            "3": 136
+          }
+        },
+        {
+          "seed": 404,
+          "converged": true,
+          "epochs_run": 180,
+          "final_kl_loss": 0.07617,
+          "final_recon_mse": 0.016661,
+          "silhouette_feature_space": 0.44302,
+          "davies_bouldin_feature_space": 1.006718,
+          "calinski_harabasz_feature_space": 925.802,
+          "silhouette_latent_space": 0.81319,
+          "min_cluster_share": 0.126612,
+          "cluster_sizes": {
+            "0": 201,
+            "1": 410,
+            "2": 108,
+            "3": 134
+          }
+        }
+      ],
+      "selection_composite_score": 0.574129
+    },
+    "5": {
+      "n_clusters": 5,
+      "primary_seed": 42,
+      "primary_pretrain": {
+        "initial_mse": 1.057939,
+        "final_mse": 0.000843,
+        "history_sampled": [
+          {
+            "epoch": 1,
+            "mse": 0.965804
+          },
+          {
+            "epoch": 30,
+            "mse": 0.010754
+          },
+          {
+            "epoch": 60,
+            "mse": 0.00491
+          },
+          {
+            "epoch": 90,
+            "mse": 0.003329
+          },
+          {
+            "epoch": 120,
+            "mse": 0.000904
+          }
+        ]
+      },
+      "primary_init_kmeans_latent_ari_vs_q0": 1.0,
+      "primary_init_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 5,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.493833,
+        "davies_bouldin_index": 0.872431,
+        "calinski_harabasz_index": 1217.8246,
+        "cluster_sizes": {
+          "0": 206,
+          "1": 34,
+          "2": 145,
+          "3": 386,
+          "4": 82
+        },
+        "min_cluster_share": 0.039859,
+        "max_cluster_share": 0.452521
+      },
+      "primary_init_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 5,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527818,
+        "davies_bouldin_index": 0.774929,
+        "calinski_harabasz_index": 1423.7278,
+        "cluster_sizes": {
+          "0": 206,
+          "1": 34,
+          "2": 145,
+          "3": 386,
+          "4": 82
+        },
+        "min_cluster_share": 0.039859,
+        "max_cluster_share": 0.452521
+      },
+      "primary_finetune": {
+        "epochs_run": 180,
+        "converged": true,
+        "stop_reason": "delta_label (0.000000) < tol (0.001)",
+        "final_kl_loss": 0.104316,
+        "final_recon_mse": 0.032184,
+        "final_total_loss": 0.107534,
+        "convergence_history": [
+          {
+            "epoch": 10,
+            "kl_loss": 0.097519,
+            "recon_mse": 0.004363,
+            "total_loss": 0.097955,
+            "delta_label": 0.024619,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 20,
+            "kl_loss": 0.11437,
+            "recon_mse": 0.009113,
+            "total_loss": 0.115282,
+            "delta_label": 0.025791,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 30,
+            "kl_loss": 0.120053,
+            "recon_mse": 0.017422,
+            "total_loss": 0.121796,
+            "delta_label": 0.024619,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 40,
+            "kl_loss": 0.124046,
+            "recon_mse": 0.019866,
+            "total_loss": 0.126032,
+            "delta_label": 0.009379,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 50,
+            "kl_loss": 0.125174,
+            "recon_mse": 0.020942,
+            "total_loss": 0.127269,
+            "delta_label": 0.016413,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 60,
+            "kl_loss": 0.125397,
+            "recon_mse": 0.023133,
+            "total_loss": 0.12771,
+            "delta_label": 0.016413,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 70,
+            "kl_loss": 0.125143,
+            "recon_mse": 0.024627,
+            "total_loss": 0.127606,
+            "delta_label": 0.004689,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 80,
+            "kl_loss": 0.124192,
+            "recon_mse": 0.028772,
+            "total_loss": 0.127069,
+            "delta_label": 0.008206,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 90,
+            "kl_loss": 0.123635,
+            "recon_mse": 0.029309,
+            "total_loss": 0.126566,
+            "delta_label": 0.011723,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 100,
+            "kl_loss": 0.122471,
+            "recon_mse": 0.028586,
+            "total_loss": 0.125329,
+            "delta_label": 0.002345,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 110,
+            "kl_loss": 0.120005,
+            "recon_mse": 0.033881,
+            "total_loss": 0.123393,
+            "delta_label": 0.012896,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 120,
+            "kl_loss": 0.117519,
+            "recon_mse": 0.029713,
+            "total_loss": 0.120491,
+            "delta_label": 0.004689,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 130,
+            "kl_loss": 0.115342,
+            "recon_mse": 0.029312,
+            "total_loss": 0.118273,
+            "delta_label": 0.009379,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 140,
+            "kl_loss": 0.113039,
+            "recon_mse": 0.02971,
+            "total_loss": 0.11601,
+            "delta_label": 0.003517,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 150,
+            "kl_loss": 0.110759,
+            "recon_mse": 0.029646,
+            "total_loss": 0.113724,
+            "delta_label": 0.003517,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 160,
+            "kl_loss": 0.108388,
+            "recon_mse": 0.030368,
+            "total_loss": 0.111425,
+            "delta_label": 0.003517,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 170,
+            "kl_loss": 0.106289,
+            "recon_mse": 0.031522,
+            "total_loss": 0.109441,
+            "delta_label": 0.001172,
+            "active_clusters": 5
+          },
+          {
+            "epoch": 180,
+            "kl_loss": 0.104316,
+            "recon_mse": 0.032184,
+            "total_loss": 0.107534,
+            "delta_label": 0.0,
+            "active_clusters": 5
+          }
+        ]
+      },
+      "primary_metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 5,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.459503,
+        "davies_bouldin_index": 1.136602,
+        "calinski_harabasz_index": 953.6069,
+        "cluster_sizes": {
+          "0": 198,
+          "1": 78,
+          "2": 124,
+          "3": 364,
+          "4": 89
+        },
+        "min_cluster_share": 0.091442,
+        "max_cluster_share": 0.426729
+      },
+      "primary_metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 5,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.80048,
+        "davies_bouldin_index": 0.389096,
+        "calinski_harabasz_index": 6216.2046,
+        "cluster_sizes": {
+          "0": 198,
+          "1": 78,
+          "2": 124,
+          "3": 364,
+          "4": 89
+        },
+        "min_cluster_share": 0.091442,
+        "max_cluster_share": 0.426729
+      },
+      "primary_assignment_confidence": {
+        "mean": 0.829162,
+        "median": 0.875143,
+        "p10": 0.649329,
+        "min": 0.425865
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.38134,
+        "random_baseline": 0.276359,
+        "coherence_lift": 1.3799,
+        "neighbor_pairs": 6388
+      },
+      "multi_seed_stability": {
+        "mean_ari": 0.664582,
+        "min_ari": 0.509001,
+        "mean_nmi": 0.731992,
+        "n_pairs": 10,
+        "silhouette_feature_mean": 0.453108,
+        "silhouette_feature_std": 0.010711,
+        "silhouette_latent_mean": 0.81542,
+        "silhouette_latent_std": 0.013085
+      },
+      "seed_runs": [
+        {
+          "seed": 42,
+          "converged": true,
+          "epochs_run": 180,
+          "final_kl_loss": 0.104316,
+          "final_recon_mse": 0.032184,
+          "silhouette_feature_space": 0.459503,
+          "davies_bouldin_feature_space": 1.136602,
+          "calinski_harabasz_feature_space": 953.6069,
+          "silhouette_latent_space": 0.80048,
+          "min_cluster_share": 0.091442,
+          "cluster_sizes": {
+            "0": 198,
+            "1": 78,
+            "2": 124,
+            "3": 364,
+            "4": 89
+          }
+        },
+        {
+          "seed": 101,
+          "converged": true,
+          "epochs_run": 200,
+          "final_kl_loss": 0.088143,
+          "final_recon_mse": 0.011624,
+          "silhouette_feature_space": 0.44954,
+          "davies_bouldin_feature_space": 1.232549,
+          "calinski_harabasz_feature_space": 912.1536,
+          "silhouette_latent_space": 0.806511,
+          "min_cluster_share": 0.084408,
+          "cluster_sizes": {
+            "0": 337,
+            "1": 112,
+            "2": 103,
+            "3": 72,
+            "4": 229
+          }
+        },
+        {
+          "seed": 202,
+          "converged": true,
+          "epochs_run": 240,
+          "final_kl_loss": 0.100844,
+          "final_recon_mse": 0.010663,
+          "silhouette_feature_space": 0.439809,
+          "davies_bouldin_feature_space": 1.241629,
+          "calinski_harabasz_feature_space": 554.1516,
+          "silhouette_latent_space": 0.815607,
+          "min_cluster_share": 0.130129,
+          "cluster_sizes": {
+            "0": 137,
+            "1": 249,
+            "2": 204,
+            "3": 152,
+            "4": 111
+          }
+        },
+        {
+          "seed": 303,
+          "converged": true,
+          "epochs_run": 100,
+          "final_kl_loss": 0.146973,
+          "final_recon_mse": 0.01831,
+          "silhouette_feature_space": 0.470351,
+          "davies_bouldin_feature_space": 1.022906,
+          "calinski_harabasz_feature_space": 866.0681,
+          "silhouette_latent_space": 0.815557,
+          "min_cluster_share": 0.109027,
+          "cluster_sizes": {
+            "0": 249,
+            "1": 155,
+            "2": 242,
+            "3": 93,
+            "4": 114
+          }
+        },
+        {
+          "seed": 404,
+          "converged": true,
+          "epochs_run": 250,
+          "final_kl_loss": 0.08665,
+          "final_recon_mse": 0.013999,
+          "silhouette_feature_space": 0.446339,
+          "davies_bouldin_feature_space": 1.278036,
+          "calinski_harabasz_feature_space": 879.349,
+          "silhouette_latent_space": 0.838947,
+          "min_cluster_share": 0.094959,
+          "cluster_sizes": {
+            "0": 223,
+            "1": 102,
+            "2": 105,
+            "3": 81,
+            "4": 342
+          }
+        }
+      ],
+      "selection_composite_score": 0.540018
+    }
+  },
+  "selected_model": {
+    "n_clusters": 3,
+    "seed": 42,
+    "selection_rule": "Composite multi-criteria score combining feature-space Silhouette (0.30), latent-space Silhouette (0.15), inverted DBI (0.20), multi-seed ARI (0.20), cluster balance min_share (0.10, hard floor >= 0.05), and spatial coherence lift (0.05).",
+    "selection_composite_score": 0.61642,
+    "metrics_feature_space": {
+      "n_total": 853,
+      "n_valid_clustered": 853,
+      "n_clusters": 3,
+      "n_noise": 0,
+      "noise_ratio": 0.0,
+      "valid_for_internal_metrics": true,
+      "reason": "ok",
+      "silhouette_score": 0.48023,
+      "davies_bouldin_index": 0.847784,
+      "calinski_harabasz_index": 969.6476,
+      "cluster_sizes": {
+        "0": 444,
+        "1": 240,
+        "2": 169
+      },
+      "min_cluster_share": 0.198124,
+      "max_cluster_share": 0.520516
+    },
+    "metrics_latent_space": {
+      "n_total": 853,
+      "n_valid_clustered": 853,
+      "n_clusters": 3,
+      "n_noise": 0,
+      "noise_ratio": 0.0,
+      "valid_for_internal_metrics": true,
+      "reason": "ok",
+      "silhouette_score": 0.877685,
+      "davies_bouldin_index": 0.206775,
+      "calinski_harabasz_index": 14645.9131,
+      "cluster_sizes": {
+        "0": 444,
+        "1": 240,
+        "2": 169
+      },
+      "min_cluster_share": 0.198124,
+      "max_cluster_share": 0.520516
+    },
+    "multi_seed_stability": {
+      "mean_ari": 0.685752,
+      "min_ari": 0.440994,
+      "mean_nmi": 0.689648,
+      "n_pairs": 10,
+      "silhouette_feature_mean": 0.467444,
+      "silhouette_feature_std": 0.009021,
+      "silhouette_latent_mean": 0.874869,
+      "silhouette_latent_std": 0.020254
+    },
+    "spatial_coherence": {
+      "neighbor_concordance": 0.514402,
+      "random_baseline": 0.389353,
+      "coherence_lift": 1.3212,
+      "neighbor_pairs": 6388
+    },
+    "assignment_confidence": {
+      "mean": 0.929214,
+      "median": 0.949687,
+      "p10": 0.902032,
+      "min": 0.4805
+    },
+    "finetune_convergence": {
+      "epochs_run": 200,
+      "converged": true,
+      "stop_reason": "delta_label (0.000000) < tol (0.001)",
+      "final_kl_loss": 0.047778,
+      "final_recon_mse": 0.019519,
+      "final_total_loss": 0.04973,
+      "convergence_history": [
+        {
+          "epoch": 10,
+          "kl_loss": 0.0612,
+          "recon_mse": 0.003665,
+          "total_loss": 0.061567,
+          "delta_label": 0.032825,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 20,
+          "kl_loss": 0.070998,
+          "recon_mse": 0.008622,
+          "total_loss": 0.07186,
+          "delta_label": 0.026964,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 30,
+          "kl_loss": 0.074263,
+          "recon_mse": 0.017784,
+          "total_loss": 0.076042,
+          "delta_label": 0.017585,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 40,
+          "kl_loss": 0.076531,
+          "recon_mse": 0.022123,
+          "total_loss": 0.078743,
+          "delta_label": 0.009379,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 50,
+          "kl_loss": 0.077576,
+          "recon_mse": 0.025919,
+          "total_loss": 0.080168,
+          "delta_label": 0.003517,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 60,
+          "kl_loss": 0.077443,
+          "recon_mse": 0.024696,
+          "total_loss": 0.079912,
+          "delta_label": 0.008206,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 70,
+          "kl_loss": 0.076204,
+          "recon_mse": 0.023555,
+          "total_loss": 0.07856,
+          "delta_label": 0.007034,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 80,
+          "kl_loss": 0.074318,
+          "recon_mse": 0.02292,
+          "total_loss": 0.07661,
+          "delta_label": 0.008206,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 90,
+          "kl_loss": 0.072114,
+          "recon_mse": 0.02078,
+          "total_loss": 0.074192,
+          "delta_label": 0.004689,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 100,
+          "kl_loss": 0.069665,
+          "recon_mse": 0.020185,
+          "total_loss": 0.071683,
+          "delta_label": 0.001172,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 110,
+          "kl_loss": 0.06709,
+          "recon_mse": 0.021191,
+          "total_loss": 0.069209,
+          "delta_label": 0.005862,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 120,
+          "kl_loss": 0.064383,
+          "recon_mse": 0.020573,
+          "total_loss": 0.06644,
+          "delta_label": 0.008206,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 130,
+          "kl_loss": 0.061277,
+          "recon_mse": 0.021557,
+          "total_loss": 0.063432,
+          "delta_label": 0.002345,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 140,
+          "kl_loss": 0.058415,
+          "recon_mse": 0.021199,
+          "total_loss": 0.060534,
+          "delta_label": 0.007034,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 150,
+          "kl_loss": 0.056097,
+          "recon_mse": 0.020823,
+          "total_loss": 0.05818,
+          "delta_label": 0.004689,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 160,
+          "kl_loss": 0.05406,
+          "recon_mse": 0.019299,
+          "total_loss": 0.05599,
+          "delta_label": 0.002345,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 170,
+          "kl_loss": 0.052295,
+          "recon_mse": 0.019615,
+          "total_loss": 0.054256,
+          "delta_label": 0.002345,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 180,
+          "kl_loss": 0.050679,
+          "recon_mse": 0.01948,
+          "total_loss": 0.052627,
+          "delta_label": 0.004689,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 190,
+          "kl_loss": 0.049296,
+          "recon_mse": 0.020313,
+          "total_loss": 0.051327,
+          "delta_label": 0.001172,
+          "active_clusters": 3
+        },
+        {
+          "epoch": 200,
+          "kl_loss": 0.047778,
+          "recon_mse": 0.019519,
+          "total_loss": 0.04973,
+          "delta_label": 0.0,
+          "active_clusters": 3
+        }
+      ]
+    }
+  },
+  "gamma_recon_ablation": {
+    "gamma_0.00": {
+      "gamma_recon": 0.0,
+      "converged": true,
+      "epochs_run": 220,
+      "final_kl_loss": 0.043634,
+      "final_recon_mse": 1.281202,
+      "metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.477886,
+        "davies_bouldin_index": 0.850443,
+        "calinski_harabasz_index": 962.1332,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 238,
+          "2": 171
+        },
+        "min_cluster_share": 0.200469,
+        "max_cluster_share": 0.520516
+      },
+      "metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.901181,
+        "davies_bouldin_index": 0.158736,
+        "calinski_harabasz_index": 19537.1191,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 238,
+          "2": 171
+        },
+        "min_cluster_share": 0.200469,
+        "max_cluster_share": 0.520516
+      },
+      "ari_vs_selected": 0.995285
+    },
+    "gamma_0.10": {
+      "gamma_recon": 0.1,
+      "converged": true,
+      "epochs_run": 200,
+      "final_kl_loss": 0.047778,
+      "final_recon_mse": 0.019519,
+      "metrics_feature_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48023,
+        "davies_bouldin_index": 0.847784,
+        "calinski_harabasz_index": 969.6476,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516
+      },
+      "metrics_latent_space": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.877685,
+        "davies_bouldin_index": 0.206775,
+        "calinski_harabasz_index": 14645.9131,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516
+      },
+      "ari_vs_selected": 1.0
+    }
+  },
+  "spatial_block_generalization": {
+    "n_clusters": 3,
+    "seed": 42,
+    "folds": {
+      "NE": {
+        "n_train": 703,
+        "n_test": 150,
+        "train_metrics_feature_space": {
+          "n_total": 703,
+          "n_valid_clustered": 703,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.507814,
+          "davies_bouldin_index": 0.792416,
+          "calinski_harabasz_index": 905.7765,
+          "cluster_sizes": {
+            "0": 116,
+            "1": 346,
+            "2": 241
+          },
+          "min_cluster_share": 0.165007,
+          "max_cluster_share": 0.492176
+        },
+        "test_metrics_feature_space": {
+          "n_total": 150,
+          "n_valid_clustered": 150,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.500045,
+          "davies_bouldin_index": 0.932893,
+          "calinski_harabasz_index": 175.5884,
+          "cluster_sizes": {
+            "0": 20,
+            "1": 104,
+            "2": 26
+          },
+          "min_cluster_share": 0.133333,
+          "max_cluster_share": 0.693333
+        },
+        "test_metrics_latent_space": {
+          "n_total": 150,
+          "n_valid_clustered": 150,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.81014,
+          "davies_bouldin_index": 0.464957,
+          "calinski_harabasz_index": 738.0178,
+          "cluster_sizes": {
+            "0": 20,
+            "1": 104,
+            "2": 26
+          },
+          "min_cluster_share": 0.133333,
+          "max_cluster_share": 0.693333
+        },
+        "test_mean_confidence": 0.888392,
+        "test_ari_vs_full_province_model": 0.919199,
+        "test_nmi_vs_full_province_model": 0.833143,
+        "train_converged": true,
+        "train_epochs_run": 140
+      },
+      "NW": {
+        "n_train": 572,
+        "n_test": 281,
+        "train_metrics_feature_space": {
+          "n_total": 572,
+          "n_valid_clustered": 572,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.519244,
+          "davies_bouldin_index": 0.823921,
+          "calinski_harabasz_index": 686.3904,
+          "cluster_sizes": {
+            "0": 295,
+            "1": 96,
+            "2": 181
+          },
+          "min_cluster_share": 0.167832,
+          "max_cluster_share": 0.515734
+        },
+        "test_metrics_feature_space": {
+          "n_total": 281,
+          "n_valid_clustered": 281,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.442728,
+          "davies_bouldin_index": 0.804042,
+          "calinski_harabasz_index": 279.546,
+          "cluster_sizes": {
+            "0": 116,
+            "1": 76,
+            "2": 89
+          },
+          "min_cluster_share": 0.270463,
+          "max_cluster_share": 0.412811
+        },
+        "test_metrics_latent_space": {
+          "n_total": 281,
+          "n_valid_clustered": 281,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.657685,
+          "davies_bouldin_index": 0.519618,
+          "calinski_harabasz_index": 437.287,
+          "cluster_sizes": {
+            "0": 116,
+            "1": 76,
+            "2": 89
+          },
+          "min_cluster_share": 0.270463,
+          "max_cluster_share": 0.412811
+        },
+        "test_mean_confidence": 0.825864,
+        "test_ari_vs_full_province_model": 0.885445,
+        "test_nmi_vs_full_province_model": 0.86436,
+        "train_converged": true,
+        "train_epochs_run": 100
+      },
+      "SE": {
+        "n_train": 560,
+        "n_test": 293,
+        "train_metrics_feature_space": {
+          "n_total": 560,
+          "n_valid_clustered": 560,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.485971,
+          "davies_bouldin_index": 0.836741,
+          "calinski_harabasz_index": 673.0014,
+          "cluster_sizes": {
+            "0": 279,
+            "1": 176,
+            "2": 105
+          },
+          "min_cluster_share": 0.1875,
+          "max_cluster_share": 0.498214
+        },
+        "test_metrics_feature_space": {
+          "n_total": 293,
+          "n_valid_clustered": 293,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.511153,
+          "davies_bouldin_index": 0.836617,
+          "calinski_harabasz_index": 365.6614,
+          "cluster_sizes": {
+            "0": 160,
+            "1": 88,
+            "2": 45
+          },
+          "min_cluster_share": 0.153584,
+          "max_cluster_share": 0.546075
+        },
+        "test_metrics_latent_space": {
+          "n_total": 293,
+          "n_valid_clustered": 293,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.772396,
+          "davies_bouldin_index": 0.460205,
+          "calinski_harabasz_index": 1109.4255,
+          "cluster_sizes": {
+            "0": 160,
+            "1": 88,
+            "2": 45
+          },
+          "min_cluster_share": 0.153584,
+          "max_cluster_share": 0.546075
+        },
+        "test_mean_confidence": 0.866354,
+        "test_ari_vs_full_province_model": 0.945771,
+        "test_nmi_vs_full_province_model": 0.903298,
+        "train_converged": true,
+        "train_epochs_run": 140
+      },
+      "SW": {
+        "n_train": 724,
+        "n_test": 129,
+        "train_metrics_feature_space": {
+          "n_total": 724,
+          "n_valid_clustered": 724,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.528032,
+          "davies_bouldin_index": 0.776966,
+          "calinski_harabasz_index": 1033.897,
+          "cluster_sizes": {
+            "0": 99,
+            "1": 237,
+            "2": 388
+          },
+          "min_cluster_share": 0.13674,
+          "max_cluster_share": 0.535912
+        },
+        "test_metrics_feature_space": {
+          "n_total": 129,
+          "n_valid_clustered": 129,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.532989,
+          "davies_bouldin_index": 0.749388,
+          "calinski_harabasz_index": 178.2836,
+          "cluster_sizes": {
+            "0": 12,
+            "1": 62,
+            "2": 55
+          },
+          "min_cluster_share": 0.093023,
+          "max_cluster_share": 0.48062
+        },
+        "test_metrics_latent_space": {
+          "n_total": 129,
+          "n_valid_clustered": 129,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.78032,
+          "davies_bouldin_index": 0.387072,
+          "calinski_harabasz_index": 516.3337,
+          "cluster_sizes": {
+            "0": 12,
+            "1": 62,
+            "2": 55
+          },
+          "min_cluster_share": 0.093023,
+          "max_cluster_share": 0.48062
+        },
+        "test_mean_confidence": 0.860685,
+        "test_ari_vs_full_province_model": 0.772335,
+        "test_nmi_vs_full_province_model": 0.734658,
+        "train_converged": true,
+        "train_epochs_run": 80
+      }
+    },
+    "summary": {
+      "mean_test_silhouette_feature_space": 0.496729,
+      "mean_test_ari_vs_full": 0.880687,
+      "min_test_ari_vs_full": 0.772335,
+      "mean_test_nmi_vs_full": 0.833865,
+      "mean_test_confidence": 0.860324
+    }
+  },
+  "artifacts": {
+    "checkpoint": "outputs/models/dec/dec_model.pt",
+    "assignments": "outputs/models/dec/dec_assignments.parquet",
+    "latent_embeddings": "outputs/models/dec/dec_latent_embeddings.parquet",
+    "experiments_json": "reports/clustering/dec_experiments.json"
+  }
+}

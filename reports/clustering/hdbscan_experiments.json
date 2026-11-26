@@ -1,0 +1,6349 @@
+{
+  "model_family": "HDBSCAN",
+  "implementation": "sklearn.cluster.HDBSCAN (scikit-learn 1.7.2)",
+  "schema_version": "2.0.0",
+  "clustering_features": [
+    "hotspot_density_km2",
+    "fire_days",
+    "active_years_count",
+    "frp_total_density_mw_km2"
+  ],
+  "scaled_feature_columns": [
+    "hotspot_density_km2_scaled",
+    "fire_days_scaled",
+    "active_years_count_scaled",
+    "frp_total_density_mw_km2_scaled"
+  ],
+  "n_cells": 853,
+  "noise_policy": "Never force noise (-1) into clusters; evaluated via exclude_noise_label=-1.",
+  "selection_summary": {
+    "criterion": "Hard gates: valid_for_internal_metrics=True, 3<=n_clusters<=10, min_cluster_share>=0.03, 0<noise_ratio<=0.25; ranked by equal-weight normalized composite of Silhouette(+), DBI(-), CHI(+), spatial_coherence_lift(+), and spatial_fold_mean_ari(+).",
+    "n_total_configs": 120,
+    "n_eligible_configs": 76,
+    "fallback_used": false,
+    "top_5_configs": [
+      {
+        "params": {
+          "min_cluster_size": 15,
+          "min_samples": 10,
+          "cluster_selection_method": "eom",
+          "cluster_selection_epsilon": 0.0,
+          "metric": "euclidean"
+        },
+        "n_clusters": 8,
+        "noise_ratio": 0.223916,
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "coherence_lift": 1.4778,
+        "spatial_fold_mean_ari": 0.949771,
+        "composite_selection_score": 0.804135
+      },
+      {
+        "params": {
+          "min_cluster_size": 20,
+          "min_samples": 10,
+          "cluster_selection_method": "eom",
+          "cluster_selection_epsilon": 0.0,
+          "metric": "euclidean"
+        },
+        "n_clusters": 8,
+        "noise_ratio": 0.223916,
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "coherence_lift": 1.4778,
+        "spatial_fold_mean_ari": 0.945447,
+        "composite_selection_score": 0.796778
+      },
+      {
+        "params": {
+          "min_cluster_size": 10,
+          "min_samples": 15,
+          "cluster_selection_method": "eom",
+          "cluster_selection_epsilon": 0.25,
+          "metric": "euclidean"
+        },
+        "n_clusters": 7,
+        "noise_ratio": 0.228605,
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "coherence_lift": 1.443,
+        "spatial_fold_mean_ari": 0.910678,
+        "composite_selection_score": 0.724325
+      },
+      {
+        "params": {
+          "min_cluster_size": 10,
+          "min_samples": 15,
+          "cluster_selection_method": "leaf",
+          "cluster_selection_epsilon": 0.25,
+          "metric": "euclidean"
+        },
+        "n_clusters": 7,
+        "noise_ratio": 0.228605,
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "coherence_lift": 1.443,
+        "spatial_fold_mean_ari": 0.910678,
+        "composite_selection_score": 0.724325
+      },
+      {
+        "params": {
+          "min_cluster_size": 15,
+          "min_samples": 15,
+          "cluster_selection_method": "eom",
+          "cluster_selection_epsilon": 0.25,
+          "metric": "euclidean"
+        },
+        "n_clusters": 7,
+        "noise_ratio": 0.228605,
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "coherence_lift": 1.443,
+        "spatial_fold_mean_ari": 0.905179,
+        "composite_selection_score": 0.714969
+      }
+    ]
+  },
+  "selected_configuration": {
+    "params": {
+      "min_cluster_size": 15,
+      "min_samples": 10,
+      "cluster_selection_method": "eom",
+      "cluster_selection_epsilon": 0.0,
+      "metric": "euclidean"
+    },
+    "metrics": {
+      "n_total": 853,
+      "n_valid_clustered": 662,
+      "n_clusters": 8,
+      "n_noise": 191,
+      "noise_ratio": 0.223916,
+      "valid_for_internal_metrics": true,
+      "reason": "ok",
+      "silhouette_score": 0.643293,
+      "davies_bouldin_index": 0.882913,
+      "calinski_harabasz_index": 1656.8601,
+      "cluster_sizes": {
+        "0": 249,
+        "1": 46,
+        "2": 77,
+        "3": 92,
+        "4": 91,
+        "5": 30,
+        "6": 39,
+        "7": 38
+      },
+      "min_cluster_share": 0.045317,
+      "max_cluster_share": 0.376133
+    },
+    "spatial_coherence": {
+      "neighbor_concordance": 0.305707,
+      "random_baseline": 0.206862,
+      "coherence_lift": 1.4778,
+      "neighbor_pairs": 4030
+    },
+    "cluster_persistence": {
+      "per_cluster": {
+        "0": {
+          "n_points": 249,
+          "lambda_birth": 1.240475,
+          "lambda_max": null,
+          "persistence": null,
+          "stability": null,
+          "is_identical_point_mass": true,
+          "mean_membership_prob": 1.0
+        },
+        "1": {
+          "n_points": 46,
+          "lambda_birth": 1.76857,
+          "lambda_max": 2.969654,
+          "persistence": 1.201084,
+          "stability": 40.4642,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.891763
+        },
+        "2": {
+          "n_points": 77,
+          "lambda_birth": 1.769099,
+          "lambda_max": 6.002029,
+          "persistence": 4.23293,
+          "stability": 155.5732,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.631375
+        },
+        "3": {
+          "n_points": 92,
+          "lambda_birth": 1.769138,
+          "lambda_max": 10.611689,
+          "persistence": 8.842551,
+          "stability": 400.6172,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.875531
+        },
+        "4": {
+          "n_points": 91,
+          "lambda_birth": 2.979553,
+          "lambda_max": 167.571879,
+          "persistence": 164.592326,
+          "stability": 7313.1964,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.497365
+        },
+        "5": {
+          "n_points": 30,
+          "lambda_birth": 2.979553,
+          "lambda_max": 10.02944,
+          "persistence": 7.049888,
+          "stability": 132.9576,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.738972
+        },
+        "6": {
+          "n_points": 39,
+          "lambda_birth": 4.199483,
+          "lambda_max": 28.132406,
+          "persistence": 23.932923,
+          "stability": 654.6352,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.745937
+        },
+        "7": {
+          "n_points": 38,
+          "lambda_birth": 4.199483,
+          "lambda_max": 9.479575,
+          "persistence": 5.280092,
+          "stability": 110.4893,
+          "is_identical_point_mass": false,
+          "mean_membership_prob": 0.749727
+        }
+      },
+      "mean_persistence": 30.733113,
+      "min_persistence": 1.201084,
+      "max_persistence": 164.592326,
+      "total_stability": 8807.9331
+    },
+    "spatial_fold_stability": {
+      "folds": {
+        "NE": {
+          "n_train": 703,
+          "train_metrics": {
+            "n_total": 703,
+            "n_valid_clustered": 539,
+            "n_clusters": 8,
+            "n_noise": 164,
+            "noise_ratio": 0.233286,
+            "valid_for_internal_metrics": true,
+            "reason": "ok",
+            "silhouette_score": 0.627722,
+            "davies_bouldin_index": 0.853504,
+            "calinski_harabasz_index": 1330.6534,
+            "cluster_sizes": {
+              "0": 188,
+              "1": 45,
+              "2": 69,
+              "3": 85,
+              "4": 71,
+              "5": 21,
+              "6": 31,
+              "7": 29
+            },
+            "min_cluster_share": 0.038961,
+            "max_cluster_share": 0.348794
+          },
+          "ari_vs_full": 0.984959,
+          "nmi_vs_full": 0.981538,
+          "test_evaluation": {
+            "radius_bounded_projection": {
+              "n_test": 150,
+              "noise_ratio": 0.266667,
+              "n_clusters_assigned": 8,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.807827,
+              "davies_bouldin_index": 0.540006,
+              "cluster_sizes": {
+                "0": 61,
+                "1": 1,
+                "2": 7,
+                "3": 6,
+                "4": 15,
+                "5": 7,
+                "6": 7,
+                "7": 6
+              }
+            },
+            "independent_test_fit": {
+              "n_clusters": 3,
+              "noise_ratio": 0.333333,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.862184,
+              "ari_vs_projection": 0.737219
+            }
+          }
+        },
+        "NW": {
+          "n_train": 572,
+          "train_metrics": {
+            "n_total": 572,
+            "n_valid_clustered": 436,
+            "n_clusters": 8,
+            "n_noise": 136,
+            "noise_ratio": 0.237762,
+            "valid_for_internal_metrics": true,
+            "reason": "ok",
+            "silhouette_score": 0.703729,
+            "davies_bouldin_index": 0.721601,
+            "calinski_harabasz_index": 1528.6161,
+            "cluster_sizes": {
+              "0": 185,
+              "1": 21,
+              "2": 46,
+              "3": 56,
+              "4": 61,
+              "5": 22,
+              "6": 24,
+              "7": 21
+            },
+            "min_cluster_share": 0.048165,
+            "max_cluster_share": 0.424312
+          },
+          "ari_vs_full": 0.915017,
+          "nmi_vs_full": 0.916882,
+          "test_evaluation": {
+            "radius_bounded_projection": {
+              "n_test": 281,
+              "noise_ratio": 0.352313,
+              "n_clusters_assigned": 8,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.647784,
+              "davies_bouldin_index": 0.752095,
+              "cluster_sizes": {
+                "0": 64,
+                "1": 14,
+                "2": 27,
+                "3": 26,
+                "4": 28,
+                "5": 5,
+                "6": 11,
+                "7": 7
+              }
+            },
+            "independent_test_fit": {
+              "n_clusters": 4,
+              "noise_ratio": 0.437722,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.729902,
+              "ari_vs_projection": 0.611445
+            }
+          }
+        },
+        "SE": {
+          "n_train": 560,
+          "train_metrics": {
+            "n_total": 560,
+            "n_valid_clustered": 402,
+            "n_clusters": 8,
+            "n_noise": 158,
+            "noise_ratio": 0.282143,
+            "valid_for_internal_metrics": true,
+            "reason": "ok",
+            "silhouette_score": 0.691187,
+            "davies_bouldin_index": 0.784049,
+            "calinski_harabasz_index": 1334.7202,
+            "cluster_sizes": {
+              "0": 160,
+              "1": 24,
+              "2": 39,
+              "3": 59,
+              "4": 56,
+              "5": 16,
+              "6": 27,
+              "7": 21
+            },
+            "min_cluster_share": 0.039801,
+            "max_cluster_share": 0.39801
+          },
+          "ari_vs_full": 0.912508,
+          "nmi_vs_full": 0.918866,
+          "test_evaluation": {
+            "radius_bounded_projection": {
+              "n_test": 293,
+              "noise_ratio": 0.221843,
+              "n_clusters_assigned": 8,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.690918,
+              "davies_bouldin_index": 0.70511,
+              "cluster_sizes": {
+                "0": 89,
+                "1": 15,
+                "2": 26,
+                "3": 32,
+                "4": 30,
+                "5": 11,
+                "6": 12,
+                "7": 13
+              }
+            },
+            "independent_test_fit": {
+              "n_clusters": 5,
+              "noise_ratio": 0.242321,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.701546,
+              "ari_vs_projection": 0.730979
+            }
+          }
+        },
+        "SW": {
+          "n_train": 724,
+          "train_metrics": {
+            "n_total": 724,
+            "n_valid_clustered": 553,
+            "n_clusters": 8,
+            "n_noise": 171,
+            "noise_ratio": 0.236188,
+            "valid_for_internal_metrics": true,
+            "reason": "ok",
+            "silhouette_score": 0.660934,
+            "davies_bouldin_index": 0.866778,
+            "calinski_harabasz_index": 1546.5772,
+            "cluster_sizes": {
+              "0": 214,
+              "1": 35,
+              "2": 59,
+              "3": 67,
+              "4": 82,
+              "5": 26,
+              "6": 35,
+              "7": 35
+            },
+            "min_cluster_share": 0.047016,
+            "max_cluster_share": 0.38698
+          },
+          "ari_vs_full": 0.986598,
+          "nmi_vs_full": 0.981838,
+          "test_evaluation": {
+            "radius_bounded_projection": {
+              "n_test": 129,
+              "noise_ratio": 0.209302,
+              "n_clusters_assigned": 8,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.642718,
+              "davies_bouldin_index": 0.637427,
+              "cluster_sizes": {
+                "0": 35,
+                "1": 8,
+                "2": 14,
+                "3": 25,
+                "4": 9,
+                "5": 3,
+                "6": 4,
+                "7": 4
+              }
+            },
+            "independent_test_fit": {
+              "n_clusters": 2,
+              "noise_ratio": 0.155039,
+              "valid_for_internal_metrics": true,
+              "silhouette_score": 0.582634,
+              "ari_vs_projection": 0.35244
+            }
+          }
+        }
+      },
+      "mean_ari_vs_full": 0.949771,
+      "min_ari_vs_full": 0.912508,
+      "mean_nmi_vs_full": 0.949781,
+      "pairwise_overlap_mean_ari": 0.934392,
+      "pairwise_overlap_mean_nmi": 0.936687,
+      "n_folds_evaluated": 4
+    },
+    "subsample_stability": {
+      "subsample_fraction": 0.8,
+      "seeds": [
+        42,
+        101,
+        202,
+        303,
+        404
+      ],
+      "mean_ari_vs_full": 0.971355,
+      "min_ari_vs_full": 0.965665,
+      "mean_nmi_vs_full": 0.966928,
+      "pairwise_overlap_mean_ari": 0.971171,
+      "pairwise_overlap_mean_nmi": 0.96657,
+      "per_seed": [
+        {
+          "seed": 42,
+          "n_subsample": 682,
+          "n_clusters": 8,
+          "noise_ratio": 0.237537,
+          "silhouette_score": 0.659739,
+          "ari_vs_full": 0.967193,
+          "nmi_vs_full": 0.963328
+        },
+        {
+          "seed": 101,
+          "n_subsample": 682,
+          "n_clusters": 8,
+          "noise_ratio": 0.221408,
+          "silhouette_score": 0.653241,
+          "ari_vs_full": 0.979674,
+          "nmi_vs_full": 0.97274
+        },
+        {
+          "seed": 202,
+          "n_subsample": 682,
+          "n_clusters": 8,
+          "noise_ratio": 0.228739,
+          "silhouette_score": 0.651639,
+          "ari_vs_full": 0.972862,
+          "nmi_vs_full": 0.967731
+        },
+        {
+          "seed": 303,
+          "n_subsample": 682,
+          "n_clusters": 8,
+          "noise_ratio": 0.243402,
+          "silhouette_score": 0.659196,
+          "ari_vs_full": 0.971383,
+          "nmi_vs_full": 0.97068
+        },
+        {
+          "seed": 404,
+          "n_subsample": 682,
+          "n_clusters": 8,
+          "noise_ratio": 0.243402,
+          "silhouette_score": 0.660519,
+          "ari_vs_full": 0.965665,
+          "nmi_vs_full": 0.96016
+        }
+      ]
+    },
+    "cluster_profiles_raw": {
+      "noise_-1": {
+        "label_id": -1,
+        "n_cells": 191,
+        "share_of_province": 0.223916,
+        "mean_membership_prob": 0.0,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.64961,
+            "median": 0.414347,
+            "min": 0.032497,
+            "max": 7.088555
+          },
+          "fire_days": {
+            "mean": 25.455497,
+            "median": 13.0,
+            "min": 1.0,
+            "max": 472.0
+          },
+          "active_years_count": {
+            "mean": 3.303665,
+            "median": 3.0,
+            "min": 1.0,
+            "max": 5.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 4.194981,
+            "median": 2.271943,
+            "min": 0.053465,
+            "max": 42.195414
+          }
+        }
+      },
+      "cluster_0": {
+        "label_id": 0,
+        "n_cells": 249,
+        "share_of_province": 0.291911,
+        "mean_membership_prob": 1.0,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "fire_days": {
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "active_years_count": {
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          }
+        }
+      },
+      "cluster_1": {
+        "label_id": 1,
+        "n_cells": 46,
+        "share_of_province": 0.053927,
+        "mean_membership_prob": 0.891763,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.170522,
+            "median": 0.162489,
+            "min": 0.065,
+            "max": 0.316891
+          },
+          "fire_days": {
+            "mean": 15.065217,
+            "median": 14.0,
+            "min": 8.0,
+            "max": 28.0
+          },
+          "active_years_count": {
+            "mean": 5.0,
+            "median": 5.0,
+            "min": 5.0,
+            "max": 5.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.700337,
+            "median": 0.546421,
+            "min": 0.044037,
+            "max": 1.767128
+          }
+        }
+      },
+      "cluster_2": {
+        "label_id": 2,
+        "n_cells": 77,
+        "share_of_province": 0.09027,
+        "mean_membership_prob": 0.631375,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.132838,
+            "median": 0.121869,
+            "min": 0.040622,
+            "max": 0.336844
+          },
+          "fire_days": {
+            "mean": 11.025974,
+            "median": 10.0,
+            "min": 4.0,
+            "max": 24.0
+          },
+          "active_years_count": {
+            "mean": 4.0,
+            "median": 4.0,
+            "min": 4.0,
+            "max": 4.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.582557,
+            "median": 0.410193,
+            "min": 0.043474,
+            "max": 1.873676
+          }
+        }
+      },
+      "cluster_3": {
+        "label_id": 3,
+        "n_cells": 92,
+        "share_of_province": 0.107855,
+        "mean_membership_prob": 0.875531,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.06479,
+            "median": 0.054883,
+            "min": 0.024372,
+            "max": 0.203957
+          },
+          "fire_days": {
+            "mean": 5.326087,
+            "median": 5.0,
+            "min": 3.0,
+            "max": 12.0
+          },
+          "active_years_count": {
+            "mean": 3.0,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 3.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.311545,
+            "median": 0.22017,
+            "min": 0.025279,
+            "max": 1.287909
+          }
+        }
+      },
+      "cluster_4": {
+        "label_id": 4,
+        "n_cells": 91,
+        "share_of_province": 0.106682,
+        "mean_membership_prob": 0.497365,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.012315,
+            "median": 0.008125,
+            "min": 0.008124,
+            "max": 0.066269
+          },
+          "fire_days": {
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "active_years_count": {
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.062083,
+            "median": 0.032803,
+            "min": 0.003576,
+            "max": 0.451862
+          }
+        }
+      },
+      "cluster_5": {
+        "label_id": 5,
+        "n_cells": 30,
+        "share_of_province": 0.03517,
+        "mean_membership_prob": 0.738972,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.032069,
+            "median": 0.028019,
+            "min": 0.016248,
+            "max": 0.063486
+          },
+          "fire_days": {
+            "mean": 2.333333,
+            "median": 2.0,
+            "min": 2.0,
+            "max": 4.0
+          },
+          "active_years_count": {
+            "mean": 1.0,
+            "median": 1.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.121928,
+            "median": 0.089225,
+            "min": 0.012755,
+            "max": 0.364755
+          }
+        }
+      },
+      "cluster_6": {
+        "label_id": 6,
+        "n_cells": 39,
+        "share_of_province": 0.045721,
+        "mean_membership_prob": 0.745937,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.022699,
+            "median": 0.024372,
+            "min": 0.016248,
+            "max": 0.049611
+          },
+          "fire_days": {
+            "mean": 2.0,
+            "median": 2.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "active_years_count": {
+            "mean": 2.0,
+            "median": 2.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.093807,
+            "median": 0.077991,
+            "min": 0.006988,
+            "max": 0.243359
+          }
+        }
+      },
+      "cluster_7": {
+        "label_id": 7,
+        "n_cells": 38,
+        "share_of_province": 0.044549,
+        "mean_membership_prob": 0.749727,
+        "feature_stats": {
+          "hotspot_density_km2": {
+            "mean": 0.0402,
+            "median": 0.033017,
+            "min": 0.024372,
+            "max": 0.096314
+          },
+          "fire_days": {
+            "mean": 3.736842,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 6.0
+          },
+          "active_years_count": {
+            "mean": 2.0,
+            "median": 2.0,
+            "min": 2.0,
+            "max": 2.0
+          },
+          "frp_total_density_mw_km2": {
+            "mean": 0.123782,
+            "median": 0.123509,
+            "min": 0.025997,
+            "max": 0.269761
+          }
+        }
+      }
+    }
+  },
+  "sweep_statistics": {
+    "total_runs": 120,
+    "valid_runs": 120,
+    "degenerate_or_invalid_runs": 0
+  },
+  "sweep_runs": [
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 708,
+        "n_clusters": 14,
+        "n_noise": 145,
+        "noise_ratio": 0.169988,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.59152,
+        "davies_bouldin_index": 0.892978,
+        "calinski_harabasz_index": 911.0641,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 93,
+          "4": 21,
+          "5": 10,
+          "6": 39,
+          "7": 59,
+          "8": 15,
+          "9": 20,
+          "10": 26,
+          "11": 23,
+          "12": 14,
+          "13": 34
+        },
+        "min_cluster_share": 0.014124,
+        "max_cluster_share": 0.351695
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.263624,
+        "random_baseline": 0.174958,
+        "coherence_lift": 1.5068,
+        "neighbor_pairs": 4514
+      },
+      "persistence": {
+        "mean_persistence": 53.243118,
+        "min_persistence": 0.387186,
+        "max_persistence": 536.944848,
+        "total_stability": 21570.2147
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 778,
+        "n_clusters": 9,
+        "n_noise": 75,
+        "noise_ratio": 0.087925,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.522565,
+        "davies_bouldin_index": 1.133039,
+        "calinski_harabasz_index": 927.4474,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34,
+          "7": 59,
+          "8": 15
+        },
+        "min_cluster_share": 0.01928,
+        "max_cluster_share": 0.320051
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.267039,
+        "random_baseline": 0.179595,
+        "coherence_lift": 1.4869,
+        "neighbor_pairs": 5370
+      },
+      "persistence": {
+        "mean_persistence": 83.568346,
+        "min_persistence": 0.387186,
+        "max_persistence": 536.944848,
+        "total_stability": 22306.0033
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 799,
+        "n_clusters": 7,
+        "n_noise": 54,
+        "noise_ratio": 0.063306,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.491355,
+        "davies_bouldin_index": 1.220341,
+        "calinski_harabasz_index": 882.2827,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 87,
+          "3": 90,
+          "4": 110,
+          "5": 135,
+          "6": 113
+        },
+        "min_cluster_share": 0.018773,
+        "max_cluster_share": 0.31164
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281636,
+        "random_baseline": 0.189519,
+        "coherence_lift": 1.4861,
+        "neighbor_pairs": 5674
+      },
+      "persistence": {
+        "mean_persistence": 107.783802,
+        "min_persistence": 0.387186,
+        "max_persistence": 538.155262,
+        "total_stability": 22511.5695
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 600,
+        "n_clusters": 17,
+        "n_noise": 253,
+        "noise_ratio": 0.2966,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.697336,
+        "davies_bouldin_index": 0.704052,
+        "calinski_harabasz_index": 2699.4489,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 21,
+          "3": 10,
+          "4": 39,
+          "5": 15,
+          "6": 20,
+          "7": 26,
+          "8": 32,
+          "9": 19,
+          "10": 23,
+          "11": 22,
+          "12": 16,
+          "13": 14,
+          "14": 34,
+          "15": 14,
+          "16": 31
+        },
+        "min_cluster_share": 0.016667,
+        "max_cluster_share": 0.415
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.292624,
+        "random_baseline": 0.196533,
+        "coherence_lift": 1.4889,
+        "neighbor_pairs": 3308
+      },
+      "persistence": {
+        "mean_persistence": 33.086416,
+        "min_persistence": 0.387186,
+        "max_persistence": 344.714914,
+        "total_stability": 10150.8135
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 757,
+        "n_clusters": 10,
+        "n_noise": 96,
+        "noise_ratio": 0.112544,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.523155,
+        "davies_bouldin_index": 1.058648,
+        "calinski_harabasz_index": 858.8544,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34,
+          "7": 15,
+          "8": 22,
+          "9": 16
+        },
+        "min_cluster_share": 0.019815,
+        "max_cluster_share": 0.32893
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.272404,
+        "random_baseline": 0.184914,
+        "coherence_lift": 1.4731,
+        "neighbor_pairs": 5066
+      },
+      "persistence": {
+        "mean_persistence": 74.235046,
+        "min_persistence": 0.387186,
+        "max_persistence": 536.944848,
+        "total_stability": 22232.6102
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 799,
+        "n_clusters": 7,
+        "n_noise": 54,
+        "noise_ratio": 0.063306,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.491355,
+        "davies_bouldin_index": 1.220341,
+        "calinski_harabasz_index": 882.2827,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 87,
+          "3": 90,
+          "4": 110,
+          "5": 135,
+          "6": 113
+        },
+        "min_cluster_share": 0.018773,
+        "max_cluster_share": 0.31164
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281636,
+        "random_baseline": 0.189519,
+        "coherence_lift": 1.4861,
+        "neighbor_pairs": 5674
+      },
+      "persistence": {
+        "mean_persistence": 107.783802,
+        "min_persistence": 0.387186,
+        "max_persistence": 538.155262,
+        "total_stability": 22511.5695
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 693,
+        "n_clusters": 12,
+        "n_noise": 160,
+        "noise_ratio": 0.187573,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.619874,
+        "davies_bouldin_index": 0.821711,
+        "calinski_harabasz_index": 1184.1204,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 86,
+          "3": 93,
+          "4": 32,
+          "5": 59,
+          "6": 10,
+          "7": 39,
+          "8": 49,
+          "9": 23,
+          "10": 20,
+          "11": 19
+        },
+        "min_cluster_share": 0.01443,
+        "max_cluster_share": 0.359307
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.278673,
+        "random_baseline": 0.183361,
+        "coherence_lift": 1.5198,
+        "neighbor_pairs": 4342
+      },
+      "persistence": {
+        "mean_persistence": 50.253215,
+        "min_persistence": 0.102869,
+        "max_persistence": 419.980796,
+        "total_stability": 17690.9214
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 757,
+        "n_clusters": 9,
+        "n_noise": 96,
+        "noise_ratio": 0.112544,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.546677,
+        "davies_bouldin_index": 1.021232,
+        "calinski_harabasz_index": 1085.484,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32,
+          "7": 59,
+          "8": 10
+        },
+        "min_cluster_share": 0.01321,
+        "max_cluster_share": 0.32893
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.274815,
+        "random_baseline": 0.184544,
+        "coherence_lift": 1.4892,
+        "neighbor_pairs": 5138
+      },
+      "persistence": {
+        "mean_persistence": 66.830104,
+        "min_persistence": 0.102869,
+        "max_persistence": 419.980796,
+        "total_stability": 18295.9009
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 774,
+        "n_clusters": 7,
+        "n_noise": 79,
+        "noise_ratio": 0.092614,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.523455,
+        "davies_bouldin_index": 1.128552,
+        "calinski_harabasz_index": 1050.2504,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 79,
+          "3": 86,
+          "4": 105,
+          "5": 132,
+          "6": 109
+        },
+        "min_cluster_share": 0.018088,
+        "max_cluster_share": 0.321705
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.288268,
+        "random_baseline": 0.193905,
+        "coherence_lift": 1.4866,
+        "neighbor_pairs": 5370
+      },
+      "persistence": {
+        "mean_persistence": 86.286589,
+        "min_persistence": 0.102869,
+        "max_persistence": 421.191209,
+        "total_stability": 18482.7447
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 591,
+        "n_clusters": 15,
+        "n_noise": 262,
+        "noise_ratio": 0.307151,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.670248,
+        "davies_bouldin_index": 0.699074,
+        "calinski_harabasz_index": 1555.2625,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 32,
+          "3": 59,
+          "4": 10,
+          "5": 39,
+          "6": 23,
+          "7": 20,
+          "8": 19,
+          "9": 14,
+          "10": 31,
+          "11": 30,
+          "12": 12,
+          "13": 13,
+          "14": 26
+        },
+        "min_cluster_share": 0.01692,
+        "max_cluster_share": 0.42132
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310237,
+        "random_baseline": 0.208024,
+        "coherence_lift": 1.4913,
+        "neighbor_pairs": 3204
+      },
+      "persistence": {
+        "mean_persistence": 29.181083,
+        "min_persistence": 0.102869,
+        "max_persistence": 237.581522,
+        "total_stability": 7107.4809
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 757,
+        "n_clusters": 9,
+        "n_noise": 96,
+        "noise_ratio": 0.112544,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.546677,
+        "davies_bouldin_index": 1.021232,
+        "calinski_harabasz_index": 1085.484,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32,
+          "7": 59,
+          "8": 10
+        },
+        "min_cluster_share": 0.01321,
+        "max_cluster_share": 0.32893
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.274815,
+        "random_baseline": 0.184544,
+        "coherence_lift": 1.4892,
+        "neighbor_pairs": 5138
+      },
+      "persistence": {
+        "mean_persistence": 66.830104,
+        "min_persistence": 0.102869,
+        "max_persistence": 419.980796,
+        "total_stability": 18295.9009
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 774,
+        "n_clusters": 7,
+        "n_noise": 79,
+        "noise_ratio": 0.092614,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.523455,
+        "davies_bouldin_index": 1.128552,
+        "calinski_harabasz_index": 1050.2504,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 14,
+          "2": 79,
+          "3": 86,
+          "4": 105,
+          "5": 132,
+          "6": 109
+        },
+        "min_cluster_share": 0.018088,
+        "max_cluster_share": 0.321705
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.288268,
+        "random_baseline": 0.193905,
+        "coherence_lift": 1.4866,
+        "neighbor_pairs": 5370
+      },
+      "persistence": {
+        "mean_persistence": 86.286589,
+        "min_persistence": 0.102869,
+        "max_persistence": 421.191209,
+        "total_stability": 18482.7447
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 666,
+        "n_clusters": 10,
+        "n_noise": 187,
+        "noise_ratio": 0.219226,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641413,
+        "davies_bouldin_index": 0.816855,
+        "calinski_harabasz_index": 1436.3708,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 92,
+          "5": 91,
+          "6": 30,
+          "7": 39,
+          "8": 20,
+          "9": 12
+        },
+        "min_cluster_share": 0.015015,
+        "max_cluster_share": 0.373874
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.301282,
+        "random_baseline": 0.202581,
+        "coherence_lift": 1.4872,
+        "neighbor_pairs": 4056
+      },
+      "persistence": {
+        "mean_persistence": 33.092678,
+        "min_persistence": 0.0,
+        "max_persistence": 227.003663,
+        "total_stability": 9800.458
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 698,
+        "n_clusters": 8,
+        "n_noise": 155,
+        "noise_ratio": 0.181712,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.615261,
+        "davies_bouldin_index": 0.922926,
+        "calinski_harabasz_index": 1595.2265,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 92,
+          "5": 103,
+          "6": 91,
+          "7": 30
+        },
+        "min_cluster_share": 0.014327,
+        "max_cluster_share": 0.356734
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.294118,
+        "random_baseline": 0.201969,
+        "coherence_lift": 1.4563,
+        "neighbor_pairs": 4420
+      },
+      "persistence": {
+        "mean_persistence": 41.635007,
+        "min_persistence": 0.0,
+        "max_persistence": 227.003663,
+        "total_stability": 10065.4735
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 704,
+        "n_clusters": 7,
+        "n_noise": 149,
+        "noise_ratio": 0.174678,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608985,
+        "davies_bouldin_index": 0.968381,
+        "calinski_harabasz_index": 1704.1128,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 92,
+          "5": 127,
+          "6": 103
+        },
+        "min_cluster_share": 0.014205,
+        "max_cluster_share": 0.353693
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.303516,
+        "random_baseline": 0.21256,
+        "coherence_lift": 1.4279,
+        "neighbor_pairs": 4494
+      },
+      "persistence": {
+        "mean_persistence": 47.292143,
+        "min_persistence": 0.0,
+        "max_persistence": 228.214077,
+        "total_stability": 10215.7656
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 632,
+        "n_clusters": 11,
+        "n_noise": 221,
+        "noise_ratio": 0.259086,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.679347,
+        "davies_bouldin_index": 0.772204,
+        "calinski_harabasz_index": 1573.3056,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 20,
+          "8": 12,
+          "9": 36,
+          "10": 22
+        },
+        "min_cluster_share": 0.015823,
+        "max_cluster_share": 0.393987
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.308655,
+        "random_baseline": 0.20823,
+        "coherence_lift": 1.4823,
+        "neighbor_pairs": 3674
+      },
+      "persistence": {
+        "mean_persistence": 29.565292,
+        "min_persistence": 0.0,
+        "max_persistence": 227.003663,
+        "total_stability": 9527.724
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 698,
+        "n_clusters": 8,
+        "n_noise": 155,
+        "noise_ratio": 0.181712,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.615261,
+        "davies_bouldin_index": 0.922926,
+        "calinski_harabasz_index": 1595.2265,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 92,
+          "5": 103,
+          "6": 91,
+          "7": 30
+        },
+        "min_cluster_share": 0.014327,
+        "max_cluster_share": 0.356734
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.294118,
+        "random_baseline": 0.201969,
+        "coherence_lift": 1.4563,
+        "neighbor_pairs": 4420
+      },
+      "persistence": {
+        "mean_persistence": 41.635007,
+        "min_persistence": 0.0,
+        "max_persistence": 227.003663,
+        "total_stability": 10065.4735
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 704,
+        "n_clusters": 7,
+        "n_noise": 149,
+        "noise_ratio": 0.174678,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608985,
+        "davies_bouldin_index": 0.968381,
+        "calinski_harabasz_index": 1704.1128,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 10,
+          "2": 46,
+          "3": 77,
+          "4": 92,
+          "5": 127,
+          "6": 103
+        },
+        "min_cluster_share": 0.014205,
+        "max_cluster_share": 0.353693
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.303516,
+        "random_baseline": 0.21256,
+        "coherence_lift": 1.4279,
+        "neighbor_pairs": 4494
+      },
+      "persistence": {
+        "mean_persistence": 47.292143,
+        "min_persistence": 0.0,
+        "max_persistence": 228.214077,
+        "total_stability": 10215.7656
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 627,
+        "n_clusters": 8,
+        "n_noise": 226,
+        "noise_ratio": 0.264947,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.687963,
+        "davies_bouldin_index": 0.77433,
+        "calinski_harabasz_index": 2111.0482,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 90,
+          "5": 27,
+          "6": 39,
+          "7": 32
+        },
+        "min_cluster_share": 0.043062,
+        "max_cluster_share": 0.397129
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.324561,
+        "random_baseline": 0.220317,
+        "coherence_lift": 1.4732,
+        "neighbor_pairs": 3648
+      },
+      "persistence": {
+        "mean_persistence": 25.984834,
+        "min_persistence": 0.646932,
+        "max_persistence": 143.621976,
+        "total_stability": 6625.0304
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 30.200646,
+        "min_persistence": 0.646932,
+        "max_persistence": 143.621976,
+        "total_stability": 6833.8689
+      },
+      "spatial_fold_mean_ari": 0.910678,
+      "composite_selection_score": 0.724325
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 35.558741,
+        "min_persistence": 0.646932,
+        "max_persistence": 144.83239,
+        "total_stability": 6980.9705
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 577,
+        "n_clusters": 9,
+        "n_noise": 276,
+        "noise_ratio": 0.323564,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.73364,
+        "davies_bouldin_index": 0.704216,
+        "calinski_harabasz_index": 2220.6631,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 90,
+          "4": 27,
+          "5": 39,
+          "6": 32,
+          "7": 20,
+          "8": 17
+        },
+        "min_cluster_share": 0.029463,
+        "max_cluster_share": 0.431542
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.349452,
+        "random_baseline": 0.23949,
+        "coherence_lift": 1.4592,
+        "neighbor_pairs": 3102
+      },
+      "persistence": {
+        "mean_persistence": 22.34131,
+        "min_persistence": 0.457086,
+        "max_persistence": 143.621976,
+        "total_stability": 6378.0594
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 30.200646,
+        "min_persistence": 0.646932,
+        "max_persistence": 143.621976,
+        "total_stability": 6833.8689
+      },
+      "spatial_fold_mean_ari": 0.910678,
+      "composite_selection_score": 0.724325
+    },
+    {
+      "params": {
+        "min_cluster_size": 10,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 35.558741,
+        "min_persistence": 0.646932,
+        "max_persistence": 144.83239,
+        "total_stability": 6980.9705
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 714,
+        "n_clusters": 12,
+        "n_noise": 139,
+        "noise_ratio": 0.162954,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.598725,
+        "davies_bouldin_index": 0.873034,
+        "calinski_harabasz_index": 1059.8949,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 93,
+          "4": 34,
+          "5": 39,
+          "6": 59,
+          "7": 15,
+          "8": 20,
+          "9": 26,
+          "10": 51,
+          "11": 23
+        },
+        "min_cluster_share": 0.021008,
+        "max_cluster_share": 0.348739
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.266899,
+        "random_baseline": 0.175686,
+        "coherence_lift": 1.5192,
+        "neighbor_pairs": 4586
+      },
+      "persistence": {
+        "mean_persistence": 42.98455,
+        "min_persistence": 0.089773,
+        "max_persistence": 362.179085,
+        "total_stability": 18234.5718
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 778,
+        "n_clusters": 9,
+        "n_noise": 75,
+        "noise_ratio": 0.087925,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.522565,
+        "davies_bouldin_index": 1.133039,
+        "calinski_harabasz_index": 927.4474,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34,
+          "7": 59,
+          "8": 15
+        },
+        "min_cluster_share": 0.01928,
+        "max_cluster_share": 0.320051
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.267039,
+        "random_baseline": 0.179595,
+        "coherence_lift": 1.4869,
+        "neighbor_pairs": 5370
+      },
+      "persistence": {
+        "mean_persistence": 57.843627,
+        "min_persistence": 0.089773,
+        "max_persistence": 362.179085,
+        "total_stability": 18876.3829
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 799,
+        "n_clusters": 7,
+        "n_noise": 54,
+        "noise_ratio": 0.063306,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.491355,
+        "davies_bouldin_index": 1.220341,
+        "calinski_harabasz_index": 882.2827,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 87,
+          "3": 90,
+          "4": 110,
+          "5": 135,
+          "6": 113
+        },
+        "min_cluster_share": 0.018773,
+        "max_cluster_share": 0.31164
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281636,
+        "random_baseline": 0.189519,
+        "coherence_lift": 1.4861,
+        "neighbor_pairs": 5674
+      },
+      "persistence": {
+        "mean_persistence": 74.312682,
+        "min_persistence": 0.089773,
+        "max_persistence": 363.389498,
+        "total_stability": 19081.949
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 654,
+        "n_clusters": 14,
+        "n_noise": 199,
+        "noise_ratio": 0.233294,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.707989,
+        "davies_bouldin_index": 0.672525,
+        "calinski_harabasz_index": 3003.0093,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 93,
+          "3": 34,
+          "4": 39,
+          "5": 15,
+          "6": 20,
+          "7": 26,
+          "8": 32,
+          "9": 19,
+          "10": 51,
+          "11": 23,
+          "12": 22,
+          "13": 16
+        },
+        "min_cluster_share": 0.022936,
+        "max_cluster_share": 0.380734
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.27738,
+        "random_baseline": 0.187293,
+        "coherence_lift": 1.481,
+        "neighbor_pairs": 3908
+      },
+      "persistence": {
+        "mean_persistence": 36.119637,
+        "min_persistence": 0.089773,
+        "max_persistence": 362.179085,
+        "total_stability": 17947.2862
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 757,
+        "n_clusters": 10,
+        "n_noise": 96,
+        "noise_ratio": 0.112544,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.523155,
+        "davies_bouldin_index": 1.058648,
+        "calinski_harabasz_index": 858.8544,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34,
+          "7": 15,
+          "8": 22,
+          "9": 16
+        },
+        "min_cluster_share": 0.019815,
+        "max_cluster_share": 0.32893
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.272404,
+        "random_baseline": 0.184914,
+        "coherence_lift": 1.4731,
+        "neighbor_pairs": 5066
+      },
+      "persistence": {
+        "mean_persistence": 51.289275,
+        "min_persistence": 0.089773,
+        "max_persistence": 362.179085,
+        "total_stability": 18802.9897
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 799,
+        "n_clusters": 7,
+        "n_noise": 54,
+        "noise_ratio": 0.063306,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.491355,
+        "davies_bouldin_index": 1.220341,
+        "calinski_harabasz_index": 882.2827,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 15,
+          "2": 87,
+          "3": 90,
+          "4": 110,
+          "5": 135,
+          "6": 113
+        },
+        "min_cluster_share": 0.018773,
+        "max_cluster_share": 0.31164
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281636,
+        "random_baseline": 0.189519,
+        "coherence_lift": 1.4861,
+        "neighbor_pairs": 5674
+      },
+      "persistence": {
+        "mean_persistence": 74.312682,
+        "min_persistence": 0.089773,
+        "max_persistence": 363.389498,
+        "total_stability": 19081.949
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 689,
+        "n_clusters": 10,
+        "n_noise": 164,
+        "noise_ratio": 0.192263,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.597998,
+        "davies_bouldin_index": 0.883639,
+        "calinski_harabasz_index": 735.7113,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 93,
+          "4": 32,
+          "5": 39,
+          "6": 49,
+          "7": 23,
+          "8": 20,
+          "9": 19
+        },
+        "min_cluster_share": 0.027576,
+        "max_cluster_share": 0.361393
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.29059,
+        "random_baseline": 0.190687,
+        "coherence_lift": 1.5239,
+        "neighbor_pairs": 4336
+      },
+      "persistence": {
+        "mean_persistence": 49.431498,
+        "min_persistence": 1.201265,
+        "max_persistence": 362.179085,
+        "total_stability": 16078.1039
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 72.570262,
+        "min_persistence": 2.62524,
+        "max_persistence": 362.179085,
+        "total_stability": 16683.0834
+      },
+      "spatial_fold_mean_ari": 0.941928,
+      "composite_selection_score": 0.453417
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 84.390194,
+        "min_persistence": 2.62524,
+        "max_persistence": 363.389498,
+        "total_stability": 16838.9292
+      },
+      "spatial_fold_mean_ari": 0.956528,
+      "composite_selection_score": 0.395944
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 689,
+        "n_clusters": 10,
+        "n_noise": 164,
+        "noise_ratio": 0.192263,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.597998,
+        "davies_bouldin_index": 0.883639,
+        "calinski_harabasz_index": 735.7113,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 93,
+          "4": 32,
+          "5": 39,
+          "6": 49,
+          "7": 23,
+          "8": 20,
+          "9": 19
+        },
+        "min_cluster_share": 0.027576,
+        "max_cluster_share": 0.361393
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.29059,
+        "random_baseline": 0.190687,
+        "coherence_lift": 1.5239,
+        "neighbor_pairs": 4336
+      },
+      "persistence": {
+        "mean_persistence": 49.431498,
+        "min_persistence": 1.201265,
+        "max_persistence": 362.179085,
+        "total_stability": 16078.1039
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 72.570262,
+        "min_persistence": 2.62524,
+        "max_persistence": 362.179085,
+        "total_stability": 16683.0834
+      },
+      "spatial_fold_mean_ari": 0.941928,
+      "composite_selection_score": 0.453417
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 84.390194,
+        "min_persistence": 2.62524,
+        "max_persistence": 363.389498,
+        "total_stability": 16838.9292
+      },
+      "spatial_fold_mean_ari": 0.956528,
+      "composite_selection_score": 0.395944
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.305707,
+        "random_baseline": 0.206862,
+        "coherence_lift": 1.4778,
+        "neighbor_pairs": 4030
+      },
+      "persistence": {
+        "mean_persistence": 30.733113,
+        "min_persistence": 1.201084,
+        "max_persistence": 164.592326,
+        "total_stability": 8807.9331
+      },
+      "spatial_fold_mean_ari": 0.949771,
+      "composite_selection_score": 0.804135
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 35.380341,
+        "min_persistence": 1.201084,
+        "max_persistence": 164.592326,
+        "total_stability": 9031.4978
+      },
+      "spatial_fold_mean_ari": 0.941753,
+      "composite_selection_score": 0.658684
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 41.288514,
+        "min_persistence": 1.201084,
+        "max_persistence": 165.80274,
+        "total_stability": 9181.7899
+      },
+      "spatial_fold_mean_ari": 0.964539,
+      "composite_selection_score": 0.629171
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 628,
+        "n_clusters": 9,
+        "n_noise": 225,
+        "noise_ratio": 0.263775,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.675476,
+        "davies_bouldin_index": 0.806363,
+        "calinski_harabasz_index": 1756.2387,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 91,
+          "4": 30,
+          "5": 39,
+          "6": 38,
+          "7": 36,
+          "8": 22
+        },
+        "min_cluster_share": 0.035032,
+        "max_cluster_share": 0.396497
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.31291,
+        "random_baseline": 0.212919,
+        "coherence_lift": 1.4696,
+        "neighbor_pairs": 3656
+      },
+      "persistence": {
+        "mean_persistence": 26.572983,
+        "min_persistence": 1.089526,
+        "max_persistence": 164.592326,
+        "total_stability": 8535.199
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 35.380341,
+        "min_persistence": 1.201084,
+        "max_persistence": 164.592326,
+        "total_stability": 9031.4978
+      },
+      "spatial_fold_mean_ari": 0.941753,
+      "composite_selection_score": 0.658684
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 41.288514,
+        "min_persistence": 1.201084,
+        "max_persistence": 165.80274,
+        "total_stability": 9181.7899
+      },
+      "spatial_fold_mean_ari": 0.964539,
+      "composite_selection_score": 0.629171
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 627,
+        "n_clusters": 8,
+        "n_noise": 226,
+        "noise_ratio": 0.264947,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.687963,
+        "davies_bouldin_index": 0.77433,
+        "calinski_harabasz_index": 2111.0482,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 90,
+          "5": 27,
+          "6": 39,
+          "7": 32
+        },
+        "min_cluster_share": 0.043062,
+        "max_cluster_share": 0.397129
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.324561,
+        "random_baseline": 0.220317,
+        "coherence_lift": 1.4732,
+        "neighbor_pairs": 3648
+      },
+      "persistence": {
+        "mean_persistence": 22.755617,
+        "min_persistence": 0.532322,
+        "max_persistence": 126.518061,
+        "total_stability": 6372.8409
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 26.639423,
+        "min_persistence": 0.532322,
+        "max_persistence": 126.518061,
+        "total_stability": 6581.6794
+      },
+      "spatial_fold_mean_ari": 0.905179,
+      "composite_selection_score": 0.714969
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 31.542422,
+        "min_persistence": 0.532322,
+        "max_persistence": 127.728474,
+        "total_stability": 6728.781
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 577,
+        "n_clusters": 9,
+        "n_noise": 276,
+        "noise_ratio": 0.323564,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.73364,
+        "davies_bouldin_index": 0.704216,
+        "calinski_harabasz_index": 2220.6631,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 90,
+          "4": 27,
+          "5": 39,
+          "6": 32,
+          "7": 20,
+          "8": 17
+        },
+        "min_cluster_share": 0.029463,
+        "max_cluster_share": 0.431542
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.349452,
+        "random_baseline": 0.23949,
+        "coherence_lift": 1.4592,
+        "neighbor_pairs": 3102
+      },
+      "persistence": {
+        "mean_persistence": 19.476945,
+        "min_persistence": 0.146685,
+        "max_persistence": 126.518061,
+        "total_stability": 6125.8699
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 26.639423,
+        "min_persistence": 0.532322,
+        "max_persistence": 126.518061,
+        "total_stability": 6581.6794
+      },
+      "spatial_fold_mean_ari": 0.905179,
+      "composite_selection_score": 0.714969
+    },
+    {
+      "params": {
+        "min_cluster_size": 15,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 31.542422,
+        "min_persistence": 0.532322,
+        "max_persistence": 127.728474,
+        "total_stability": 6728.781
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 712,
+        "n_clusters": 10,
+        "n_noise": 141,
+        "noise_ratio": 0.165299,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.569883,
+        "davies_bouldin_index": 0.913962,
+        "calinski_harabasz_index": 627.8348,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 93,
+          "4": 34,
+          "5": 39,
+          "6": 20,
+          "7": 26,
+          "8": 51,
+          "9": 23
+        },
+        "min_cluster_share": 0.02809,
+        "max_cluster_share": 0.349719
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.282241,
+        "random_baseline": 0.183851,
+        "coherence_lift": 1.5352,
+        "neighbor_pairs": 4606
+      },
+      "persistence": {
+        "mean_persistence": 47.114931,
+        "min_persistence": 1.097783,
+        "max_persistence": 362.179085,
+        "total_stability": 17426.6392
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 776,
+        "n_clusters": 7,
+        "n_noise": 77,
+        "noise_ratio": 0.09027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.497793,
+        "davies_bouldin_index": 1.262261,
+        "calinski_harabasz_index": 727.0683,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34
+        },
+        "min_cluster_share": 0.043814,
+        "max_cluster_share": 0.320876
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.280148,
+        "random_baseline": 0.186563,
+        "coherence_lift": 1.5016,
+        "neighbor_pairs": 5390
+      },
+      "persistence": {
+        "mean_persistence": 70.500699,
+        "min_persistence": 2.529625,
+        "max_persistence": 362.179085,
+        "total_stability": 18068.4503
+      },
+      "spatial_fold_mean_ari": 0.962346,
+      "composite_selection_score": 0.397788
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 84.043455,
+        "min_persistence": 2.529625,
+        "max_persistence": 363.389498,
+        "total_stability": 18228.4986
+      },
+      "spatial_fold_mean_ari": 0.97358,
+      "composite_selection_score": 0.326533
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 712,
+        "n_clusters": 10,
+        "n_noise": 141,
+        "noise_ratio": 0.165299,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.569883,
+        "davies_bouldin_index": 0.913962,
+        "calinski_harabasz_index": 627.8348,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 93,
+          "4": 34,
+          "5": 39,
+          "6": 20,
+          "7": 26,
+          "8": 51,
+          "9": 23
+        },
+        "min_cluster_share": 0.02809,
+        "max_cluster_share": 0.349719
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.282241,
+        "random_baseline": 0.183851,
+        "coherence_lift": 1.5352,
+        "neighbor_pairs": 4606
+      },
+      "persistence": {
+        "mean_persistence": 47.114931,
+        "min_persistence": 1.097783,
+        "max_persistence": 362.179085,
+        "total_stability": 17426.6392
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 776,
+        "n_clusters": 7,
+        "n_noise": 77,
+        "noise_ratio": 0.09027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.497793,
+        "davies_bouldin_index": 1.262261,
+        "calinski_harabasz_index": 727.0683,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34
+        },
+        "min_cluster_share": 0.043814,
+        "max_cluster_share": 0.320876
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.280148,
+        "random_baseline": 0.186563,
+        "coherence_lift": 1.5016,
+        "neighbor_pairs": 5390
+      },
+      "persistence": {
+        "mean_persistence": 70.500699,
+        "min_persistence": 2.529625,
+        "max_persistence": 362.179085,
+        "total_stability": 18068.4503
+      },
+      "spatial_fold_mean_ari": 0.962346,
+      "composite_selection_score": 0.397788
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 84.043455,
+        "min_persistence": 2.529625,
+        "max_persistence": 363.389498,
+        "total_stability": 18228.4986
+      },
+      "spatial_fold_mean_ari": 0.97358,
+      "composite_selection_score": 0.326533
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 737,
+        "n_clusters": 8,
+        "n_noise": 116,
+        "noise_ratio": 0.135991,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.540821,
+        "davies_bouldin_index": 1.068399,
+        "calinski_harabasz_index": 801.7201,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 93,
+          "5": 32,
+          "6": 39,
+          "7": 54
+        },
+        "min_cluster_share": 0.043419,
+        "max_cluster_share": 0.337856
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281478,
+        "random_baseline": 0.185528,
+        "coherence_lift": 1.5172,
+        "neighbor_pairs": 4924
+      },
+      "persistence": {
+        "mean_persistence": 47.742519,
+        "min_persistence": 1.219584,
+        "max_persistence": 285.997186,
+        "total_stability": 14475.9099
+      },
+      "spatial_fold_mean_ari": 0.933095,
+      "composite_selection_score": 0.525765
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 55.636892,
+        "min_persistence": 1.219584,
+        "max_persistence": 285.997186,
+        "total_stability": 14719.8326
+      },
+      "spatial_fold_mean_ari": 0.93491,
+      "composite_selection_score": 0.441476
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 66.762436,
+        "min_persistence": 1.987749,
+        "max_persistence": 287.207599,
+        "total_stability": 14875.6785
+      },
+      "spatial_fold_mean_ari": 0.960087,
+      "composite_selection_score": 0.401999
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 704,
+        "n_clusters": 9,
+        "n_noise": 149,
+        "noise_ratio": 0.174678,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.579219,
+        "davies_bouldin_index": 0.930971,
+        "calinski_harabasz_index": 823.4435,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 93,
+          "4": 32,
+          "5": 39,
+          "6": 54,
+          "7": 49,
+          "8": 23
+        },
+        "min_cluster_share": 0.03267,
+        "max_cluster_share": 0.353693
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.284257,
+        "random_baseline": 0.186996,
+        "coherence_lift": 1.5201,
+        "neighbor_pairs": 4510
+      },
+      "persistence": {
+        "mean_persistence": 41.586813,
+        "min_persistence": 1.219584,
+        "max_persistence": 285.997186,
+        "total_stability": 14171.5995
+      },
+      "spatial_fold_mean_ari": 0.892291,
+      "composite_selection_score": 0.571978
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 55.636892,
+        "min_persistence": 1.219584,
+        "max_persistence": 285.997186,
+        "total_stability": 14719.8326
+      },
+      "spatial_fold_mean_ari": 0.93491,
+      "composite_selection_score": 0.441476
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 66.762436,
+        "min_persistence": 1.987749,
+        "max_persistence": 287.207599,
+        "total_stability": 14875.6785
+      },
+      "spatial_fold_mean_ari": 0.960087,
+      "composite_selection_score": 0.401999
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.305707,
+        "random_baseline": 0.206862,
+        "coherence_lift": 1.4778,
+        "neighbor_pairs": 4030
+      },
+      "persistence": {
+        "mean_persistence": 26.199531,
+        "min_persistence": 1.067707,
+        "max_persistence": 150.099176,
+        "total_stability": 8268.8696
+      },
+      "spatial_fold_mean_ari": 0.945447,
+      "composite_selection_score": 0.796778
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 30.716139,
+        "min_persistence": 1.067707,
+        "max_persistence": 150.099176,
+        "total_stability": 8492.4343
+      },
+      "spatial_fold_mean_ari": 0.937208,
+      "composite_selection_score": 0.650951
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 36.865792,
+        "min_persistence": 1.067707,
+        "max_persistence": 151.309589,
+        "total_stability": 8642.7264
+      },
+      "spatial_fold_mean_ari": 0.964539,
+      "composite_selection_score": 0.629171
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 628,
+        "n_clusters": 9,
+        "n_noise": 225,
+        "noise_ratio": 0.263775,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.675476,
+        "davies_bouldin_index": 0.806363,
+        "calinski_harabasz_index": 1756.2387,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 91,
+          "4": 30,
+          "5": 39,
+          "6": 38,
+          "7": 36,
+          "8": 22
+        },
+        "min_cluster_share": 0.035032,
+        "max_cluster_share": 0.396497
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.31291,
+        "random_baseline": 0.212919,
+        "coherence_lift": 1.4696,
+        "neighbor_pairs": 3656
+      },
+      "persistence": {
+        "mean_persistence": 22.577685,
+        "min_persistence": 0.862222,
+        "max_persistence": 150.099176,
+        "total_stability": 7996.1355
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 30.716139,
+        "min_persistence": 1.067707,
+        "max_persistence": 150.099176,
+        "total_stability": 8492.4343
+      },
+      "spatial_fold_mean_ari": 0.937208,
+      "composite_selection_score": 0.650951
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 36.865792,
+        "min_persistence": 1.067707,
+        "max_persistence": 151.309589,
+        "total_stability": 8642.7264
+      },
+      "spatial_fold_mean_ari": 0.964539,
+      "composite_selection_score": 0.629171
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 627,
+        "n_clusters": 8,
+        "n_noise": 226,
+        "noise_ratio": 0.264947,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.687963,
+        "davies_bouldin_index": 0.77433,
+        "calinski_harabasz_index": 2111.0482,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 90,
+          "5": 27,
+          "6": 39,
+          "7": 32
+        },
+        "min_cluster_share": 0.043062,
+        "max_cluster_share": 0.397129
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.324561,
+        "random_baseline": 0.220317,
+        "coherence_lift": 1.4732,
+        "neighbor_pairs": 3648
+      },
+      "persistence": {
+        "mean_persistence": 19.409692,
+        "min_persistence": 0.445714,
+        "max_persistence": 112.380392,
+        "total_stability": 5970.2546
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 22.863087,
+        "min_persistence": 0.445714,
+        "max_persistence": 112.380392,
+        "total_stability": 6179.093
+      },
+      "spatial_fold_mean_ari": 0.895836,
+      "composite_selection_score": 0.699072
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 27.46489,
+        "min_persistence": 0.445714,
+        "max_persistence": 113.590806,
+        "total_stability": 6326.1946
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 627,
+        "n_clusters": 8,
+        "n_noise": 226,
+        "noise_ratio": 0.264947,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.687963,
+        "davies_bouldin_index": 0.77433,
+        "calinski_harabasz_index": 2111.0482,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 90,
+          "5": 27,
+          "6": 39,
+          "7": 32
+        },
+        "min_cluster_share": 0.043062,
+        "max_cluster_share": 0.397129
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.324561,
+        "random_baseline": 0.220317,
+        "coherence_lift": 1.4732,
+        "neighbor_pairs": 3648
+      },
+      "persistence": {
+        "mean_persistence": 19.409692,
+        "min_persistence": 0.445714,
+        "max_persistence": 112.380392,
+        "total_stability": 5970.2546
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 658,
+        "n_clusters": 7,
+        "n_noise": 195,
+        "noise_ratio": 0.228605,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.650472,
+        "davies_bouldin_index": 0.883415,
+        "calinski_harabasz_index": 1983.9582,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 102,
+          "5": 90,
+          "6": 27
+        },
+        "min_cluster_share": 0.041033,
+        "max_cluster_share": 0.378419
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.314861,
+        "random_baseline": 0.218198,
+        "coherence_lift": 1.443,
+        "neighbor_pairs": 3970
+      },
+      "persistence": {
+        "mean_persistence": 22.863087,
+        "min_persistence": 0.445714,
+        "max_persistence": 112.380392,
+        "total_stability": 6179.093
+      },
+      "spatial_fold_mean_ari": 0.895836,
+      "composite_selection_score": 0.699072
+    },
+    {
+      "params": {
+        "min_cluster_size": 20,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 27.46489,
+        "min_persistence": 0.445714,
+        "max_persistence": 113.590806,
+        "total_stability": 6326.1946
+      },
+      "spatial_fold_mean_ari": 0.929302,
+      "composite_selection_score": 0.686705
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 763,
+        "n_clusters": 8,
+        "n_noise": 90,
+        "noise_ratio": 0.10551,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.509765,
+        "davies_bouldin_index": 1.146699,
+        "calinski_harabasz_index": 682.5612,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 93,
+          "5": 34,
+          "6": 39,
+          "7": 61
+        },
+        "min_cluster_share": 0.044561,
+        "max_cluster_share": 0.326343
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.272104,
+        "random_baseline": 0.180046,
+        "coherence_lift": 1.5113,
+        "neighbor_pairs": 5248
+      },
+      "persistence": {
+        "mean_persistence": 43.771765,
+        "min_persistence": 1.213886,
+        "max_persistence": 269.72326,
+        "total_stability": 15154.8309
+      },
+      "spatial_fold_mean_ari": 0.919968,
+      "composite_selection_score": 0.403007
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 776,
+        "n_clusters": 7,
+        "n_noise": 77,
+        "noise_ratio": 0.09027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.497793,
+        "davies_bouldin_index": 1.262261,
+        "calinski_harabasz_index": 727.0683,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34
+        },
+        "min_cluster_share": 0.043814,
+        "max_cluster_share": 0.320876
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.280148,
+        "random_baseline": 0.186563,
+        "coherence_lift": 1.5016,
+        "neighbor_pairs": 5390
+      },
+      "persistence": {
+        "mean_persistence": 51.269802,
+        "min_persistence": 1.219584,
+        "max_persistence": 269.72326,
+        "total_stability": 15406.6363
+      },
+      "spatial_fold_mean_ari": 0.938999,
+      "composite_selection_score": 0.358065
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 61.521928,
+        "min_persistence": 1.987749,
+        "max_persistence": 270.933674,
+        "total_stability": 15566.6846
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 763,
+        "n_clusters": 8,
+        "n_noise": 90,
+        "noise_ratio": 0.10551,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.509765,
+        "davies_bouldin_index": 1.146699,
+        "calinski_harabasz_index": 682.5612,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 93,
+          "5": 34,
+          "6": 39,
+          "7": 61
+        },
+        "min_cluster_share": 0.044561,
+        "max_cluster_share": 0.326343
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.272104,
+        "random_baseline": 0.180046,
+        "coherence_lift": 1.5113,
+        "neighbor_pairs": 5248
+      },
+      "persistence": {
+        "mean_persistence": 43.771765,
+        "min_persistence": 1.213886,
+        "max_persistence": 269.72326,
+        "total_stability": 15154.8309
+      },
+      "spatial_fold_mean_ari": 0.919968,
+      "composite_selection_score": 0.403007
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 776,
+        "n_clusters": 7,
+        "n_noise": 77,
+        "noise_ratio": 0.09027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.497793,
+        "davies_bouldin_index": 1.262261,
+        "calinski_harabasz_index": 727.0683,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 113,
+          "5": 93,
+          "6": 34
+        },
+        "min_cluster_share": 0.043814,
+        "max_cluster_share": 0.320876
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.280148,
+        "random_baseline": 0.186563,
+        "coherence_lift": 1.5016,
+        "neighbor_pairs": 5390
+      },
+      "persistence": {
+        "mean_persistence": 51.269802,
+        "min_persistence": 1.219584,
+        "max_persistence": 269.72326,
+        "total_stability": 15406.6363
+      },
+      "spatial_fold_mean_ari": 0.938999,
+      "composite_selection_score": 0.358065
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 61.521928,
+        "min_persistence": 1.987749,
+        "max_persistence": 270.933674,
+        "total_stability": 15566.6846
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 737,
+        "n_clusters": 8,
+        "n_noise": 116,
+        "noise_ratio": 0.135991,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.540821,
+        "davies_bouldin_index": 1.068399,
+        "calinski_harabasz_index": 801.7201,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 93,
+          "5": 32,
+          "6": 39,
+          "7": 54
+        },
+        "min_cluster_share": 0.043419,
+        "max_cluster_share": 0.337856
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281478,
+        "random_baseline": 0.185528,
+        "coherence_lift": 1.5172,
+        "neighbor_pairs": 4924
+      },
+      "persistence": {
+        "mean_persistence": 30.539785,
+        "min_persistence": 0.965854,
+        "max_persistence": 182.399273,
+        "total_stability": 11741.7978
+      },
+      "spatial_fold_mean_ari": 0.881895,
+      "composite_selection_score": 0.438653
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 35.832493,
+        "min_persistence": 0.965854,
+        "max_persistence": 182.399273,
+        "total_stability": 11985.7205
+      },
+      "spatial_fold_mean_ari": 0.914866,
+      "composite_selection_score": 0.407373
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 43.047903,
+        "min_persistence": 1.852161,
+        "max_persistence": 183.609687,
+        "total_stability": 12141.5663
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 737,
+        "n_clusters": 8,
+        "n_noise": 116,
+        "noise_ratio": 0.135991,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.540821,
+        "davies_bouldin_index": 1.068399,
+        "calinski_harabasz_index": 801.7201,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 93,
+          "5": 32,
+          "6": 39,
+          "7": 54
+        },
+        "min_cluster_share": 0.043419,
+        "max_cluster_share": 0.337856
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.281478,
+        "random_baseline": 0.185528,
+        "coherence_lift": 1.5172,
+        "neighbor_pairs": 4924
+      },
+      "persistence": {
+        "mean_persistence": 30.539785,
+        "min_persistence": 0.965854,
+        "max_persistence": 182.399273,
+        "total_stability": 11741.7978
+      },
+      "spatial_fold_mean_ari": 0.891285,
+      "composite_selection_score": 0.454629
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 753,
+        "n_clusters": 7,
+        "n_noise": 100,
+        "noise_ratio": 0.117233,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.527393,
+        "davies_bouldin_index": 1.163189,
+        "calinski_harabasz_index": 864.9753,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 109,
+          "5": 93,
+          "6": 32
+        },
+        "min_cluster_share": 0.042497,
+        "max_cluster_share": 0.330677
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.28577,
+        "random_baseline": 0.190856,
+        "coherence_lift": 1.4973,
+        "neighbor_pairs": 5116
+      },
+      "persistence": {
+        "mean_persistence": 35.832493,
+        "min_persistence": 0.965854,
+        "max_persistence": 182.399273,
+        "total_stability": 11985.7205
+      },
+      "spatial_fold_mean_ari": 0.914866,
+      "composite_selection_score": 0.407373
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 43.047903,
+        "min_persistence": 1.852161,
+        "max_persistence": 183.609687,
+        "total_stability": 12141.5663
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.305707,
+        "random_baseline": 0.206862,
+        "coherence_lift": 1.4778,
+        "neighbor_pairs": 4030
+      },
+      "persistence": {
+        "mean_persistence": 18.282338,
+        "min_persistence": 0.066978,
+        "max_persistence": 110.383693,
+        "total_stability": 6915.8223
+      },
+      "spatial_fold_mean_ari": 0.85603,
+      "composite_selection_score": 0.644644
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 21.532137,
+        "min_persistence": 0.066978,
+        "max_persistence": 110.383693,
+        "total_stability": 7139.3869
+      },
+      "spatial_fold_mean_ari": 0.90483,
+      "composite_selection_score": 0.595863
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 26.067252,
+        "min_persistence": 0.79787,
+        "max_persistence": 111.594107,
+        "total_stability": 7289.679
+      },
+      "spatial_fold_mean_ari": 0.940854,
+      "composite_selection_score": 0.588873
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.305707,
+        "random_baseline": 0.206862,
+        "coherence_lift": 1.4778,
+        "neighbor_pairs": 4030
+      },
+      "persistence": {
+        "mean_persistence": 18.282338,
+        "min_persistence": 0.066978,
+        "max_persistence": 110.383693,
+        "total_stability": 6915.8223
+      },
+      "spatial_fold_mean_ari": 0.85603,
+      "composite_selection_score": 0.644644
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 688,
+        "n_clusters": 7,
+        "n_noise": 165,
+        "noise_ratio": 0.193435,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.614854,
+        "davies_bouldin_index": 0.989908,
+        "calinski_harabasz_index": 1671.91,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 103,
+          "5": 91,
+          "6": 30
+        },
+        "min_cluster_share": 0.043605,
+        "max_cluster_share": 0.361919
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.3013,
+        "random_baseline": 0.207671,
+        "coherence_lift": 1.4508,
+        "neighbor_pairs": 4308
+      },
+      "persistence": {
+        "mean_persistence": 21.532137,
+        "min_persistence": 0.066978,
+        "max_persistence": 110.383693,
+        "total_stability": 7139.3869
+      },
+      "spatial_fold_mean_ari": 0.90483,
+      "composite_selection_score": 0.595863
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 26.067252,
+        "min_persistence": 0.79787,
+        "max_persistence": 111.594107,
+        "total_stability": 7289.679
+      },
+      "spatial_fold_mean_ari": 0.940854,
+      "composite_selection_score": 0.588873
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 636,
+        "n_clusters": 7,
+        "n_noise": 217,
+        "noise_ratio": 0.254396,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.656439,
+        "davies_bouldin_index": 0.81948,
+        "calinski_harabasz_index": 2112.514,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 39,
+          "6": 32
+        },
+        "min_cluster_share": 0.050314,
+        "max_cluster_share": 0.391509
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.334938,
+        "random_baseline": 0.231547,
+        "coherence_lift": 1.4465,
+        "neighbor_pairs": 3738
+      },
+      "persistence": {
+        "mean_persistence": 16.067573,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5186.2971
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 19.653841,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5395.1356
+      },
+      "spatial_fold_mean_ari": 0.919825,
+      "composite_selection_score": 0.670581
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 19.653841,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5395.1356
+      },
+      "spatial_fold_mean_ari": 0.919825,
+      "composite_selection_score": 0.670581
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 636,
+        "n_clusters": 7,
+        "n_noise": 217,
+        "noise_ratio": 0.254396,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.656439,
+        "davies_bouldin_index": 0.81948,
+        "calinski_harabasz_index": 2112.514,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 39,
+          "6": 32
+        },
+        "min_cluster_share": 0.050314,
+        "max_cluster_share": 0.391509
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.334938,
+        "random_baseline": 0.231547,
+        "coherence_lift": 1.4465,
+        "neighbor_pairs": 3738
+      },
+      "persistence": {
+        "mean_persistence": 16.067573,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5186.2971
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 19.653841,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5395.1356
+      },
+      "spatial_fold_mean_ari": 0.919825,
+      "composite_selection_score": 0.670581
+    },
+    {
+      "params": {
+        "min_cluster_size": 30,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 667,
+        "n_clusters": 6,
+        "n_noise": 186,
+        "noise_ratio": 0.218054,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.641213,
+        "davies_bouldin_index": 0.944282,
+        "calinski_harabasz_index": 2118.4159,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 38,
+          "2": 65,
+          "3": 87,
+          "4": 126,
+          "5": 102
+        },
+        "min_cluster_share": 0.056972,
+        "max_cluster_share": 0.373313
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.323356,
+        "random_baseline": 0.22819,
+        "coherence_lift": 1.4171,
+        "neighbor_pairs": 4076
+      },
+      "persistence": {
+        "mean_persistence": 19.653841,
+        "min_persistence": 0.241298,
+        "max_persistence": 83.50865,
+        "total_stability": 5395.1356
+      },
+      "spatial_fold_mean_ari": 0.919825,
+      "composite_selection_score": 0.670581
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 3,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 784,
+        "n_clusters": 6,
+        "n_noise": 69,
+        "noise_ratio": 0.080891,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48969,
+        "davies_bouldin_index": 1.347074,
+        "calinski_harabasz_index": 831.2312,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 87,
+          "2": 90,
+          "3": 110,
+          "4": 135,
+          "5": 113
+        },
+        "min_cluster_share": 0.110969,
+        "max_cluster_share": 0.317602
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.289139,
+        "random_baseline": 0.196474,
+        "coherence_lift": 1.4716,
+        "neighbor_pairs": 5506
+      },
+      "persistence": {
+        "mean_persistence": 41.276654,
+        "min_persistence": 1.519989,
+        "max_persistence": 193.440347,
+        "total_stability": 12303.9004
+      },
+      "spatial_fold_mean_ari": 0.970244,
+      "composite_selection_score": 0.320858
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 5,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 760,
+        "n_clusters": 6,
+        "n_noise": 93,
+        "noise_ratio": 0.109027,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.520434,
+        "davies_bouldin_index": 1.24812,
+        "calinski_harabasz_index": 983.6534,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 79,
+          "2": 86,
+          "3": 105,
+          "4": 132,
+          "5": 109
+        },
+        "min_cluster_share": 0.103947,
+        "max_cluster_share": 0.327632
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.295088,
+        "random_baseline": 0.200776,
+        "coherence_lift": 1.4697,
+        "neighbor_pairs": 5212
+      },
+      "persistence": {
+        "mean_persistence": 39.222429,
+        "min_persistence": 1.201084,
+        "max_persistence": 183.556905,
+        "total_stability": 11408.0231
+      },
+      "spatial_fold_mean_ari": 0.954638,
+      "composite_selection_score": 0.392728
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 10,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 694,
+        "n_clusters": 6,
+        "n_noise": 159,
+        "noise_ratio": 0.186401,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.608491,
+        "davies_bouldin_index": 1.054102,
+        "calinski_harabasz_index": 1833.0075,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 127,
+          "5": 103
+        },
+        "min_cluster_share": 0.066282,
+        "max_cluster_share": 0.35879
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.310817,
+        "random_baseline": 0.218522,
+        "coherence_lift": 1.4224,
+        "neighbor_pairs": 4382
+      },
+      "persistence": {
+        "mean_persistence": 21.712697,
+        "min_persistence": 0.450117,
+        "max_persistence": 100.289863,
+        "total_stability": 6470.3464
+      },
+      "spatial_fold_mean_ari": 0.901229,
+      "composite_selection_score": 0.521455
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.25,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    },
+    {
+      "params": {
+        "min_cluster_size": 40,
+        "min_samples": 15,
+        "cluster_selection_method": "leaf",
+        "cluster_selection_epsilon": 0.5,
+        "metric": "euclidean"
+      },
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 629,
+        "n_clusters": 5,
+        "n_noise": 224,
+        "noise_ratio": 0.262603,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.671601,
+        "davies_bouldin_index": 0.805713,
+        "calinski_harabasz_index": 2118.0242,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 65,
+          "2": 87,
+          "3": 126,
+          "4": 102
+        },
+        "min_cluster_share": 0.103339,
+        "max_cluster_share": 0.395866
+      },
+      "spatial_coherence": {
+        "neighbor_concordance": 0.348039,
+        "random_baseline": 0.252944,
+        "coherence_lift": 1.376,
+        "neighbor_pairs": 3672
+      },
+      "persistence": {
+        "mean_persistence": 18.444876,
+        "min_persistence": 1.034288,
+        "max_persistence": 66.756248,
+        "total_stability": 4536.8211
+      },
+      "spatial_fold_mean_ari": null
+    }
+  ],
+  "artifacts": {
+    "assignments_parquet": "outputs/models/hdbscan/hdbscan_assignments.parquet",
+    "model_joblib": "outputs/models/hdbscan/hdbscan_model.joblib",
+    "experiments_json": "reports/clustering/hdbscan_experiments.json"
+  }
+}
