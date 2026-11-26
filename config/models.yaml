@@ -1,0 +1,30 @@
+experiment:
+  random_seed: 42
+  seeds_stability: [42, 101, 202, 303, 404]
+
+kmeans:
+  k_candidates: [2, 3, 4, 5, 6, 7, 8]
+  default_k: 4
+  n_init: 30
+  max_iter: 500
+
+hdbscan:
+  min_cluster_size_candidates: [10, 15, 20, 30, 40]
+  min_samples_candidates: [3, 5, 10, 15]
+  cluster_selection_methods: ["eom", "leaf"]
+  cluster_selection_epsilon_candidates: [0.0, 0.25, 0.5]
+  metric: euclidean
+
+dec:
+  latent_dim: 4
+  hidden_dims: [32, 16]
+  n_clusters_candidates: [3, 4, 5]
+  pretrain_epochs: 120
+  pretrain_lr: 0.001
+  finetune_max_iter: 300
+  finetune_lr: 0.0005
+  batch_size: 64
+  update_interval: 10
+  tol: 0.001
+  alpha: 1.0
+  gamma_recon: 0.1

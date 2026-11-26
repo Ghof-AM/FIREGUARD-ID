@@ -1,0 +1,73 @@
+schema_version: "2.0.0"
+locked: true
+locked_at: "2026-11-26"
+description: "Authoritative clustering feature specification for FIREGUARD ID (Riau 0.1 deg grid)."
+
+clustering_features:
+  - hotspot_density_km2
+  - fire_days
+  - active_years_count
+  - frp_total_density_mw_km2
+
+transforms:
+  log1p:
+    - hotspot_density_km2
+    - fire_days
+    - frp_total_density_mw_km2
+  scaler: standard
+
+supporting_analytical_variables:
+  - hotspot_count
+  - active_months_count
+  - total_frp_mw
+  - mean_frp_mw
+  - max_frp_mw
+  - frp_p90_mw
+  - dry_season_share
+  - night_detection_share
+
+qa_metadata:
+  - high_conf_count
+  - nominal_conf_count
+  - low_conf_count
+  - high_conf_share
+  - has_zero_detections
+  - observation_period_days
+  - temporal_completeness_flag
+
+spatial_identifiers:
+  - grid_id
+  - row_idx
+  - col_idx
+  - lon_min
+  - lon_max
+  - lat_min
+  - lat_max
+  - center_lon
+  - center_lat
+  - land_rep_lon
+  - land_rep_lat
+  - cell_area_km2
+  - riau_intersection_area_km2
+  - riau_area_fraction
+  - spatial_block
+
+forbidden_features:
+  - grid_id
+  - center_lon
+  - center_lat
+  - high_conf_count
+  - nominal_conf_count
+  - low_conf_count
+  - high_conf_share
+  - has_zero_detections
+  - raw_cluster
+  - risk_level
+  - cluster_kmeans
+  - cluster_hdbscan
+  - cluster_dec
+  - vulnerability_score
+  - priority_score
+  - facility_id
+  - capital_cost
+  - fleet_count

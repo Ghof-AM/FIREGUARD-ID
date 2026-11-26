@@ -1,0 +1,63 @@
+sources:
+  viirs_jpss1:
+    source_id: SRC-01
+    provider: NASA FIRMS
+    satellite: N20
+    instrument: VIIRS
+    glob_pattern: "data/raw/viirs-jpss1_*_Indonesia.csv"
+    expected_years: [2021, 2022, 2023, 2024, 2025]
+    status: available_local
+    required_columns:
+      - latitude
+      - longitude
+      - bright_ti4
+      - scan
+      - track
+      - acq_date
+      - acq_time
+      - satellite
+      - instrument
+      - confidence
+      - version
+      - bright_ti5
+      - frp
+      - daynight
+      - type
+
+  riau_boundary:
+    source_id: SRC-02
+    provider: GADM 4.1
+    raw_path: "data/raw/gadm41_IDN_1.json/gadm41_IDN_1.json"
+    processed_path: "data/processed/riau_boundary.geojson"
+    filter_field: NAME_1
+    filter_value: Riau
+    gid_1: IDN.24_1
+    crs: EPSG:4326
+    status: available_local
+
+  viirs_snpp:
+    source_id: SRC-03
+    status: not_in_repo
+    notes: "Referenced in external Colab audit (2012-2025, 435,408 rows); not present locally."
+
+  era5_land:
+    source_id: SRC-04
+    status: not_in_repo
+    notes: "July 2020 pilot referenced in FIREGUARD ID.txt; not present locally."
+
+  chirps:
+    source_id: SRC-05
+    status: not_in_repo
+
+  modis:
+    source_id: SRC-06
+    status: not_in_repo
+
+  peatland_dem:
+    source_id: SRC-07
+    status: not_in_repo
+
+  infrastructure_inventory:
+    source_id: SRC-08
+    status: not_in_repo
+    notes: "Phase 8 uses explicitly labeled synthetic operational scenarios (is_synthetic_scenario=true)."

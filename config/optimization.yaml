@@ -1,0 +1,51 @@
+optimization:
+  is_synthetic_scenario: true
+  scenario_note: "Synthetic planning scenario anchored to verified Riau 0.1 deg priority grid; real BPBD/Manggala Agni inventory not available locally."
+  distance_model:
+    type: haversine_km_with_detour
+    road_detour_factor: 1.35
+    avg_response_speed_kmh: 45.0
+    coverage_radius_km: 35.0
+    max_response_time_min: 60.0
+
+  module1_base_location:
+    p_bases_candidates: [5, 8, 10, 12, 15]
+    default_p_bases: 10
+    candidate_selection: top_priority_and_regional_hubs
+    n_candidates: 40
+
+  module2_capacity:
+    tiers:
+      small: {max_demand: 40.0, capex_million_idr: 1500.0, storage_units: 20}
+      medium: {max_demand: 90.0, capex_million_idr: 2800.0, storage_units: 45}
+      large: {max_demand: 160.0, capex_million_idr: 4500.0, storage_units: 80}
+    total_capex_limit_million_idr: 32000.0
+
+  module3_fleet:
+    available_fire_trucks: 24
+    available_water_tankers: 18
+    available_portable_pumps: 60
+    truck_capacity_demand: 6.0
+    tanker_capacity_demand: 8.0
+    pump_capacity_demand: 2.5
+
+  module4_personnel:
+    crew_per_truck_per_shift: 4
+    crew_per_tanker_per_shift: 2
+    pump_specialists_per_base_min: 2
+    shifts_per_day: 2
+    max_crew_per_base: 40
+    total_personnel_available: 320
+
+  module5_comms:
+    relay_coverage_radius_km: 55.0
+    max_relays: 8
+    hub_connectivity_required: true
+
+  module6_budget:
+    budget_scenarios_million_idr: [15000.0, 25000.0, 35000.0, 50000.0, 65000.0]
+    cost_per_truck_million_idr: 850.0
+    cost_per_tanker_million_idr: 650.0
+    cost_per_pump_million_idr: 45.0
+    annual_cost_per_personnel_million_idr: 72.0
+    cost_per_relay_million_idr: 350.0

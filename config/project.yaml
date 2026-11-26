@@ -1,0 +1,32 @@
+project:
+  name: FIREGUARD-ID
+  version: 2.0.0
+  pilot_region: Riau Province, Indonesia
+  gadm_gid_1: IDN.24_1
+  random_seed: 42
+  crs: EPSG:4326
+
+paths:
+  raw_dir: data/raw
+  interim_dir: data/interim
+  processed_dir: data/processed
+  external_dir: data/external
+  split_dir: data/split
+  reports_dir: reports
+  outputs_dir: outputs
+  models_dir: outputs/models
+  maps_dir: outputs/maps
+  figures_dir: outputs/figures
+
+grid:
+  resolution_deg: 0.1
+  inclusion_rule: intersects
+  min_intersection_ratio: 0.0
+  lon_step: 0.1
+  lat_step: 0.1
+
+pipeline:
+  observation_start: "2021-01-01"
+  observation_end: "2025-12-31"
+  observation_days: 1826
+  dry_season_months: [2, 3, 7, 8, 9]
