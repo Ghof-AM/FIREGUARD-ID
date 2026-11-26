@@ -1,0 +1,58 @@
+{
+  "n_cells": 853,
+  "priority_class_counts": {
+    "Tier 4 (Baseline Monitoring - Bottom 50%)": 427,
+    "Tier 3 (Elevated Priority - Top 25-50%)": 213,
+    "Tier 2 (High Priority - Top 10-25%)": 128,
+    "Tier 1 (Critical Priority - Top 10%)": 85
+  },
+  "baseline_weights": {
+    "vuln": 0.45,
+    "persistence": 0.25,
+    "corridor": 0.2,
+    "remoteness": 0.1
+  },
+  "vulnerability_vs_priority_spearman": 0.973754,
+  "sensitivity": [
+    {
+      "scenario": "balanced_operational",
+      "vuln": 0.45,
+      "persistence": 0.25,
+      "corridor": 0.2,
+      "remoteness": 0.1,
+      "spearman_rho_vs_base": 1.0,
+      "top85_jaccard_vs_base": 1.0,
+      "max_rank_shift_cells": 0
+    },
+    {
+      "scenario": "vulnerability_dominant",
+      "vuln": 0.7,
+      "persistence": 0.15,
+      "corridor": 0.1,
+      "remoteness": 0.05,
+      "spearman_rho_vs_base": 0.996523,
+      "top85_jaccard_vs_base": 0.7526,
+      "max_rank_shift_cells": 85
+    },
+    {
+      "scenario": "corridor_containment",
+      "vuln": 0.35,
+      "persistence": 0.2,
+      "corridor": 0.35,
+      "remoteness": 0.1,
+      "spearman_rho_vs_base": 0.993496,
+      "top85_jaccard_vs_base": 0.8085,
+      "max_rank_shift_cells": 99
+    },
+    {
+      "scenario": "remote_access_focus",
+      "vuln": 0.4,
+      "persistence": 0.2,
+      "corridor": 0.15,
+      "remoteness": 0.25,
+      "spearman_rho_vs_base": 0.987407,
+      "top85_jaccard_vs_base": 0.7172,
+      "max_rank_shift_cells": 119
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "module": "module2_base_capacity",
+  "is_synthetic_scenario": true,
+  "scenario_note": "Synthetic planning scenario anchored to verified Riau 0.1 deg priority grid; real BPBD/Manggala Agni inventory not available locally.",
+  "tiers": {
+    "small": {
+      "max_demand": 40.0,
+      "capex_million_idr": 1500.0,
+      "storage_units": 20
+    },
+    "medium": {
+      "max_demand": 90.0,
+      "capex_million_idr": 2800.0,
+      "storage_units": 45
+    },
+    "large": {
+      "max_demand": 160.0,
+      "capex_million_idr": 4500.0,
+      "storage_units": 80
+    }
+  },
+  "n_bases": 10,
+  "total_assigned_demand": 362.6335,
+  "default_capex_limit_million_idr": 32000.0,
+  "min_feasible_capex_million_idr": 20200.0,
+  "default_solution": {
+    "success": true,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "n_bases": 10,
+    "capex_limit_million_idr": 32000.0,
+    "total_capex_million_idr": 31800.0,
+    "capex_remaining_million_idr": 200.0,
+    "total_assigned_demand": 362.6335,
+    "total_demand_capacity": 1060.0,
+    "total_capacity_headroom": 697.3665,
+    "mean_utilization_pct": 39.04,
+    "total_storage_units": 530,
+    "tier_counts": {
+      "small": 1,
+      "medium": 6,
+      "large": 3
+    },
+    "objective_value": -526.82
+  },
+  "capex_sweep": [
+    {
+      "capex_limit_million_idr": 18000.0,
+      "success": false,
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "total_capex_million_idr": null,
+      "total_demand_capacity": null,
+      "total_storage_units": null,
+      "tier_counts": null,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 21000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 20200.0,
+      "capex_remaining_million_idr": 800.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 600.0,
+      "total_capacity_headroom": 237.3665,
+      "mean_utilization_pct": 63.32,
+      "total_storage_units": 300,
+      "tier_counts": {
+        "small": 6,
+        "medium": 4,
+        "large": 0
+      },
+      "objective_value": -297.98,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 25000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 24900.0,
+      "capex_remaining_million_idr": 100.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 790.0,
+      "total_capacity_headroom": 427.3665,
+      "mean_utilization_pct": 54.17,
+      "total_storage_units": 395,
+      "tier_counts": {
+        "small": 5,
+        "medium": 3,
+        "large": 2
+      },
+      "objective_value": -392.51,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 28000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 27900.0,
+      "capex_remaining_million_idr": 100.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 910.0,
+      "total_capacity_headroom": 547.3665,
+      "mean_utilization_pct": 48.02,
+      "total_storage_units": 455,
+      "tier_counts": {
+        "small": 4,
+        "medium": 3,
+        "large": 3
+      },
+      "objective_value": -452.21,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 32000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 31800.0,
+      "capex_remaining_million_idr": 200.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 1060.0,
+      "total_capacity_headroom": 697.3665,
+      "mean_utilization_pct": 39.04,
+      "total_storage_units": 530,
+      "tier_counts": {
+        "small": 1,
+        "medium": 6,
+        "large": 3
+      },
+      "objective_value": -526.82,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 38000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 37300.0,
+      "capex_remaining_million_idr": 700.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 1290.0,
+      "total_capacity_headroom": 927.3665,
+      "mean_utilization_pct": 33.97,
+      "total_storage_units": 645,
+      "tier_counts": {
+        "small": 2,
+        "medium": 1,
+        "large": 7
+      },
+      "objective_value": -641.27,
+      "is_synthetic_scenario": true
+    },
+    {
+      "capex_limit_million_idr": 45000.0,
+      "success": true,
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "n_bases": 10,
+      "total_capex_million_idr": 45000.0,
+      "capex_remaining_million_idr": 0.0,
+      "total_assigned_demand": 362.6335,
+      "total_demand_capacity": 1600.0,
+      "total_capacity_headroom": 1237.3665,
+      "mean_utilization_pct": 22.66,
+      "total_storage_units": 800,
+      "tier_counts": {
+        "small": 0,
+        "medium": 0,
+        "large": 10
+      },
+      "objective_value": -795.5,
+      "is_synthetic_scenario": true
+    }
+  ],
+  "baseline_comparison": [
+    {
+      "scenario": "baseline_uniform_small_tier",
+      "uniform_tier": "small",
+      "total_capex_million_idr": 15000.0,
+      "within_capex_limit": true,
+      "feasible_all_demands": false,
+      "overloaded_bases_count": 4,
+      "total_demand_deficit": 36.8486,
+      "total_demand_capacity": 400.0,
+      "total_storage_units": 200
+    },
+    {
+      "scenario": "baseline_uniform_medium_tier",
+      "uniform_tier": "medium",
+      "total_capex_million_idr": 28000.0,
+      "within_capex_limit": true,
+      "feasible_all_demands": true,
+      "overloaded_bases_count": 0,
+      "total_demand_deficit": 0.0,
+      "total_demand_capacity": 900.0,
+      "total_storage_units": 450
+    },
+    {
+      "scenario": "milp_min_capex_feasible_floor",
+      "uniform_tier": "mixed",
+      "total_capex_million_idr": 20200.0,
+      "within_capex_limit": true,
+      "feasible_all_demands": true,
+      "overloaded_bases_count": 0,
+      "total_demand_deficit": 0.0,
+      "total_demand_capacity": 600.0,
+      "total_storage_units": 300
+    }
+  ],
+  "infeasible_scenario_tests": [
+    {
+      "test_name": "insufficient_capex_18000M_idr (below 20200M floor)",
+      "success": false,
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+    },
+    {
+      "test_name": "extreme_demand_shock_3x (exceeds large tier 160.0 capacity)",
+      "success": false,
+      "status": 2,
+      "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)"
+    }
+  ],
+  "output_files": {
+    "base_capacity_plan_parquet": "outputs/optimization/m1_m2/base_capacity_plan_m2.parquet",
+    "capex_sweep_csv": "outputs/optimization/m1_m2/m2_capex_sweep.csv"
+  }
+}

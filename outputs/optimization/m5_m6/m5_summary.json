@@ -1,0 +1,243 @@
+{
+  "module": "Module 5: Communication & Coordination Optimization",
+  "is_synthetic_scenario": true,
+  "rf_proxy_assumptions_and_limitations": {
+    "proxy_model": "Isotropic haversine geodesic coverage radius (km)",
+    "coverage_radius_km_note": "Zone and active-base radio coverage uses haversine distance <= relay_coverage_radius_km (55.0 km) as a simplified flat-earth/spherical LOS proxy.",
+    "backbone_link_note": "Inter-relay / hub backhaul connectivity defaults to 2.0 * relay_coverage_radius_km (110.0 km) to represent elevated directional tower-to-tower microwave/VHF backhaul or intermediate-base bridging; strict 55.0 km relay-to-relay chaining across Riau's 40 candidate sites exhibits a 55.60 km gap between northern/central and southern/eastern components (explicitly tested as an infeasibility case).",
+    "missing_rf_physics": [
+      "Digital Elevation Model (DEM) terrain obstruction and Fresnel zone clearance",
+      "Peat-swamp / tropical forest canopy attenuation (foliage path loss)",
+      "Frequency-band link budget (VHF/UHF/microwave), TX power, antenna gain, and mast height",
+      "Tropical heavy-rain fade margin and multipath interference"
+    ],
+    "operational_disclaimer": "Synthetic planning scenario (is_synthetic_scenario=True); site surveys and RF link-budget studies are required before physical tower/repeater procurement."
+  },
+  "default_solution": {
+    "scenario_name": "default_k8",
+    "solver_success": true,
+    "solver_status": 0,
+    "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective_value": -284.8569,
+    "parameters": {
+      "max_relays": 8,
+      "relay_coverage_radius_km": 55.0,
+      "backbone_link_radius_km": 110.0,
+      "hub_connectivity_required": true,
+      "require_all_bases_covered": true,
+      "n_candidates": 40,
+      "n_bases": 10
+    },
+    "metrics": {
+      "n_relays": 8,
+      "zones_covered": 484,
+      "total_zones": 853,
+      "priority_score_covered": 234.8661,
+      "priority_coverage_pct": 64.77,
+      "tier1_zones_covered": 60,
+      "tier1_total": 85,
+      "bases_covered": 10,
+      "total_bases": 10,
+      "base_coverage_pct": 100.0,
+      "connected_components_backbone": 1,
+      "connected_components_strict_radius": 8,
+      "is_backbone_connected": true,
+      "hub_relay_id": "RELAY_CAND_26"
+    },
+    "baseline_comparison": {
+      "n_relays": 8,
+      "zones_covered": 456,
+      "total_zones": 853,
+      "priority_score_covered": 227.8325,
+      "priority_coverage_pct": 62.83,
+      "tier1_zones_covered": 68,
+      "tier1_total": 85,
+      "bases_covered": 8,
+      "total_bases": 10,
+      "base_coverage_pct": 80.0,
+      "connected_components_backbone": 5,
+      "connected_components_strict_radius": 8,
+      "is_backbone_connected": false,
+      "hub_relay_id": "RELAY_CAND_26",
+      "method": "naive_top_base_colocation",
+      "is_synthetic_scenario": true
+    },
+    "selected_relays": [
+      {
+        "relay_cand_id": "RELAY_CAND_10",
+        "grid_id": "GRID_0495",
+        "land_rep_lat": -0.8413,
+        "land_rep_lon": 102.05,
+        "dist_to_pekanbaru_km": 164.208,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_13",
+        "grid_id": "GRID_0098",
+        "land_rep_lat": 0.45,
+        "land_rep_lon": 100.65,
+        "dist_to_pekanbaru_km": 88.935,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_16",
+        "grid_id": "GRID_0820",
+        "land_rep_lat": 0.15,
+        "land_rep_lon": 103.45,
+        "dist_to_pekanbaru_km": 226.144,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_20",
+        "grid_id": "GRID_0449",
+        "land_rep_lat": -0.15,
+        "land_rep_lon": 101.85,
+        "dist_to_pekanbaru_km": 85.667,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_25",
+        "grid_id": "GRID_0279",
+        "land_rep_lat": 1.35,
+        "land_rep_lon": 101.25,
+        "dist_to_pekanbaru_km": 96.272,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_26",
+        "grid_id": "GRID_0301",
+        "land_rep_lat": 0.55,
+        "land_rep_lon": 101.35,
+        "dist_to_pekanbaru_km": 11.875,
+        "is_primary_hub": true
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_28",
+        "grid_id": "GRID_0704",
+        "land_rep_lat": -0.45,
+        "land_rep_lon": 102.85,
+        "dist_to_pekanbaru_km": 188.775,
+        "is_primary_hub": false
+      },
+      {
+        "relay_cand_id": "RELAY_CAND_34",
+        "grid_id": "GRID_0087",
+        "land_rep_lat": 1.65,
+        "land_rep_lon": 100.55,
+        "dist_to_pekanbaru_km": 161.595,
+        "is_primary_hub": false
+      }
+    ]
+  },
+  "scenario_sweep": [
+    {
+      "scenario_name": "sweep_k4",
+      "max_relays": 4,
+      "solver_success": true,
+      "solver_status": 0,
+      "n_relays_used": 4,
+      "bases_covered": 6,
+      "total_bases": 10,
+      "base_coverage_pct": 60.0,
+      "zones_covered": 268,
+      "priority_score_covered": 127.7598,
+      "priority_coverage_pct": 35.23,
+      "baseline_priority_coverage_pct": 34.47,
+      "baseline_base_coverage_pct": 40.0,
+      "is_backbone_connected": true,
+      "is_synthetic_scenario": true
+    },
+    {
+      "scenario_name": "sweep_k6",
+      "max_relays": 6,
+      "solver_success": true,
+      "solver_status": 0,
+      "n_relays_used": 6,
+      "bases_covered": 7,
+      "total_bases": 10,
+      "base_coverage_pct": 70.0,
+      "zones_covered": 398,
+      "priority_score_covered": 189.0891,
+      "priority_coverage_pct": 52.14,
+      "baseline_priority_coverage_pct": 49.54,
+      "baseline_base_coverage_pct": 60.0,
+      "is_backbone_connected": true,
+      "is_synthetic_scenario": true
+    },
+    {
+      "scenario_name": "sweep_k8",
+      "max_relays": 8,
+      "solver_success": true,
+      "solver_status": 0,
+      "n_relays_used": 8,
+      "bases_covered": 9,
+      "total_bases": 10,
+      "base_coverage_pct": 90.0,
+      "zones_covered": 508,
+      "priority_score_covered": 246.78,
+      "priority_coverage_pct": 68.05,
+      "baseline_priority_coverage_pct": 62.83,
+      "baseline_base_coverage_pct": 80.0,
+      "is_backbone_connected": true,
+      "is_synthetic_scenario": true
+    },
+    {
+      "scenario_name": "sweep_k10",
+      "max_relays": 10,
+      "solver_success": true,
+      "solver_status": 0,
+      "n_relays_used": 10,
+      "bases_covered": 10,
+      "total_bases": 10,
+      "base_coverage_pct": 100.0,
+      "zones_covered": 608,
+      "priority_score_covered": 289.0688,
+      "priority_coverage_pct": 79.71,
+      "baseline_priority_coverage_pct": 69.96,
+      "baseline_base_coverage_pct": 100.0,
+      "is_backbone_connected": true,
+      "is_synthetic_scenario": true
+    },
+    {
+      "scenario_name": "sweep_k12",
+      "max_relays": 12,
+      "solver_success": true,
+      "solver_status": 0,
+      "n_relays_used": 12,
+      "bases_covered": 10,
+      "total_bases": 10,
+      "base_coverage_pct": 100.0,
+      "zones_covered": 684,
+      "priority_score_covered": 318.0838,
+      "priority_coverage_pct": 87.71,
+      "baseline_priority_coverage_pct": 69.96,
+      "baseline_base_coverage_pct": 100.0,
+      "is_backbone_connected": true,
+      "is_synthetic_scenario": true
+    }
+  ],
+  "infeasibility_tests": [
+    {
+      "scenario_name": "infeasible_max_relays_2_all_bases",
+      "description": "Require 100% base coverage with only max_relays=2",
+      "solver_success": false,
+      "solver_status": 2,
+      "solver_message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "infeasibility_detected": true
+    },
+    {
+      "scenario_name": "infeasible_strict_55km_single_component",
+      "description": "Require strict 55.0 km relay-to-relay chaining across all bases without directional backhaul",
+      "solver_success": false,
+      "solver_status": 2,
+      "solver_message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "infeasibility_detected": true
+    }
+  ],
+  "artifacts": {
+    "selected_relays_parquet": "outputs/optimization/m5_m6/m5_selected_relays.parquet",
+    "zone_coverage_parquet": "outputs/optimization/m5_m6/m5_zone_comms_coverage.parquet",
+    "base_status_parquet": "outputs/optimization/m5_m6/m5_base_comms_status.parquet",
+    "scenario_sweep_parquet": "outputs/optimization/m5_m6/m5_scenario_sweep.parquet"
+  }
+}

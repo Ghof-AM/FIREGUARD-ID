@@ -1,0 +1,5 @@
+scenario,vuln,persistence,corridor,remoteness,spearman_rho_vs_base,top85_jaccard_vs_base,max_rank_shift_cells
+balanced_operational,0.45,0.25,0.2,0.1,1.0,1.0,0
+vulnerability_dominant,0.7,0.15,0.1,0.05,0.996523,0.7526,85
+corridor_containment,0.35,0.2,0.35,0.1,0.993496,0.8085,99
+remote_access_focus,0.4,0.2,0.15,0.25,0.987407,0.7172,119
