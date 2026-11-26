@@ -1,0 +1,169 @@
+{
+  "boundary": {
+    "source_id": "SRC-02",
+    "provider": "GADM 4.1",
+    "gid_1": "IDN.24_1",
+    "crs": "EPSG:4326",
+    "processed_path": "data/processed/riau_boundary.geojson",
+    "sha256": "2d611924e24d249c0e8a13860d379a056ed84355e36479d590aa6c87c83b4ae2",
+    "verified_at_utc": "2026-11-26T09:10:43.534939+00:00",
+    "name_1": "Riau",
+    "bounds": [
+      100.0249,
+      -1.1223,
+      103.8146,
+      2.9191
+    ],
+    "geodesic_area_km2": 89874.5,
+    "polygon_parts": 73,
+    "interior_holes": 1
+  },
+  "viirs_provenance": {
+    "source_id": "SRC-01",
+    "provider": "NASA FIRMS",
+    "expected_satellite": "N20",
+    "expected_instrument": "VIIRS",
+    "total_raw_records": 595676,
+    "files": [
+      {
+        "file": "viirs-jpss1_2021_Indonesia.csv",
+        "rows": 71063,
+        "sha256": "2f4bfe2d137938595aaac7d6a9adec6893d1643ec8b90fcff988041f3c9342b1",
+        "date_min": "2021-01-01",
+        "date_max": "2021-12-31"
+      },
+      {
+        "file": "viirs-jpss1_2022_Indonesia.csv",
+        "rows": 63803,
+        "sha256": "0d55974e046524cfa2f13922d5545db2dbde6437154b24452586929c5a8cee81",
+        "date_min": "2022-01-01",
+        "date_max": "2022-12-31"
+      },
+      {
+        "file": "viirs-jpss1_2023_Indonesia.csv",
+        "rows": 250312,
+        "sha256": "734db136899d9e7a0ab574beb3894c41825ccfc75b9d9073775679dfc9bef431",
+        "date_min": "2023-01-01",
+        "date_max": "2023-12-31"
+      },
+      {
+        "file": "viirs-jpss1_2024_Indonesia.csv",
+        "rows": 116040,
+        "sha256": "7a7f669d95c1a1ff4d936e092db3e738918c6a6005f0b293d20e29a7ec730d40",
+        "date_min": "2024-01-01",
+        "date_max": "2024-12-31"
+      },
+      {
+        "file": "viirs-jpss1_2025_Indonesia.csv",
+        "rows": 94458,
+        "sha256": "af0ff6513eebc7d8d407b651e4d616948fbe86feef144773475dcb96245aab66",
+        "date_min": "2025-01-01",
+        "date_max": "2025-12-31"
+      }
+    ],
+    "loaded_at_utc": "2026-11-26T09:10:44.077640+00:00"
+  },
+  "quality_audit": {
+    "raw_record_count": 595676,
+    "clipped_record_count": 15510,
+    "raw_missing_counts": {
+      "latitude": 0,
+      "longitude": 0,
+      "bright_ti4": 0,
+      "scan": 0,
+      "track": 0,
+      "acq_date": 0,
+      "acq_time": 0,
+      "satellite": 0,
+      "instrument": 0,
+      "confidence": 0,
+      "version": 0,
+      "bright_ti5": 0,
+      "frp": 0,
+      "daynight": 0,
+      "type": 0,
+      "source_file": 0
+    },
+    "clipped_missing_counts": {
+      "latitude": 0,
+      "longitude": 0,
+      "bright_ti4": 0,
+      "scan": 0,
+      "track": 0,
+      "acq_date": 0,
+      "acq_time": 0,
+      "satellite": 0,
+      "instrument": 0,
+      "confidence": 0,
+      "version": 0,
+      "bright_ti5": 0,
+      "frp": 0,
+      "daynight": 0,
+      "type": 0,
+      "source_file": 0
+    },
+    "coordinate_validity": {
+      "latitude_valid": true,
+      "longitude_valid": true
+    },
+    "invalid_dates": {
+      "raw": 0,
+      "clipped": 0
+    },
+    "physical_checks_clipped": {
+      "negative_frp": 0,
+      "out_of_range_bright_ti4_K": 0,
+      "out_of_range_bright_ti5_K": 0
+    },
+    "frp_distribution_mw": {
+      "min": 0.11,
+      "median": 3.2,
+      "p90": 13.09,
+      "max": 291.93,
+      "iqr_upper_fence": 14.773750000000001,
+      "above_iqr_fence_count": 1317
+    },
+    "duplicates": {
+      "raw_full_row": 0,
+      "clipped_full_row": 0,
+      "clipped_same_lat_lon_date_time": 0
+    },
+    "satellite_consistency": {
+      "raw_satellites": {
+        "N20": 595676
+      },
+      "clipped_satellites": {
+        "N20": 15510
+      },
+      "clipped_instruments": {
+        "VIIRS": 15510
+      }
+    },
+    "confidence_distribution_qa_only": {
+      "raw": {
+        "n": 542556,
+        "l": 38284,
+        "h": 14836
+      },
+      "clipped": {
+        "n": 14740,
+        "l": 409,
+        "h": 361
+      }
+    },
+    "daynight_distribution": {
+      "N": 8657,
+      "D": 6853
+    },
+    "temporal_span": {
+      "expected_start": "2021-01-01",
+      "expected_end": "2025-12-31",
+      "expected_calendar_days": 1826,
+      "clipped_first_detection": "2021-01-05",
+      "clipped_last_detection": "2025-12-29",
+      "days_with_riau_detections": 1257,
+      "days_without_detections": 569,
+      "note": "Days without detections do not prove absence of fire (cloud/canopy/swath gaps apply)."
+    }
+  }
+}

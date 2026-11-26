@@ -1,0 +1,44 @@
+{
+  "schema_version": "2.0.0",
+  "n_grid_cells": 853,
+  "total_hotspots_assigned": 15510,
+  "zero_detection_cells": 249,
+  "clustering_features": [
+    "hotspot_density_km2",
+    "fire_days",
+    "active_years_count",
+    "frp_total_density_mw_km2"
+  ],
+  "log1p_features": [
+    "hotspot_density_km2",
+    "fire_days",
+    "frp_total_density_mw_km2"
+  ],
+  "scaler": "standard",
+  "scaler_mean": [
+    0.126296,
+    1.389917,
+    2.016413,
+    0.394339
+  ],
+  "scaler_scale": [
+    0.238535,
+    1.208117,
+    1.769141,
+    0.638653
+  ],
+  "spatial_blocks": {
+    "NE": 150,
+    "NW": 281,
+    "SE": 293,
+    "SW": 129
+  },
+  "undefined_conditional_nans": {
+    "mean_frp_mw": 249,
+    "max_frp_mw": 249,
+    "frp_p90_mw": 249,
+    "dry_season_share": 249,
+    "night_detection_share": 249,
+    "high_conf_share": 249
+  }
+}

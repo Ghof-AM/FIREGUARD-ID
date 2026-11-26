@@ -1,0 +1,5 @@
+,hotspot_density_km2,fire_days,active_years_count,frp_total_density_mw_km2
+hotspot_density_km2,1.0,0.6995,0.5351,0.9047
+fire_days,0.6995,1.0,0.9244,0.689
+active_years_count,0.5351,0.9244,1.0,0.5662
+frp_total_density_mw_km2,0.9047,0.689,0.5662,1.0

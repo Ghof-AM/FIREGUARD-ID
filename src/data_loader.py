@@ -1,27 +1,40 @@
 """
 Data Loader Module for FIREGUARD ID.
-Loads raw satellite hotspots, administrative boundary, and vulnerability grid datasets.
+Loads authoritative processed datasets and boundary geometry via config/project.yaml.
 """
-import os
+from __future__ import annotations
+
 import json
+from pathlib import Path
+from typing import Any
+
 import pandas as pd
 
-def load_boundary(geojson_path="data/processed/riau_boundary.geojson"):
+from src.utils import load_yaml, resolve_path
+
+
+def load_boundary(geojson_path: str | Path | None = None, repo_root: Path | None = None) -> dict[str, Any]:
     """Loads Riau GeoJSON boundary."""
+    if geojson_path is None:
+        cfg = load_yaml("config/project.yaml", repo_root=repo_root)
+        geojson_path = resolve_path(cfg["paths"]["processed_dir"], repo_root=repo_root) / "riau_boundary.geojson"
     with open(geojson_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def load_hotspots(csv_path="data/processed/riau_viirs_hotspots_2021_2025.csv"):
-    """Loads cleaned VIIRS hotspots within Riau."""
-    return pd.read_csv(csv_path)
 
-def load_grid_profiles(csv_path="data/processed/riau_vulnerability_grid_01deg.csv"):
-    """Loads 0.1 degree grid spatial profiles."""
-    return pd.read_csv(csv_path)
+def load_hotspots(path: str | Path | None = None, repo_root: Path | None = None) -> pd.DataFrame:
+    """Loads geometry-clipped VIIRS hotspots within Riau."""
+    if path is None:
+        cfg = load_yaml("config/project.yaml", repo_root=repo_root)
+        path = resolve_path(cfg["paths"]["processed_dir"], repo_root=repo_root) / "firms_viirs_riau_polygon_clipped.parquet"
+    p = Path(path)
+    return pd.read_parquet(p) if p.suffix == ".parquet" else pd.read_csv(p)
 
-def load_splits(split_dir="data/split"):
-    """Loads train, validation, and test sets."""
-    train_df = pd.read_csv(os.path.join(split_dir, "train_scaled.csv"))
-    val_df = pd.read_csv(os.path.join(split_dir, "val_scaled.csv"))
-    test_df = pd.read_csv(os.path.join(split_dir, "test_scaled.csv"))
-    return train_df, val_df, test_df
+
+def load_grid_profiles(path: str | Path | None = None, repo_root: Path | None = None) -> pd.DataFrame:
+    """Loads authoritative 0.1 degree grid spatial profiles."""
+    if path is None:
+        cfg = load_yaml("config/project.yaml", repo_root=repo_root)
+        path = resolve_path(cfg["paths"]["processed_dir"], repo_root=repo_root) / "riau_grid_analytical.parquet"
+    p = Path(path)
+    return pd.read_parquet(p) if p.suffix == ".parquet" else pd.read_csv(p)
