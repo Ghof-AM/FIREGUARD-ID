@@ -6,6 +6,7 @@ __pycache__/
 .Python
 env/
 venv/
+.venv/
 ENV/
 build/
 develop-eggs/
@@ -23,14 +24,45 @@ wheels/
 .installed.cfg
 *.egg
 
+# Testing, Coverage & Caches
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
 # Jupyter Notebook
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
+
+# Temporary & Scratch Artifacts
+*.tmp
+*.bak
+*.log
+~$*
+.mplconfig/
+tmp/
+temp/
+data/interim/
 
 # Large raw archive files
 data/raw/*.zip
 *.zip
 
-# Operating System
+# Operating System & IDE
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
+.gemini/
+
+# Secrets, Credentials & Environment Files (NEVER commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*credentials*.json
+*secret*

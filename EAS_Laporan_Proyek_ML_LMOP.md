@@ -1,3 +1,7 @@
+> **[HISTORICAL / SUPERSEDED DRAFT NOTICE — 2026-11-26]**  
+> This academic report template (`EAS_Laporan_Proyek_ML_LMOP.md`) preserves an **earlier, superseded** project proposal (1–3 day binary hotspot prediction using Logistic Regression, XGBoost, and LSTM evaluated via PR-AUC/Recall/F1).  
+> **Active Project Methodology:** See [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md), [`docs/DECISION_LOG.md`](docs/DECISION_LOG.md), and [`README.md`](README.md). FIREGUARD ID uses **unsupervised spatial clustering (K-Means, HDBSCAN, DEC)** and **operational infrastructure optimization (MCLP/MILP)**.
+
 # EAS_Laporan_Proyek_ML_LMOP
 
 ## INFORMASI PROYEK
