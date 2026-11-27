@@ -1,6 +1,6 @@
 {
   "model_family": "kmeans",
-  "generated_at_utc": "2026-11-26T09:11:04Z",
+  "generated_at_utc": "2026-11-26T17:46:01Z",
   "feature_schema_version": "2.0.0",
   "clustering_features": [
     "hotspot_density_km2",
