@@ -11,13 +11,17 @@ from __future__ import annotations
 
 import json
 import os
+import tempfile
 import time
 from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(os.cpu_count() or 4))
+os.environ.setdefault("MPLCONFIGDIR", tempfile.gettempdir())
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import torch
@@ -234,7 +238,8 @@ def _pretrain_autoencoder(
         init_recon, _ = autoencoder(X_device)
         initial_mse = float(criterion(init_recon, X_device).item())
 
-    epoch_history: list[dict[str, float]] = []
+    epoch_history_full: list[dict[str, float]] = []
+    epoch_history_sampled: list[dict[str, float]] = []
     for epoch in range(1, cfg.pretrain_epochs + 1):
         autoencoder.train()
         total_loss = 0.0
@@ -248,8 +253,10 @@ def _pretrain_autoencoder(
             optimizer.step()
             total_loss += float(loss.item()) * len(batch_x)
         epoch_mse = total_loss / max(n_samples, 1)
+        rec = {"epoch": int(epoch), "mse": round(epoch_mse, 6)}
+        epoch_history_full.append(rec)
         if epoch in {1, cfg.pretrain_epochs} or epoch % 30 == 0:
-            epoch_history.append({"epoch": int(epoch), "mse": round(epoch_mse, 6)})
+            epoch_history_sampled.append(rec)
 
     autoencoder.eval()
     with torch.no_grad():
@@ -259,7 +266,8 @@ def _pretrain_autoencoder(
     return autoencoder, {
         "initial_mse": round(initial_mse, 6),
         "final_mse": round(final_mse, 6),
-        "history_sampled": epoch_history,
+        "history_sampled": epoch_history_sampled,
+        "history_full": epoch_history_full,
     }
 
 
@@ -331,6 +339,7 @@ def train_dec_single_run(
     y_pred_last = y_pred_0.copy()
 
     convergence_history: list[dict[str, Any]] = []
+    finetune_epoch_history: list[dict[str, Any]] = []
     converged = False
     stop_reason = "reached_finetune_max_iter"
     epochs_run = 0
@@ -365,52 +374,62 @@ def train_dec_single_run(
 
         epochs_run = epoch
 
-        if epoch % cfg.update_interval == 0 or epoch == cfg.finetune_max_iter:
-            dec_model.eval()
-            with torch.no_grad():
-                q_full, x_recon_full, _ = dec_model(X_device)
-                kl_full = float(
-                    F.kl_div(
-                        torch.log(q_full.clamp(min=1e-12)),
-                        p_target,
-                        reduction="batchmean",
-                    ).item()
-                )
-                recon_full = float(F.mse_loss(x_recon_full, X_device).item())
-                total_full = kl_full + cfg.gamma_recon * recon_full
-                y_pred_curr = torch.argmax(q_full, dim=1).cpu().numpy().astype(int)
-
-            delta_label = float(np.mean(y_pred_curr != y_pred_last))
-            final_kl = kl_full
-            final_total = total_full
-            convergence_history.append(
-                {
-                    "epoch": int(epoch),
-                    "kl_loss": round(kl_full, 6),
-                    "recon_mse": round(recon_full, 6),
-                    "total_loss": round(total_full, 6),
-                    "delta_label": round(delta_label, 6),
-                    "active_clusters": int(len(np.unique(y_pred_curr))),
-                }
+        # Evaluate full-dataset loss every epoch for complete training curves
+        dec_model.eval()
+        with torch.no_grad():
+            q_full, x_recon_full, _ = dec_model(X_device)
+            kl_full = float(
+                F.kl_div(
+                    torch.log(q_full.clamp(min=1e-12)),
+                    p_target,
+                    reduction="batchmean",
+                ).item()
             )
+            recon_full = float(F.mse_loss(x_recon_full, X_device).item())
+            total_full = kl_full + cfg.gamma_recon * recon_full
+            y_pred_curr = torch.argmax(q_full, dim=1).cpu().numpy().astype(int)
 
+        delta_label_val = float(np.mean(y_pred_curr != y_pred_last))
+        final_kl = kl_full
+        final_total = total_full
+        epoch_rec = {
+            "epoch": int(epoch),
+            "kl_loss": round(kl_full, 6),
+            "recon_mse": round(recon_full, 6),
+            "total_loss": round(total_full, 6),
+            "delta_label": round(delta_label_val, 6),
+            "active_clusters": int(len(np.unique(y_pred_curr))),
+        }
+        finetune_epoch_history.append(epoch_rec)
+
+        if epoch % cfg.update_interval == 0 or epoch == cfg.finetune_max_iter:
+            convergence_history.append(epoch_rec)
             y_pred_last = y_pred_curr
             p_target = dec_model.target_distribution(q_full).detach()
 
-            if delta_label < cfg.tol:
+            if delta_label_val < cfg.tol:
                 converged = True
-                stop_reason = f"delta_label ({delta_label:.6f}) < tol ({cfg.tol})"
+                stop_reason = f"delta_label ({delta_label_val:.6f}) < tol ({cfg.tol})"
                 break
 
     q_final, z_final, labels_final, conf_final, final_recon_mse = _evaluate_full(dec_model, X_device)
     metrics_x = compute_clustering_metrics(X, labels_final, exclude_noise_label=-1)
     metrics_z = compute_clustering_metrics(z_final, labels_final, exclude_noise_label=-1)
     elapsed_sec = time.perf_counter() - t0
+    total_params = sum(p.numel() for p in dec_model.parameters())
+    trainable_params = sum(p.numel() for p in dec_model.parameters() if p.requires_grad)
 
     return {
         "model": dec_model,
         "config": asdict(cfg),
         "runtime_seconds": round(elapsed_sec, 4),
+        "parameter_counts": {
+            "total_params": int(total_params),
+            "trainable_params": int(trainable_params),
+            "encoder_params": int(sum(p.numel() for p in dec_model.autoencoder.encoder.parameters())),
+            "decoder_params": int(sum(p.numel() for p in dec_model.autoencoder.decoder.parameters())),
+            "cluster_centers_params": int(dec_model.cluster_centers.numel()),
+        },
         "pretrain": pretrain_stats,
         "init_kmeans_latent_ari_vs_q0": round(float(adjusted_rand_score(init_km_labels, y_pred_0)), 6),
         "init_metrics_feature_space": init_metrics_x,
@@ -424,6 +443,7 @@ def train_dec_single_run(
             "final_recon_mse": round(final_recon_mse, 6),
             "final_total_loss": round(float(final_total), 6) if final_total is not None else None,
             "convergence_history": convergence_history,
+            "epoch_history_full": finetune_epoch_history,
         },
         "metrics_feature_space": metrics_x,
         "metrics_latent_space": metrics_z,
@@ -715,6 +735,61 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
     models_dir = ensure_dir(resolve_path(proj_cfg["paths"]["models_dir"], repo_root=repo_root) / "dec")
     reports_dir = ensure_dir(resolve_path(proj_cfg["paths"]["reports_dir"], repo_root=repo_root) / "clustering")
 
+    # Optimization experiments (>=3 meaningful configs for L-M-O-P Optimization stage)
+    opt_configs = [
+        ("opt_baseline_lr5e4_bs64_g01", float(dec_cfg_raw["finetune_lr"]), int(dec_cfg_raw["batch_size"]), float(dec_cfg_raw["gamma_recon"])),
+        ("opt_high_lr1e3_bs64_g01", 0.001, int(dec_cfg_raw["batch_size"]), float(dec_cfg_raw["gamma_recon"])),
+        ("opt_pure_kl_lr5e4_bs32_g00", float(dec_cfg_raw["finetune_lr"]), 32, 0.0),
+    ]
+    optimization_experiments: list[dict[str, Any]] = []
+    for exp_name, lr_val, bs_val, g_val in opt_configs:
+        if (
+            np.isclose(lr_val, float(dec_cfg_raw["finetune_lr"]))
+            and bs_val == int(dec_cfg_raw["batch_size"])
+            and np.isclose(g_val, float(dec_cfg_raw["gamma_recon"]))
+        ):
+            opt_run = best_run
+        else:
+            o_cfg = DECTrainConfig(
+                n_clusters=best_k,
+                latent_dim=int(dec_cfg_raw["latent_dim"]),
+                hidden_dims=[int(h) for h in dec_cfg_raw["hidden_dims"]],
+                pretrain_epochs=int(dec_cfg_raw["pretrain_epochs"]),
+                pretrain_lr=float(dec_cfg_raw["pretrain_lr"]),
+                finetune_max_iter=int(dec_cfg_raw["finetune_max_iter"]),
+                finetune_lr=lr_val,
+                batch_size=bs_val,
+                update_interval=int(dec_cfg_raw["update_interval"]),
+                tol=float(dec_cfg_raw["tol"]),
+                alpha=float(dec_cfg_raw["alpha"]),
+                gamma_recon=g_val,
+                seed=primary_seed,
+            )
+            opt_run = train_dec_single_run(X, o_cfg, device)
+        optimization_experiments.append(
+            {
+                "experiment_name": exp_name,
+                "finetune_lr": lr_val,
+                "batch_size": bs_val,
+                "gamma_recon": g_val,
+                "epochs_run": opt_run["finetune"]["epochs_run"],
+                "converged": opt_run["finetune"]["converged"],
+                "runtime_seconds": opt_run["runtime_seconds"],
+                "final_kl_loss": opt_run["finetune"]["final_kl_loss"],
+                "final_recon_mse": opt_run["finetune"]["final_recon_mse"],
+                "final_total_loss": opt_run["finetune"]["final_total_loss"],
+                "silhouette_feature": opt_run["metrics_feature_space"]["silhouette_score"],
+                "davies_bouldin_feature": opt_run["metrics_feature_space"]["davies_bouldin_index"],
+                "silhouette_latent": opt_run["metrics_latent_space"]["silhouette_score"],
+                "ari_vs_selected": round(float(adjusted_rand_score(best_run["labels"], opt_run["labels"])), 6),
+            }
+        )
+
+    # Generate training history PNG plots from actual logged epochs
+    history_plot_path = reports_dir / "dec_training_history.png"
+    opt_plot_path = reports_dir / "dec_optimization_comparison.png"
+    _save_dec_training_plots(best_run, optimization_experiments, history_plot_path, opt_plot_path)
+
     checkpoint_path = models_dir / "dec_model.pt"
     assignments_path = models_dir / "dec_assignments.parquet"
     embeddings_path = models_dir / "dec_latent_embeddings.parquet"
@@ -741,11 +816,14 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
                 "latent_activation": "Linear",
                 "output_activation": "Linear",
             },
+            "parameter_counts": best_run["parameter_counts"],
             "n_clusters": int(best_k),
             "seed": int(primary_seed),
             "feature_columns": scaled_cols,
             "config": best_run["config"],
             "cluster_centers": best_run["model"].cluster_centers.detach().cpu().numpy(),
+            "pretrain_history_full": best_run["pretrain"]["history_full"],
+            "finetune_epoch_history_full": best_run["finetune"]["epoch_history_full"],
             "metrics_feature_space": best_summary["primary_metrics_feature_space"],
             "metrics_latent_space": best_summary["primary_metrics_latent_space"],
         },
@@ -773,6 +851,7 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
 
     registry: dict[str, Any] = {
         "model_family": "DEC",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "reference": "Xie et al. (2016) + IDEC joint reconstruction (Guo et al., 2017)",
         "device": {"type": device.type, "name": device_name},
         "input_matrix": {
@@ -789,6 +868,7 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
             "output_activation": "Linear",
             "student_t_alpha": float(dec_cfg_raw["alpha"]),
             "gamma_recon": float(dec_cfg_raw["gamma_recon"]),
+            **best_run["parameter_counts"],
         },
         "hyperparameters": dec_cfg_raw,
         "seeds_stability": seeds_stability,
@@ -796,6 +876,7 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
         "selected_model": {
             "n_clusters": int(best_k),
             "seed": int(primary_seed),
+            "runtime_seconds": best_run["runtime_seconds"],
             "selection_rule": (
                 "Composite multi-criteria score combining feature-space Silhouette (0.30), "
                 "latent-space Silhouette (0.15), inverted DBI (0.20), multi-seed ARI (0.20), "
@@ -807,15 +888,19 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
             "multi_seed_stability": best_summary["multi_seed_stability"],
             "spatial_coherence": best_summary["spatial_coherence"],
             "assignment_confidence": best_summary["primary_assignment_confidence"],
+            "pretrain_summary": best_run["pretrain"],
             "finetune_convergence": best_summary["primary_finetune"],
         },
         "gamma_recon_ablation": ablation_gamma,
+        "optimization_experiments": optimization_experiments,
         "spatial_block_generalization": spatial_gen,
         "artifacts": {
             "checkpoint": "outputs/models/dec/dec_model.pt",
             "assignments": "outputs/models/dec/dec_assignments.parquet",
             "latent_embeddings": "outputs/models/dec/dec_latent_embeddings.parquet",
             "experiments_json": "reports/clustering/dec_experiments.json",
+            "training_history_plot": "reports/clustering/dec_training_history.png",
+            "optimization_comparison_plot": "reports/clustering/dec_optimization_comparison.png",
         },
     }
 
@@ -827,6 +912,69 @@ def run_dec_pipeline(repo_root: Path | None = None) -> dict[str, Any]:
     logger.info("Saved DEC latent embeddings -> %s", embeddings_path)
     logger.info("Saved DEC experiment registry -> %s", experiments_path)
     return registry
+
+
+def _save_dec_training_plots(
+    best_run: dict[str, Any],
+    opt_exps: list[dict[str, Any]],
+    history_plot_path: Path,
+    opt_plot_path: Path,
+) -> None:
+    """Generates real epoch-by-epoch DEC training curve and optimization comparison plots."""
+    pre_df = pd.DataFrame(best_run["pretrain"]["history_full"])
+    ft_df = pd.DataFrame(best_run["finetune"]["epoch_history_full"])
+
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
+    axes[0].plot(pre_df["epoch"], pre_df["mse"], color="#2980b9", lw=2.0)
+    axes[0].set_title("Stage 1: Autoencoder Pretraining MSE", fontsize=10.5, fontweight="bold")
+    axes[0].set_xlabel("Epoch")
+    axes[0].set_ylabel("MSE Reconstruction Loss")
+    axes[0].grid(True, linestyle="--", alpha=0.4)
+
+    axes[1].plot(ft_df["epoch"], ft_df["kl_loss"], label="KL Divergence Loss", color="#8e44ad", lw=2.0)
+    axes[1].plot(ft_df["epoch"], ft_df["recon_mse"], label="Reconstruction MSE", color="#e67e22", lw=1.8)
+    axes[1].plot(ft_df["epoch"], ft_df["total_loss"], label="Total Loss (KL + 0.1*MSE)", color="#c0392b", lw=2.0, linestyle="--")
+    axes[1].set_title("Stage 3: DEC Joint Refinement Losses", fontsize=10.5, fontweight="bold")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("Loss")
+    axes[1].legend(fontsize=8)
+    axes[1].grid(True, linestyle="--", alpha=0.4)
+
+    axes[2].plot(ft_df["epoch"], ft_df["delta_label"] * 100.0, color="#16a085", lw=1.8)
+    axes[2].axhline(0.1, color="#c0392b", linestyle=":", lw=1.5, label="Convergence tol (0.1%)")
+    axes[2].set_title("Label Assignment Change (Convergence)", fontsize=10.5, fontweight="bold")
+    axes[2].set_xlabel("Epoch")
+    axes[2].set_ylabel("Label Change (%)")
+    axes[2].legend(fontsize=8)
+    axes[2].grid(True, linestyle="--", alpha=0.4)
+
+    plt.tight_layout()
+    fig.savefig(history_plot_path, dpi=200)
+    plt.close(fig)
+
+    opt_df = pd.DataFrame(opt_exps)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
+    labels = [r.replace("opt_", "") for r in opt_df["experiment_name"]]
+    x = np.arange(len(labels))
+    axes[0].bar(x - 0.18, opt_df["silhouette_feature"], width=0.35, label="Feature Silhouette", color="#2980b9")
+    axes[0].bar(x + 0.18, opt_df["silhouette_latent"], width=0.35, label="Latent Silhouette", color="#8e44ad")
+    axes[0].set_xticks(x)
+    axes[0].set_xticklabels(labels, rotation=12, fontsize=8.5)
+    axes[0].set_title("DEC Optimization Configs: Silhouette", fontsize=10.5, fontweight="bold")
+    axes[0].legend(fontsize=8)
+    axes[0].grid(axis="y", linestyle="--", alpha=0.4)
+
+    axes[1].bar(x - 0.18, opt_df["final_kl_loss"], width=0.35, label="Final KL Loss", color="#16a085")
+    axes[1].bar(x + 0.18, opt_df["final_recon_mse"], width=0.35, label="Final Recon MSE", color="#e67e22")
+    axes[1].set_xticks(x)
+    axes[1].set_xticklabels(labels, rotation=12, fontsize=8.5)
+    axes[1].set_title("DEC Optimization Configs: Final Losses", fontsize=10.5, fontweight="bold")
+    axes[1].legend(fontsize=8)
+    axes[1].grid(axis="y", linestyle="--", alpha=0.4)
+
+    plt.tight_layout()
+    fig.savefig(opt_plot_path, dpi=200)
+    plt.close(fig)
 
 
 if __name__ == "__main__":
