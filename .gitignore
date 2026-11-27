@@ -46,9 +46,15 @@ tmp/
 temp/
 data/interim/
 
-# Large raw archive files
+# Large raw archive files & external raw caches (keep grid parquets & manifests trackable)
 data/raw/*.zip
 *.zip
+data/external/copernicus_dem_glo90/
+data/external/firms_snpp/
+data/external/modis/ornl_cache/
+data/external/peatland/*.geojson
+data/external/osm/*.json
+data/external/chirps/*.tif
 
 # Operating System & IDE
 .DS_Store
