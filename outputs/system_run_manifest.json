@@ -1,7 +1,7 @@
 {
   "project": "FIREGUARD-ID",
   "version": "2.0.0",
-  "executed_at_utc": "2026-11-26T09:14:42.148058+00:00",
+  "executed_at_utc": "2026-11-26T17:52:21.003931+00:00",
   "stages_executed": [
     "data",
     "features",
@@ -13,14 +13,14 @@
     "visualization"
   ],
   "timings_seconds": {
-    "data": 1.178,
-    "features": 0.571,
-    "eda": 1.922,
-    "clustering": 187.332,
-    "vulnerability": 0.368,
-    "prioritization": 0.062,
-    "optimization": 45.826,
-    "visualization": 1.362
+    "data": 1.248,
+    "features": 0.665,
+    "eda": 1.85,
+    "clustering": 328.988,
+    "vulnerability": 0.674,
+    "prioritization": 0.114,
+    "optimization": 65.321,
+    "visualization": 2.2
   },
   "stage_summaries": {
     "data": {

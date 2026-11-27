@@ -1,0 +1,347 @@
+{
+  "generated_at_utc": "2026-11-27T03:36:03.988253+00:00",
+  "hardware": {
+    "python_version": "3.10.11",
+    "os_platform": "Windows-10-10.0.26300-SP0",
+    "machine": "AMD64",
+    "cpu_logical_cores": 16,
+    "is_colab": false,
+    "drive_mounted": false,
+    "temp_dir": "<system-temp-dir>",
+    "ram_gb": 15.71,
+    "torch_version": "2.5.1+cu121",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "packages": {
+      "numpy": "2.2.5",
+      "pandas": "2.2.3",
+      "scipy": "1.15.1",
+      "sklearn": "1.7.2",
+      "torch": "2.5.1+cu121",
+      "shapely": "2.1.2",
+      "pyarrow": "19.0.1",
+      "yaml": "6.0.3",
+      "matplotlib": "3.10.9",
+      "seaborn": "0.13.0",
+      "plotly": "5.18.0",
+      "streamlit": "1.44.1",
+      "fastapi": "0.115.12",
+      "pytest": "8.3.5"
+    }
+  },
+  "experiments": [
+    {
+      "experiment_id": "EXP-KM-BASE-K3",
+      "model_name": "K-Means",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": 42,
+      "hyperparameters": {
+        "n_clusters": 3,
+        "n_init": 30,
+        "max_iter": 500
+      },
+      "evaluation_scope": "Full 853 grid cells (0% noise)",
+      "training_time_seconds": 0.3147,
+      "inference_time_seconds": 0.00254,
+      "runtime_seconds": 0.31724,
+      "hardware": "Windows-10-10.0.26300-SP0 | CPU cores=16",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.544178,
+        "davies_bouldin_index": 0.714354,
+        "calinski_harabasz_index": 1261.715,
+        "cluster_sizes": {
+          "0": 329,
+          "1": 446,
+          "2": 78
+        },
+        "min_cluster_share": 0.091442,
+        "max_cluster_share": 0.52286,
+        "multi_seed_mean_ari": 1.0,
+        "spatial_fold_mean_ari": 0.972507,
+        "coherence_lift": 1.288
+      },
+      "checkpoint_location": "outputs/models/kmeans/kmeans_model.joblib",
+      "timestamp_utc": "2026-11-26T17:46:01Z",
+      "execution_status": "EXECUTED"
+    },
+    {
+      "experiment_id": "EXP-HDB-BASE-15-10",
+      "model_name": "HDBSCAN",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": null,
+      "hyperparameters": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "evaluation_scope": "Non-noise core points (662/853; 191 noise=-1 excluded from internal metrics)",
+      "training_time_seconds": 0.0121,
+      "inference_time_seconds": 0.00102,
+      "runtime_seconds": 0.01312,
+      "hardware": "Windows-10-10.0.26300-SP0 | CPU cores=16",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133,
+        "subsample_80pct_mean_ari": 0.971355,
+        "spatial_fold_mean_ari": 0.949771,
+        "coherence_lift": 1.4778
+      },
+      "checkpoint_location": "outputs/models/hdbscan/hdbscan_model.joblib",
+      "timestamp_utc": "2026-11-27T03:36:03.988253+00:00",
+      "execution_status": "EXECUTED"
+    },
+    {
+      "experiment_id": "EXP-DEC-BASE-K3",
+      "model_name": "Deep Embedded Clustering (DEC)",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": 42,
+      "hyperparameters": {
+        "latent_dim": 4,
+        "hidden_dims": [
+          32,
+          16
+        ],
+        "n_clusters_candidates": [
+          3,
+          4,
+          5
+        ],
+        "pretrain_epochs": 120,
+        "pretrain_lr": 0.001,
+        "finetune_max_iter": 300,
+        "finetune_lr": 0.0005,
+        "batch_size": 64,
+        "update_interval": 10,
+        "tol": 0.001,
+        "alpha": 1.0,
+        "gamma_recon": 0.1
+      },
+      "evaluation_scope": "Full 853 grid cells (feature-space vs latent-space explicitly separated)",
+      "training_time_seconds": 11.0475,
+      "inference_time_seconds": 0.004217,
+      "runtime_seconds": 11.0475,
+      "hardware": "CUDA (NVIDIA GeForce RTX 4050 Laptop GPU)",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48023,
+        "davies_bouldin_index": 0.847784,
+        "calinski_harabasz_index": 969.6476,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516,
+        "latent_silhouette_score": 0.877686,
+        "latent_davies_bouldin_index": 0.206765,
+        "multi_seed_mean_ari": 0.685752,
+        "spatial_fold_mean_ari": 0.880687,
+        "coherence_lift": 1.3212,
+        "finetune_epochs_run": 200,
+        "final_kl_loss": 0.047777,
+        "final_recon_mse": 0.019528
+      },
+      "checkpoint_location": "outputs/models/dec/dec_model.pt",
+      "timestamp_utc": "2026-11-26T17:51:05.784624+00:00",
+      "execution_status": "EXECUTED"
+    }
+  ],
+  "cross_model_agreement": {
+    "kmeans_vs_dec_ari": 0.770002,
+    "kmeans_vs_dec_nmi": 0.71046,
+    "kmeans_vs_hdbscan_non_noise_ari": 0.351406,
+    "dec_vs_hdbscan_non_noise_ari": 0.351889
+  },
+  "recommendation": {
+    "primary_operational_baseline": "K-Means (k=3)",
+    "secondary_diagnostic_density_model": "HDBSCAN (min_cluster_size=15, min_samples=10, eom)",
+    "deep_embedding_model": "DEC (k=3, latent_dim=4, gamma_recon=0.1)",
+    "rationale": "K-Means (k=3) provides full 100% spatial coverage (0% unassigned noise), lowest Davies-Bouldin Index (0.7144), highest Calinski-Harabasz (1261.7), perfect multi-seed reproducibility (ARI=1.000), and strongest spatial-block transfer stability (ARI=0.9725). HDBSCAN reveals finer-grained density regimes (8 clusters) and flags 191 boundary/transitional cells (22.4%) as density noise, making it valuable as a secondary diagnostic rather than a stand-alone full-province partition. DEC achieves crisp latent separation (latent Silhouette=0.8777) and aligns well with K-Means/spatial blocks (spatial ARI=0.8807) but exhibits lower seed stability (ARI=0.6877) and higher feature-space DBI (0.8478)."
+  },
+  "extended_feature_experiment": {
+    "available": true,
+    "baseline_features": [
+      "hotspot_density_km2",
+      "fire_days",
+      "active_years_count",
+      "frp_total_density_mw_km2"
+    ],
+    "extended_features": [
+      "hotspot_density_km2",
+      "fire_days",
+      "active_years_count",
+      "frp_total_density_mw_km2",
+      "elevation_m",
+      "era5_dry_t2m_mean_c",
+      "era5_dry_soil_moisture_mean",
+      "era5_annual_precip_mm"
+    ],
+    "models": {
+      "baseline_4feat": {
+        "kmeans_k3": {
+          "n_total": 853,
+          "n_valid_clustered": 853,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.544178,
+          "davies_bouldin_index": 0.714354,
+          "calinski_harabasz_index": 1261.715,
+          "cluster_sizes": {
+            "0": 329,
+            "1": 446,
+            "2": 78
+          },
+          "min_cluster_share": 0.091442,
+          "max_cluster_share": 0.52286,
+          "multi_seed_mean_ari": 1.0,
+          "spatial_coherence": {
+            "neighbor_concordance": 0.554477,
+            "random_baseline": 0.430507,
+            "coherence_lift": 1.288,
+            "neighbor_pairs": 6388
+          },
+          "runtime_seconds": 0.3827
+        },
+        "hdbscan_15_10_eom": {
+          "n_total": 853,
+          "n_valid_clustered": 662,
+          "n_clusters": 8,
+          "n_noise": 191,
+          "noise_ratio": 0.223916,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.643293,
+          "davies_bouldin_index": 0.882913,
+          "calinski_harabasz_index": 1656.8601,
+          "cluster_sizes": {
+            "0": 249,
+            "1": 46,
+            "2": 77,
+            "3": 92,
+            "4": 91,
+            "5": 30,
+            "6": 39,
+            "7": 38
+          },
+          "min_cluster_share": 0.045317,
+          "max_cluster_share": 0.376133,
+          "spatial_coherence": {
+            "neighbor_concordance": 0.305707,
+            "random_baseline": 0.206862,
+            "coherence_lift": 1.4778,
+            "neighbor_pairs": 4030
+          },
+          "runtime_seconds": 0.0136
+        }
+      },
+      "extended_8feat": {
+        "kmeans_k3": {
+          "n_total": 853,
+          "n_valid_clustered": 853,
+          "n_clusters": 3,
+          "n_noise": 0,
+          "noise_ratio": 0.0,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.23353,
+          "davies_bouldin_index": 1.351703,
+          "calinski_harabasz_index": 298.0853,
+          "cluster_sizes": {
+            "0": 401,
+            "1": 153,
+            "2": 299
+          },
+          "min_cluster_share": 0.179367,
+          "max_cluster_share": 0.470106,
+          "multi_seed_mean_ari": 0.968387,
+          "spatial_coherence": {
+            "neighbor_concordance": 0.705072,
+            "random_baseline": 0.376041,
+            "coherence_lift": 1.875,
+            "neighbor_pairs": 6388
+          },
+          "runtime_seconds": 0.3291
+        },
+        "hdbscan_15_10_eom": {
+          "n_total": 853,
+          "n_valid_clustered": 274,
+          "n_clusters": 3,
+          "n_noise": 579,
+          "noise_ratio": 0.678781,
+          "valid_for_internal_metrics": true,
+          "reason": "ok",
+          "silhouette_score": 0.253323,
+          "davies_bouldin_index": 1.294812,
+          "calinski_harabasz_index": 80.261,
+          "cluster_sizes": {
+            "0": 157,
+            "1": 101,
+            "2": 16
+          },
+          "min_cluster_share": 0.058394,
+          "max_cluster_share": 0.572993,
+          "spatial_coherence": {
+            "neighbor_concordance": 0.660194,
+            "random_baseline": 0.467606,
+            "coherence_lift": 1.4119,
+            "neighbor_pairs": 1236
+          },
+          "runtime_seconds": 0.0158
+        }
+      }
+    },
+    "schema_decision": "Retain 4-feature baseline (Silhouette=0.544178, DBI=0.714354) as primary fire-activity clustering schema; 8-feature extended schema (Silhouette=0.23353, DBI=1.351703) dilutes thermal fire separation with smooth 0.75-deg climate gradients and is preserved as a secondary environmental-context experiment."
+  },
+  "error_analysis_summary": {
+    "available": true,
+    "report_path": "reports/clustering/error_analysis_report.md",
+    "concordance_pct": 87.34,
+    "n_divergent": 108,
+    "noise_hotspots_pct": 79.06,
+    "mean_kmeans_gap": -0.0062,
+    "mean_dec_gap": -0.0135,
+    "extended_note": "Retain 4-feature baseline (Silhouette=0.544178, DBI=0.714354) as primary fire-activity clustering schema; 8-feature extended schema (Silhouette=0.23353, DBI=1.351703) dilutes thermal fire separation with smooth 0.75-deg climate gradients and is preserved as a secondary environmental-context experiment."
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-26T09:13:54.525855+00:00",
+  "generated_at_utc": "2026-11-27T03:35:51.895774+00:00",
   "feature_schema_version": "2.0.0",
   "n_cells": 853,
   "comparison_table": [
@@ -17,7 +17,9 @@
       "neighbor_concordance": 0.554477,
       "coherence_lift": 1.288,
       "min_cluster_share": 0.091442,
-      "max_cluster_share": 0.52286
+      "max_cluster_share": 0.52286,
+      "training_time_seconds": 0.3147,
+      "inference_time_seconds": 0.00254
     },
     {
       "model": "HDBSCAN (Density-Based)",
@@ -33,7 +35,9 @@
       "neighbor_concordance": 0.305707,
       "coherence_lift": 1.4778,
       "min_cluster_share": 0.045317,
-      "max_cluster_share": 0.376133
+      "max_cluster_share": 0.376133,
+      "training_time_seconds": 0.0121,
+      "inference_time_seconds": 0.00102
     },
     {
       "model": "DEC (Deep Embedded Clustering)",
@@ -49,9 +53,28 @@
       "neighbor_concordance": 0.514402,
       "coherence_lift": 1.3212,
       "min_cluster_share": 0.198124,
-      "max_cluster_share": 0.520516
+      "max_cluster_share": 0.520516,
+      "training_time_seconds": 11.0475,
+      "inference_time_seconds": 0.004217
     }
   ],
+  "timing_benchmarks": {
+    "kmeans": {
+      "training_time_seconds": 0.3147,
+      "inference_time_seconds": 0.00254,
+      "timing_note": "Full n_init=30 fit and predict() over 853 cells"
+    },
+    "hdbscan": {
+      "training_time_seconds": 0.0121,
+      "inference_time_seconds": 0.00102,
+      "timing_note": "Single HDBSCAN fit_predict + nearest-centroid proxy inference over 853 cells"
+    },
+    "dec": {
+      "training_time_seconds": 11.0475,
+      "inference_time_seconds": 0.004217,
+      "timing_note": "Full 120 pretrain + 200 finetune epochs + batched checkpoint forward pass"
+    }
+  },
   "cross_model_agreement": {
     "kmeans_vs_dec_ari": 0.770002,
     "kmeans_vs_dec_nmi": 0.71046,

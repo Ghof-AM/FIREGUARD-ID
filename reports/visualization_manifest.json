@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-26T09:14:42.140553+00:00",
+  "generated_at_utc": "2026-11-26T17:52:20.999025+00:00",
   "project": "FIREGUARD-ID",
   "version": "2.0.0",
   "crs": "EPSG:4326",
@@ -46,7 +46,7 @@
       "filename": "03_clustering_comparison.html",
       "path": "outputs/maps/03_clustering_comparison.html",
       "size_bytes": 390979,
-      "sha256": "09bd85cd81ddd7f5b2c0725abfc070a8d9021be655e44246d5e9ab8a15190794",
+      "sha256": "ff5181f212402d7c037c517f938af8b6a65d9a6779f4f6b4e709c13dc9c886e3",
       "classification": "derived_indicators",
       "is_synthetic_scenario": false,
       "crs": "EPSG:4326",

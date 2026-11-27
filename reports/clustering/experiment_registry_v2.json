@@ -1,0 +1,159 @@
+{
+  "generated_at_utc": "2026-11-27T03:36:03.988253+00:00",
+  "experiments": [
+    {
+      "experiment_id": "EXP-KM-BASE-K3",
+      "model_name": "K-Means",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": 42,
+      "hyperparameters": {
+        "n_clusters": 3,
+        "n_init": 30,
+        "max_iter": 500
+      },
+      "evaluation_scope": "Full 853 grid cells (0% noise)",
+      "training_time_seconds": 0.3147,
+      "inference_time_seconds": 0.00254,
+      "runtime_seconds": 0.31724,
+      "hardware": "Windows-10-10.0.26300-SP0 | CPU cores=16",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.544178,
+        "davies_bouldin_index": 0.714354,
+        "calinski_harabasz_index": 1261.715,
+        "cluster_sizes": {
+          "0": 329,
+          "1": 446,
+          "2": 78
+        },
+        "min_cluster_share": 0.091442,
+        "max_cluster_share": 0.52286,
+        "multi_seed_mean_ari": 1.0,
+        "spatial_fold_mean_ari": 0.972507,
+        "coherence_lift": 1.288
+      },
+      "checkpoint_location": "outputs/models/kmeans/kmeans_model.joblib",
+      "timestamp_utc": "2026-11-26T17:46:01Z",
+      "execution_status": "EXECUTED"
+    },
+    {
+      "experiment_id": "EXP-HDB-BASE-15-10",
+      "model_name": "HDBSCAN",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": null,
+      "hyperparameters": {
+        "min_cluster_size": 15,
+        "min_samples": 10,
+        "cluster_selection_method": "eom",
+        "cluster_selection_epsilon": 0.0,
+        "metric": "euclidean"
+      },
+      "evaluation_scope": "Non-noise core points (662/853; 191 noise=-1 excluded from internal metrics)",
+      "training_time_seconds": 0.0121,
+      "inference_time_seconds": 0.00102,
+      "runtime_seconds": 0.01312,
+      "hardware": "Windows-10-10.0.26300-SP0 | CPU cores=16",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 662,
+        "n_clusters": 8,
+        "n_noise": 191,
+        "noise_ratio": 0.223916,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.643293,
+        "davies_bouldin_index": 0.882913,
+        "calinski_harabasz_index": 1656.8601,
+        "cluster_sizes": {
+          "0": 249,
+          "1": 46,
+          "2": 77,
+          "3": 92,
+          "4": 91,
+          "5": 30,
+          "6": 39,
+          "7": 38
+        },
+        "min_cluster_share": 0.045317,
+        "max_cluster_share": 0.376133,
+        "subsample_80pct_mean_ari": 0.971355,
+        "spatial_fold_mean_ari": 0.949771,
+        "coherence_lift": 1.4778
+      },
+      "checkpoint_location": "outputs/models/hdbscan/hdbscan_model.joblib",
+      "timestamp_utc": "2026-11-27T03:36:03.988253+00:00",
+      "execution_status": "EXECUTED"
+    },
+    {
+      "experiment_id": "EXP-DEC-BASE-K3",
+      "model_name": "Deep Embedded Clustering (DEC)",
+      "dataset_version": "riau_grid_analytical_v2 (853 cells, VIIRS N20 2021-2025)",
+      "feature_schema_version": "2.0.0",
+      "random_seed": 42,
+      "hyperparameters": {
+        "latent_dim": 4,
+        "hidden_dims": [
+          32,
+          16
+        ],
+        "n_clusters_candidates": [
+          3,
+          4,
+          5
+        ],
+        "pretrain_epochs": 120,
+        "pretrain_lr": 0.001,
+        "finetune_max_iter": 300,
+        "finetune_lr": 0.0005,
+        "batch_size": 64,
+        "update_interval": 10,
+        "tol": 0.001,
+        "alpha": 1.0,
+        "gamma_recon": 0.1
+      },
+      "evaluation_scope": "Full 853 grid cells (feature-space vs latent-space explicitly separated)",
+      "training_time_seconds": 11.0475,
+      "inference_time_seconds": 0.004217,
+      "runtime_seconds": 11.0475,
+      "hardware": "CUDA (NVIDIA GeForce RTX 4050 Laptop GPU)",
+      "metrics": {
+        "n_total": 853,
+        "n_valid_clustered": 853,
+        "n_clusters": 3,
+        "n_noise": 0,
+        "noise_ratio": 0.0,
+        "valid_for_internal_metrics": true,
+        "reason": "ok",
+        "silhouette_score": 0.48023,
+        "davies_bouldin_index": 0.847784,
+        "calinski_harabasz_index": 969.6476,
+        "cluster_sizes": {
+          "0": 444,
+          "1": 240,
+          "2": 169
+        },
+        "min_cluster_share": 0.198124,
+        "max_cluster_share": 0.520516,
+        "latent_silhouette_score": 0.877686,
+        "latent_davies_bouldin_index": 0.206765,
+        "multi_seed_mean_ari": 0.685752,
+        "spatial_fold_mean_ari": 0.880687,
+        "coherence_lift": 1.3212,
+        "finetune_epochs_run": 200,
+        "final_kl_loss": 0.047777,
+        "final_recon_mse": 0.019528
+      },
+      "checkpoint_location": "outputs/models/dec/dec_model.pt",
+      "timestamp_utc": "2026-11-26T17:51:05.784624+00:00",
+      "execution_status": "EXECUTED"
+    }
+  ]
+}
