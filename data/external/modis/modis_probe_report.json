@@ -1,0 +1,101 @@
+{
+  "timestamp_utc": "2026-11-27T04:16:15.130347+00:00",
+  "ornl_probe": {
+    "ok": true,
+    "endpoints": {
+      "products": {
+        "http_status": 200,
+        "ok": true,
+        "body_snippet": "{\"products\": [{\"product\": \"Daymet\", \"description\": \"Daily Surface Weather Data (Daymet) on a 1-km Grid for North America, Version 4 R1\", \"frequency\": \"Daily\", \"resolution_meters\": 1000}, {\"product\": \"ECO4ESIPTJPL\", \"description\": \"ECOSTRESS Evaporative Stress Index PT-JPL (ESI) Daily L4 Global 70 m\""
+      },
+      "MOD13Q1_bands": {
+        "http_status": 200,
+        "ok": true,
+        "body_snippet": "{\"bands\": [{\"band\": \"250m_16_days_blue_reflectance\", \"description\": \"Surface Reflectance Band 3\", \"units\": \"reflectance\", \"valid_range\": \"0 to 10000\", \"fill_value\": \"-1000\", \"scale_factor\": \"0.0001\", \"add_offset\": \"0\"}, {\"band\": \"250m_16_days_composite_day_of_the_year\", \"description\": \"Day of year V"
+      },
+      "MOD13Q1_dates": {
+        "http_status": 200,
+        "ok": true,
+        "body_snippet": "{\"dates\": [{\"modis_date\": \"A2000049\", \"calendar_date\": \"2000-02-18\"}, {\"modis_date\": \"A2000065\", \"calendar_date\": \"2000-03-05\"}, {\"modis_date\": \"A2000081\", \"calendar_date\": \"2000-03-21\"}, {\"modis_date\": \"A2000097\", \"calendar_date\": \"2000-04-06\"}, {\"modis_date\": \"A2000113\", \"calendar_date\": \"2000-04-"
+      },
+      "MCD12Q1_bands": {
+        "http_status": 200,
+        "ok": true,
+        "body_snippet": "{\"bands\": [{\"band\": \"LC_Prop1\", \"description\": \"FAO-Land Cover Classification System 1 (LCCS1) land cover layer\", \"units\": \"class\", \"valid_range\": \"1 to 43\", \"fill_value\": \"255\"}, {\"band\": \"LC_Prop1_Assessment\", \"description\": \"LCCS1 land cover layer confidence\", \"units\": \"percent\", \"valid_range\": \""
+      },
+      "MCD12Q1_dates": {
+        "http_status": 200,
+        "ok": true,
+        "body_snippet": "{\"dates\": [{\"modis_date\": \"A2001001\", \"calendar_date\": \"2001-01-01\"}, {\"modis_date\": \"A2002001\", \"calendar_date\": \"2002-01-01\"}, {\"modis_date\": \"A2003001\", \"calendar_date\": \"2003-01-01\"}, {\"modis_date\": \"A2004001\", \"calendar_date\": \"2004-01-01\"}, {\"modis_date\": \"A2005001\", \"calendar_date\": \"2005-01-"
+      }
+    }
+  },
+  "appeears_public_probe": {
+    "ok": true,
+    "products": {
+      "MOD13Q1.061": {
+        "http_status": 200,
+        "layer_count": 12,
+        "sample_layers": [
+          "_250m_16_days_EVI",
+          "_250m_16_days_MIR_reflectance",
+          "_250m_16_days_NDVI",
+          "_250m_16_days_NIR_reflectance",
+          "_250m_16_days_VI_Quality",
+          "_250m_16_days_blue_reflectance"
+        ],
+        "body_snippet": ""
+      },
+      "MCD12Q1.061": {
+        "http_status": 200,
+        "layer_count": 13,
+        "sample_layers": [
+          "LC_Prop1",
+          "LC_Prop1_Assessment",
+          "LC_Prop2",
+          "LC_Prop2_Assessment",
+          "LC_Prop3",
+          "LC_Prop3_Assessment"
+        ],
+        "body_snippet": ""
+      }
+    }
+  },
+  "acquisition_meta": {
+    "n_requests": 128,
+    "cached_requests": 128,
+    "live_requests": 0,
+    "ndvi_dates": [
+      "2021-07-28",
+      "2021-08-13",
+      "2021-08-29",
+      "2022-07-28",
+      "2022-08-13",
+      "2022-08-29",
+      "2023-07-28",
+      "2023-08-13",
+      "2023-08-29",
+      "2024-01-01",
+      "2024-01-17",
+      "2024-02-02",
+      "2024-02-18",
+      "2024-07-27",
+      "2024-08-12",
+      "2024-08-28",
+      "2025-01-01",
+      "2025-01-17",
+      "2025-02-02",
+      "2025-02-18",
+      "2025-07-28",
+      "2025-08-13",
+      "2025-08-29"
+    ],
+    "mcd12q1_dates": [
+      "2021-01-01",
+      "2022-01-01",
+      "2023-01-01",
+      "2024-01-01",
+      "2025-01-01"
+    ]
+  }
+}

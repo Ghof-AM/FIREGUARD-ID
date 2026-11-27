@@ -1,0 +1,325 @@
+{
+  "source_id": "SRC-10",
+  "audited_at_utc": "2026-11-27T04:17:36.597071+00:00",
+  "public_machine_readable_operational_assets_found": false,
+  "portal_probes": [
+    {
+      "agency": "BNPB",
+      "name": "BNPB ArcGIS REST Root",
+      "url": "https://gis.bnpb.go.id/server/rest/services?f=json",
+      "http_status": 200,
+      "content_type": "application/json; charset=UTF-8",
+      "elapsed_sec": 8.516,
+      "machine_readable_infra_available": false,
+      "body_snippet": "{\"currentVersion\":11.4,\"folders\":[\"2026_gempabumi_ntt\",\"2026_karhutla\",\"ANTISIPASI_KARHUTLA_2019\",\"ATLAS\",\"BANJIR_BANDANG_SENTANI\",\"Banjir_Jakarta_2020\",\"Banjir_Konawe_Utara\",\"Banjir_Luwu_Utara\",\"BANJIR_SULSEL_2019\",\"bansor_sumatera_2025\",\""
+    },
+    {
+      "agency": "BNPB",
+      "name": "BNPB 2026 Karhutla MapServer",
+      "url": "https://gis.bnpb.go.id/server/rest/services/2026_karhutla/mv_prov_karhutla_2026/MapServer?f=json",
+      "http_status": 200,
+      "content_type": "application/json; charset=UTF-8",
+      "elapsed_sec": 0.406,
+      "machine_readable_infra_available": false,
+      "body_snippet": "{\"currentVersion\":11.4,\"cimVersion\":\"3.4.0\",\"serviceDescription\":\"\",\"mapName\":\"Map\",\"description\":\"\",\"copyrightText\":\"\",\"supportsDynamicLayers\":true,\"layers\":[{\"id\":3,\"name\":\"mv_prov_karhutla_2026\",\"parentLayerId\":-1,\"defaultVisibility\":tru"
+    },
+    {
+      "agency": "BNPB",
+      "name": "BNPB DIBI Portal",
+      "url": "https://dibi.bnpb.go.id/",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "elapsed_sec": 2.578,
+      "machine_readable_infra_available": false,
+      "body_snippet": "  <!DOCTYPE html> <html>                <head>     <title>                           Tentang DIBI                     </title>                            <link           rel=\"icon\"           type=\"image/png\"                      href=\"/stat"
+    },
+    {
+      "agency": "BNPB",
+      "name": "BNPB InaRISK Portal",
+      "url": "https://inarisk.bnpb.go.id/",
+      "http_status": 200,
+      "content_type": "text/html",
+      "elapsed_sec": 0.547,
+      "machine_readable_infra_available": false,
+      "body_snippet": "<!doctype html> <html lang=\"id\">   <head>     <meta charset=\"UTF-8\" />     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />     <meta name=\"description\" content=\"InaRISK Web berbasis Svelte, Leaflet, dan inarisk-api-"
+    },
+    {
+      "agency": "BPBD Riau",
+      "name": "BPBD Provinsi Riau Portal",
+      "url": "https://bpbd.riau.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.922,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://bpbd.riau.go.id/: HTTPSConnectionPool(host='bpbd.riau.go.id', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1007)')))"
+    },
+    {
+      "agency": "Pemprov Riau",
+      "name": "Rumah Data Riau",
+      "url": "https://rumahdata.riau.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.469,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://rumahdata.riau.go.id/: HTTPSConnectionPool(host='rumahdata.riau.go.id', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1007)')))"
+    },
+    {
+      "agency": "Pemprov Riau",
+      "name": "Satu Data Riau (data.riau.go.id)",
+      "url": "https://data.riau.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.047,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://data.riau.go.id/: HTTPSConnectionPool(host='data.riau.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='data.riau.go.id', port=443): Failed to resolve 'data.riau.go.id' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+      "agency": "Pemprov Riau",
+      "name": "Satu Data Riau (satudata.riau.go.id)",
+      "url": "https://satudata.riau.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.078,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://satudata.riau.go.id/: HTTPSConnectionPool(host='satudata.riau.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='satudata.riau.go.id', port=443): Failed to resolve 'satudata.riau.go.id' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+      "agency": "KLHK / Manggala Agni",
+      "name": "SiPongi KLHK Legacy",
+      "url": "https://sipongi.menlhk.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.047,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://sipongi.menlhk.go.id/: HTTPSConnectionPool(host='sipongi.menlhk.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='sipongi.menlhk.go.id', port=443): Failed to resolve 'sipongi.menlhk.go.id' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+      "agency": "Kemenhut / Manggala Agni",
+      "name": "SiPongi Kemenhut",
+      "url": "https://sipongi.kehutanan.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.031,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://sipongi.kehutanan.go.id/: HTTPSConnectionPool(host='sipongi.kehutanan.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='sipongi.kehutanan.go.id', port=443): Failed to resolve 'sipongi.kehutanan.go.id' ([Errno 11001] getaddrinfo failed)\"))"
+    },
+    {
+      "agency": "Kemenhut",
+      "name": "SIGAP Kehutanan",
+      "url": "https://sigap.kehutanan.go.id/",
+      "http_status": 200,
+      "content_type": "text/html;charset=utf-8",
+      "elapsed_sec": 0.969,
+      "machine_readable_infra_available": false,
+      "body_snippet": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5\"> <title>Sigap Kementerian Kehutanan</title> <style>@charset \"UTF-8\";@import\"https://fonts.googleapis.com/"
+    },
+    {
+      "agency": "Satu Data Indonesia",
+      "name": "Portal Satu Data Indonesia",
+      "url": "https://data.go.id/",
+      "http_status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "elapsed_sec": 0.312,
+      "machine_readable_infra_available": false,
+      "body_snippet": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/c6bfecd89233120c.css\" data-precedence=\"next\"/><link rel=\"stylesh"
+    },
+    {
+      "agency": "Satu Data Indonesia",
+      "name": "API Satu Data Indonesia",
+      "url": "https://api.data.go.id/",
+      "http_status": 403,
+      "content_type": "",
+      "elapsed_sec": 0.375,
+      "machine_readable_infra_available": false,
+      "body_snippet": ""
+    },
+    {
+      "agency": "Satu Data Indonesia",
+      "name": "CKAN Katalog Data Indonesia",
+      "url": "https://katalog.data.go.id/api/3/action/package_search?q=karhutla+riau",
+      "http_status": null,
+      "elapsed_sec": 0.031,
+      "machine_readable_infra_available": false,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://katalog.data.go.id/api/3/action/package_search?q=karhutla+riau: HTTPSConnectionPool(host='katalog.data.go.id', port=443): Max retries exceeded with url: /api/3/action/package_search?q=karhutla+riau (Caused by NameResolutionError(\"HTTPSConnection(host='katalog.data.go.id', port=443): Failed to resolve 'katalog.data.go.id' ([Errno 11001] getaddrinfo failed)\"))"
+    }
+  ],
+  "bnpb_bpbd_kabkot_check": {
+    "endpoint": "https://gis.bnpb.go.id/server/rest/services/ATLAS/Data_Kontak_BPBD_Kabkot_Centroid_Agust2024/FeatureServer/0/query",
+    "http_status": 200,
+    "riau_kabkot_rows": 12,
+    "available_fields": [
+      "FID",
+      "OBJECTID",
+      "NAMOBJ",
+      "FCODE",
+      "REMARK",
+      "METADATA",
+      "SRS_ID",
+      "KDBBPS",
+      "KDCBPS",
+      "KDCPUM",
+      "KDEBPS",
+      "KDEPUM",
+      "KDPBPS",
+      "KDPKAB",
+      "KDPPUM",
+      "LUASWH",
+      "TIPADM",
+      "WADMKC",
+      "WADMKD",
+      "WADMKK",
+      "WADMPR",
+      "WIADKC",
+      "WIADKK",
+      "WIADPR",
+      "WIADKD",
+      "SHAPE_Leng",
+      "SHAPE_Area",
+      "Kabkot",
+      "KDPKAB_1",
+      "Kode",
+      "id_prov",
+      "id_kab",
+      "Status BPB",
+      "Keterangan",
+      "Provinsi",
+      "Kabupaten/",
+      "Nama Kepal",
+      "Nama Staf",
+      "Kontak BPB",
+      "Email",
+      "Alamat"
+    ],
+    "riau_kabkot_summary": [
+      {
+        "kabkot": "Bengkalis",
+        "kode": 1403,
+        "status_bpbd": "Lainnya",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Indragiri Hilir",
+        "kode": 1404,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Indragiri Hulu",
+        "kode": 1402,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Kampar",
+        "kode": 1401,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Kepulauan Meranti",
+        "kode": 1410,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Kota Dumai",
+        "kode": 1472,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Kota Pekanbaru",
+        "kode": 1471,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Kuantan Singingi",
+        "kode": 1409,
+        "status_bpbd": "Lainnya",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Pelalawan",
+        "kode": 1405,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Rokan Hilir",
+        "kode": 1407,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Rokan Hulu",
+        "kode": 1406,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      },
+      {
+        "kabkot": "Siak",
+        "kode": 1408,
+        "status_bpbd": "Terbentuk",
+        "provinsi": "Riau"
+      }
+    ],
+    "operational_assets_present": false,
+    "limitation": "Contains only regency/city BPBD administrative centroid status and office contact metadata; contains zero fire-station coordinates, zero fleet counts, zero crew counts, and zero budgets."
+  },
+  "synthetic_scenario_separation": {
+    "config_path": "config/optimization.yaml",
+    "config_sha256": "ed093118f3b38cd725a033686ea7198c201f8d6374d717d3c8eecc8627b6b66a",
+    "is_synthetic_scenario": true,
+    "scenario_note": "Synthetic planning scenario anchored to verified Riau 0.1 deg priority grid; real BPBD/Manggala Agni inventory not available locally.",
+    "strict_separation_policy": "Synthetic operational parameters in config/optimization.yaml are never written into empirical feature parquets and remain strictly labeled is_synthetic_scenario=True.",
+    "synthetic_parameters_present": {
+      "module1_default_p_bases": 10,
+      "module2_total_capex_limit_million_idr": 32000.0,
+      "module3_available_fire_trucks": 24,
+      "module3_available_water_tankers": 18,
+      "module3_available_portable_pumps": 60,
+      "module4_total_personnel_available": 320,
+      "module5_max_relays": 8,
+      "module6_budget_scenarios_million_idr": [
+        15000.0,
+        25000.0,
+        35000.0,
+        50000.0,
+        65000.0
+      ]
+    }
+  },
+  "missing_agency_fields": [
+    {
+      "field_group": "Facility Locations & Daops/Posko Coordinates",
+      "missing_fields": "facility_id, agency (BPBD/Manggala Agni/TNI-Polri/MPA), daops_or_posko_name, exact_lat, exact_lon, operational_status (permanent vs seasonal posko)",
+      "required_agency": "BPBD Provinsi Riau & KLHK/Kemenhut Balai PPIKHL Sumatera (Manggala Agni)",
+      "impact_on_optimization": "Module 1 (Base Location) currently evaluates 40 grid-derived synthetic candidate sites instead of actual Daops/Posko locations."
+    },
+    {
+      "field_group": "Facility Capacity & Water/Logistics Storage",
+      "missing_fields": "capacity_tier, max_demand_handling, water_reservoir_or_embung_capacity_m3, storage_units, helipad_availability",
+      "required_agency": "BPBD Provinsi Riau / Kabupaten-Kota & BNPB",
+      "impact_on_optimization": "Module 2 (Base Capacity) uses synthetic small/medium/large tier definitions from config/optimization.yaml."
+    },
+    {
+      "field_group": "Fire-Suppression Fleet & Equipment Inventory",
+      "missing_fields": "fire_trucks_count, slip_on_units, water_tankers_count, portable_high_pressure_pumps, hose_length_m, vehicle_serviceability_status",
+      "required_agency": "BPBD Riau, Dinas Damkar Kab/Kota Riau, & Manggala Agni",
+      "impact_on_optimization": "Module 3 (Fleet & Equipment) relies on synthetic fleet totals (24 trucks, 18 tankers, 60 pumps)."
+    },
+    {
+      "field_group": "Personnel, Shifts & Quick Response Teams",
+      "missing_fields": "active_personnel_count, manggala_agni_brigades_regu, bpbd_trc_count, mpa_volunteers_count, shift_schedule, pump_specialist_certifications",
+      "required_agency": "BPBD Riau & KLHK Manggala Agni",
+      "impact_on_optimization": "Module 4 (Personnel Scheduling) relies on synthetic total_personnel_available=320 and uniform shift assumptions."
+    },
+    {
+      "field_group": "Emergency Communications & Relay Infrastructure",
+      "missing_fields": "vhf_uhf_repeater_lat_lon, tower_height_m, rf_coverage_radius_km, satellite_backhaul_nodes, posko_radio_interoperability",
+      "required_agency": "BNPB Pusdalops, BPBD Riau, & Komdigi/Diskominfo Riau",
+      "impact_on_optimization": "Module 5 (Comms Coordination) uses a 55 km Euclidean spatial proxy instead of RF propagation or existing repeater sites."
+    },
+    {
+      "field_group": "CAPEX, OPEX & Annual Karhutla Budgets",
+      "missing_fields": "unit_capex_facility_idr, unit_capex_vehicle_idr, annual_opex_personnel_idr, standby_fuel_maintenance_idr, approved_apbd_apbn_ceiling_idr",
+      "required_agency": "BNPB, Kemendagri/Pemprov Riau (APBD), & Kemenhut",
+      "impact_on_optimization": "Module 6 (Budget Optimization) sweeps synthetic budget scenarios (15,000-65,000M IDR)."
+    }
+  ]
+}

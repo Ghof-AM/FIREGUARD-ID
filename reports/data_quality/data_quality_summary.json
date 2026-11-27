@@ -6,7 +6,7 @@
     "crs": "EPSG:4326",
     "processed_path": "data/processed/riau_boundary.geojson",
     "sha256": "2d611924e24d249c0e8a13860d379a056ed84355e36479d590aa6c87c83b4ae2",
-    "verified_at_utc": "2026-11-26T09:10:43.534939+00:00",
+    "verified_at_utc": "2026-11-26T17:45:39.946831+00:00",
     "name_1": "Riau",
     "bounds": [
       100.0249,
@@ -61,7 +61,7 @@
         "date_max": "2025-12-31"
       }
     ],
-    "loaded_at_utc": "2026-11-26T09:10:44.077640+00:00"
+    "loaded_at_utc": "2026-11-26T17:45:40.562634+00:00"
   },
   "quality_audit": {
     "raw_record_count": 595676,

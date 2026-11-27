@@ -1,0 +1,99 @@
+{
+  "service_url": "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer",
+  "layer_khg_37": {
+    "layer_id": 37,
+    "name": "Peta Kesatuan Hidrologis Gambut",
+    "serviceDescription": "IGT SUMBER DAYA ALAM DAN LINGKUNGAN AKSES MASYARAKAT\n 08-08-2024",
+    "producer": "Produsen Data:\n- Direktorat Pengendalian Kerusakan Ekosistem Gambut, Direktorat Jenderal Pengendalian Pencemaran dan Kerusakan Lingkungan",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "extent": {
+      "xmin": 95.97361015700005,
+      "ymin": -8.008489396999948,
+      "xmax": 140.95361417300012,
+      "ymax": 4.361990562000074,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "maxRecordCount": 1000,
+    "capabilities": "Map,Query,Data",
+    "fields": [
+      {
+        "name": "shape",
+        "type": "esriFieldTypeGeometry"
+      },
+      {
+        "name": "objectid_1",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "kode_khg",
+        "type": "esriFieldTypeString"
+      }
+    ]
+  },
+  "layer_feg_48": {
+    "layer_id": 48,
+    "name": "Peta Fungsi Ekosistem Gambut Skala 1:50.000",
+    "serviceDescription": "IGT SUMBER DAYA ALAM DAN LINGKUNGAN AKSES MASYARAKAT\n 08-08-2024",
+    "producer": "Direktorat Pengendalian Kerusakan Ekosistem Gambut\nDitjen Pengendalian Pencemaran dan Kerusakan Lingkungan\nKementerian Lingkungan Hidup dan Kehutanan",
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "extent": {
+      "xmin": 95.973610157,
+      "ymin": -8.008489397000009,
+      "xmax": 140.953614173,
+      "ymax": 4.36199056100003,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "maxRecordCount": 1000,
+    "capabilities": "Map,Query,Data",
+    "fields": [
+      {
+        "name": "objectid_1",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeInteger"
+      },
+      {
+        "name": "kode_khg",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "name": "peat_thick",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "name": "tnh_gambut",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "name": "feg_peat",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "name": "feg_50k",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "name": "shape",
+        "type": "esriFieldTypeGeometry"
+      }
+    ]
+  }
+}

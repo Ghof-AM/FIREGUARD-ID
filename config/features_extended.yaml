@@ -1,0 +1,92 @@
+schema_version: "2.1.0-extended"
+locked: true
+locked_at: "2026-11-27"
+description: "Extended continuous fire + verified environmental feature schema (secondary comparison vs authoritative 4-feature baseline)."
+
+# Continuous 0%-missingness features eligible for standardized matrix clustering experiments
+clustering_features:
+  - hotspot_density_km2
+  - fire_days
+  - active_years_count
+  - frp_total_density_mw_km2
+  - dem_glo90_mean_m
+  - dem_glo90_std_m
+  - era5_dry_t2m_mean_c
+  - era5_dry_soil_moisture_mean
+  - era5_annual_precip_mm
+  - mcd12q1_forest_share
+  - mcd12q1_shrub_savanna_share
+
+transforms:
+  log1p:
+    - hotspot_density_km2
+    - fire_days
+    - frp_total_density_mw_km2
+    - dem_glo90_mean_m
+    - dem_glo90_std_m
+  scaler: standard
+
+# Verified contextual & partial environmental features (excluded from primary clustering matrix
+# due to either partial spatial coverage, crowd-sourced bias, or coastal-sliver NaNs)
+supporting_contextual_features:
+  - dem_glo90_range_m
+  - elevation_m
+  - era5_t2m_mean_c
+  - era5_wind_max_p95_kmh
+  - era5_soil_moisture_mean
+  - mcd12q1_wetland_share
+  - mcd12q1_cropland_mosaic_share
+  - peat_area_ratio
+  - peat_lindung_ratio
+  - peat_budidaya_ratio
+  - osm_road_density_km_km2
+  - osm_dist_nearest_fire_station_km
+
+environmental_features_with_coastal_nan:
+  - chirps_annual_precip_mean_mm
+  - chirps_dry_season_precip_mm
+  - chirps_dry_months_count
+  - modis_ndvi_mean
+  - modis_ndvi_dry_mean
+  - modis_ndvi_wet_mean
+
+secondary_fire_validation_features:
+  - snpp_hotspot_count
+  - snpp_fire_days
+  - snpp_active_years_count
+  - snpp_frp_total_density_mw_km2
+
+source_provenance:
+  fire_features: "SRC-01 (NASA FIRMS NOAA-20 VIIRS 2021-2025)"
+  secondary_fire_validation: "SRC-03 (NASA FIRMS S-NPP VIIRS 2021-2025; kept strictly separate)"
+  dem_zonal_features: "SRC-07 (Copernicus DEM GLO-90 15-tile raster zonal stats)"
+  dem_point_sample: "SRC-07 (Open-Meteo Elevation 90m point sample; preserved separately)"
+  era5_features: "SRC-04 (Open-Meteo Archive best_match=ecmwf_ifs 0.75-deg IDW; 4 coastal sea-masked anchors)"
+  chirps_features: "SRC-05 (UCSB CHIRPS v3.0 0.05-deg COGs 2021-2025; 4 coastal slivers NaN)"
+  modis_features: "SRC-06 (ORNL TESViS MCD12Q1 0% missing + MOD13Q1 6 water-sliver NaNs)"
+  peatland_features: "SRC-08 (BIG Satu Peta KHG/FEG 2024-08-08 PARTIAL snapshot)"
+  osm_features: "SRC-09 (Overpass OSM fire stations & roads PARTIAL crowd-sourced proxy)"
+
+forbidden_features:
+  - grid_id
+  - center_lon
+  - center_lat
+  - high_conf_count
+  - nominal_conf_count
+  - low_conf_count
+  - high_conf_share
+  - has_zero_detections
+  - raw_cluster
+  - risk_level
+  - cluster_kmeans
+  - cluster_hdbscan
+  - cluster_dec
+  - vulnerability_score
+  - priority_score
+  - snpp_hotspot_count
+  - snpp_fire_days
+  - snpp_active_years_count
+  - snpp_frp_total_density_mw_km2
+  - facility_id
+  - capital_cost
+  - fleet_count

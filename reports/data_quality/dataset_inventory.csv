@@ -1,0 +1,20 @@
+dataset,source_id,path,exists,rows,cols,size_bytes,sha256,notes
+raw_viirs_jpss1_2021_2025,SRC-01,data/raw/viirs-jpss1_*_Indonesia.csv,True,595676,15,48907577,,5 annual Indonesia CSVs
+riau_boundary_gadm,SRC-02,data/processed/riau_boundary.geojson,True,1,1,53042,2d611924e24d249c0e8a13860d379a056ed84355e36479d590aa6c87c83b4ae2,Vector GeoJSON boundary
+riau_clipped_hotspots_noaa20,SRC-01,data/processed/firms_viirs_riau_polygon_clipped.parquet,True,15510,16,428680,827ad1f231aa142700c5fcf68b85f1d27e1f9c756879a63102237dd7c61890fa,NOAA-20 clipped detections
+riau_grid_baseline,SRC-01/02,data/processed/riau_grid_analytical.parquet,True,853,36,81355,a3f58bc23c54a3553ef5c6ba8d672a00a0ba22327c94afffd6ac479e34dbc998,Authoritative 853-cell baseline
+riau_grid_extended,SRC-01..09,data/processed/riau_grid_extended.parquet,True,853,125,434599,9ed177d3ba3ac6d0452b7e743f3b304aa9bfbf2db8bc8bc6c7e22b1c11c7b1eb,Extended 853-cell environmental grid
+clustering_matrix_baseline,SRC-01,data/processed/clustering_matrix_scaled.parquet,True,853,5,21194,ddaee5c419369958253b2797efcede5fd40091bd4ca9bc2cc2a14287f4285de6,Scaled 4-feature baseline matrix
+riau_vulnerability_profile,Phase-6,data/processed/riau_vulnerability_profile.parquet,True,853,48,103786,9077f6a1e315d094d8c75129ccb5d4607d8b498226675c2c9c31eb62def80f1c,Cluster vulnerability profiles
+riau_spatial_priorities,Phase-7,data/processed/riau_spatial_priorities.parquet,True,853,56,147994,26dff05a055ad8b82cab31fcc3e1cf27444ec32d87e6d0b8b9bcf52e54519ef0,4-factor spatial priorities
+viirs_snpp_riau_clipped,SRC-03,data/external/riau_viirs_snpp_riau_clipped.parquet,True,14531,16,411570,141648099ac63547f507feaa1f40a803120758c6a93751b0e1447dd1ba2f449d,S-NPP clipped detections (separate)
+viirs_snpp_grid_features,SRC-03,data/external/riau_viirs_snpp_grid_features.parquet,True,853,15,38482,03cdb61d894d5c084303836a2ba205e407b5918ff7c46083d5ddc045899a66b6,S-NPP 853-cell features (separate)
+era5_openmeteo_ifs_anchors,SRC-04,data/external/riau_era5_openmeteo_2021_2025.parquet,True,47476,10,264595,121568b7afeefbe020a928251eede8be4bcc5c4f93f10f06db7c6d2614e7050f,Open-Meteo best_match=ecmwf_ifs 0.75-deg anchors
+chirps_v3_grid,SRC-05,data/external/riau_chirps_grid.parquet,True,853,8,24386,d990545ed87fd12c172fadef38592f918e0bf768275dc34f801c429e9245832d,CHIRPS v3.0 0.05-deg COG precipitation
+modis_vegetation_landcover_grid,SRC-06,data/external/riau_modis_vegetation_landcover_grid.parquet,True,853,22,107891,a99e0b4546c63b16fe9af5822460ca860e2cddfa30473f220661cdd96069f4c5,ORNL MODIS MOD13Q1 + MCD12Q1
+copernicus_dem_90m_point_sample,SRC-07,data/external/riau_copernicus_dem_90m.parquet,True,853,4,14918,26b27fe1f2bba28a5c3fc9e842a4e0abf0e49cec9ccd303d001144b460242d41,Open-Meteo point-sample DEM (preserved)
+copernicus_dem_glo90_zonal,SRC-07,data/external/riau_copernicus_dem_glo90_zonal.parquet,True,853,15,89902,7e9ee47228fa35140e5954fb67830bcc5b23665dc6ce4e314bb5ea81aba38f3a,15-tile GLO-90 raster zonal DEM
+peatland_khg_feg_grid,SRC-08,data/external/riau_peatland_khg_grid.parquet,True,853,18,41318,08d1ff45861d61c4f257e46f4cc432440c8662af96e141d048069e0b2c9f2a02,BIG Satu Peta KHG/FEG (PARTIAL)
+osm_fire_stations,SRC-09,data/external/riau_osm_fire_stations.parquet,True,13,8,5420,3b0545853532745c633610ff00246dda49cffaa38c8e4b3d411e76118f5aa704,OSM fire station POIs (PARTIAL)
+osm_roads_grid,SRC-09,data/external/riau_osm_roads_grid.parquet,True,853,13,46434,4131c9b471ef8213c8b59cdf0fdb6166c84dad3e0f5bc29c3a109663b9585196,OSM roads + station distance (PARTIAL)
+infrastructure_audit_json,SRC-10,data/external/infrastructure/riau_infrastructure_audit.json,True,7,1,15202,1297c0e36cbe225d662f6ed6f4d73810b2cc7d1f650da250ce3474772585061e,Public portal audit (SYNTHETIC isolated)

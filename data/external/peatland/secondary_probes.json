@@ -1,0 +1,50 @@
+[
+  {
+    "label": "KLHK SIGAP Legacy",
+    "url": "https://sigap.menlhk.go.id/server/rest/services?f=json",
+    "http_status": null,
+    "elapsed_sec": 0.047,
+    "error": "RuntimeError: HTTP GET failed after 1 attempts for https://sigap.menlhk.go.id/server/rest/services?f=json: HTTPSConnectionPool(host='sigap.menlhk.go.id', port=443): Max retries exceeded with url: /server/rest/services?f=json (Caused by NameResolutionError(\"HTTPSConnection(host='sigap.menlhk.go.id', port=443): Failed to resolve 'sigap.menlhk.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+    "usable_arcgis_rest": false
+  },
+  {
+    "label": "KLHK Geoportal Legacy",
+    "url": "https://geoportal.menlhk.go.id/server/rest/services?f=json",
+    "http_status": null,
+    "elapsed_sec": 0.031,
+    "error": "RuntimeError: HTTP GET failed after 1 attempts for https://geoportal.menlhk.go.id/server/rest/services?f=json: HTTPSConnectionPool(host='geoportal.menlhk.go.id', port=443): Max retries exceeded with url: /server/rest/services?f=json (Caused by NameResolutionError(\"HTTPSConnection(host='geoportal.menlhk.go.id', port=443): Failed to resolve 'geoportal.menlhk.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+    "usable_arcgis_rest": false
+  },
+  {
+    "label": "KLHK/Kemenhut SIGAP Portal",
+    "url": "https://sigap.kehutanan.go.id/",
+    "http_status": 200,
+    "elapsed_sec": 0.672,
+    "body_snippet": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5\"> <title>Sigap Kementerian Kehutanan</title> <style>@charset \"UTF-8\";@import\"https://fonts.googleapis.com/",
+    "usable_arcgis_rest": false
+  },
+  {
+    "label": "BRGM PRIMS Legacy",
+    "url": "https://prims.brg.go.id/",
+    "http_status": null,
+    "elapsed_sec": 0.031,
+    "error": "RuntimeError: HTTP GET failed after 1 attempts for https://prims.brg.go.id/: HTTPSConnectionPool(host='prims.brg.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='prims.brg.go.id', port=443): Failed to resolve 'prims.brg.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+    "usable_arcgis_rest": false
+  },
+  {
+    "label": "BRGM PRIMS Layers API",
+    "url": "https://prims.brgm.go.id/api/layers",
+    "http_status": 200,
+    "elapsed_sec": 0.219,
+    "body_snippet": "{\"status\":\"Access denied [1]\"}",
+    "usable_arcgis_rest": false
+  },
+  {
+    "label": "BIG Geoportal CKAN/API",
+    "url": "https://geoportal.big.go.id/api/v2/datasets?q=gambut",
+    "http_status": 502,
+    "elapsed_sec": 1.0,
+    "body_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>502 Proxy Error</title> </head><body> <h1>Proxy Error</h1> <p>The proxy server received an invalid  response from an upstream server.<br />  The proxy server could not h",
+    "usable_arcgis_rest": false
+  }
+]

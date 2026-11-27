@@ -1,0 +1,197 @@
+{
+  "generated_at_utc": "2026-11-27T04:16:33.835251+00:00",
+  "secondary_probes": [
+    {
+      "label": "KLHK SIGAP Legacy",
+      "url": "https://sigap.menlhk.go.id/server/rest/services?f=json",
+      "http_status": null,
+      "elapsed_sec": 0.047,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://sigap.menlhk.go.id/server/rest/services?f=json: HTTPSConnectionPool(host='sigap.menlhk.go.id', port=443): Max retries exceeded with url: /server/rest/services?f=json (Caused by NameResolutionError(\"HTTPSConnection(host='sigap.menlhk.go.id', port=443): Failed to resolve 'sigap.menlhk.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+      "usable_arcgis_rest": false
+    },
+    {
+      "label": "KLHK Geoportal Legacy",
+      "url": "https://geoportal.menlhk.go.id/server/rest/services?f=json",
+      "http_status": null,
+      "elapsed_sec": 0.031,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://geoportal.menlhk.go.id/server/rest/services?f=json: HTTPSConnectionPool(host='geoportal.menlhk.go.id', port=443): Max retries exceeded with url: /server/rest/services?f=json (Caused by NameResolutionError(\"HTTPSConnection(host='geoportal.menlhk.go.id', port=443): Failed to resolve 'geoportal.menlhk.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+      "usable_arcgis_rest": false
+    },
+    {
+      "label": "KLHK/Kemenhut SIGAP Portal",
+      "url": "https://sigap.kehutanan.go.id/",
+      "http_status": 200,
+      "elapsed_sec": 0.672,
+      "body_snippet": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=5\"> <title>Sigap Kementerian Kehutanan</title> <style>@charset \"UTF-8\";@import\"https://fonts.googleapis.com/",
+      "usable_arcgis_rest": false
+    },
+    {
+      "label": "BRGM PRIMS Legacy",
+      "url": "https://prims.brg.go.id/",
+      "http_status": null,
+      "elapsed_sec": 0.031,
+      "error": "RuntimeError: HTTP GET failed after 1 attempts for https://prims.brg.go.id/: HTTPSConnectionPool(host='prims.brg.go.id', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='prims.brg.go.id', port=443): Failed to resolve 'prims.brg.go.id' ([Errno 11001] getaddrinfo failed)\"))",
+      "usable_arcgis_rest": false
+    },
+    {
+      "label": "BRGM PRIMS Layers API",
+      "url": "https://prims.brgm.go.id/api/layers",
+      "http_status": 200,
+      "elapsed_sec": 0.219,
+      "body_snippet": "{\"status\":\"Access denied [1]\"}",
+      "usable_arcgis_rest": false
+    },
+    {
+      "label": "BIG Geoportal CKAN/API",
+      "url": "https://geoportal.big.go.id/api/v2/datasets?q=gambut",
+      "http_status": 502,
+      "elapsed_sec": 1.0,
+      "body_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\"> <html><head> <title>502 Proxy Error</title> </head><body> <h1>Proxy Error</h1> <p>The proxy server received an invalid  response from an upstream server.<br />  The proxy server could not h",
+      "usable_arcgis_rest": false
+    }
+  ],
+  "metadata": {
+    "service_url": "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer",
+    "layer_khg_37": {
+      "layer_id": 37,
+      "name": "Peta Kesatuan Hidrologis Gambut",
+      "serviceDescription": "IGT SUMBER DAYA ALAM DAN LINGKUNGAN AKSES MASYARAKAT\n 08-08-2024",
+      "producer": "Produsen Data:\n- Direktorat Pengendalian Kerusakan Ekosistem Gambut, Direktorat Jenderal Pengendalian Pencemaran dan Kerusakan Lingkungan",
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      },
+      "extent": {
+        "xmin": 95.97361015700005,
+        "ymin": -8.008489396999948,
+        "xmax": 140.95361417300012,
+        "ymax": 4.361990562000074,
+        "spatialReference": {
+          "wkid": 4326,
+          "latestWkid": 4326
+        }
+      },
+      "maxRecordCount": 1000,
+      "capabilities": "Map,Query,Data",
+      "fields": [
+        {
+          "name": "shape",
+          "type": "esriFieldTypeGeometry"
+        },
+        {
+          "name": "objectid_1",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "objectid",
+          "type": "esriFieldTypeInteger"
+        },
+        {
+          "name": "kode_khg",
+          "type": "esriFieldTypeString"
+        }
+      ]
+    },
+    "layer_feg_48": {
+      "layer_id": 48,
+      "name": "Peta Fungsi Ekosistem Gambut Skala 1:50.000",
+      "serviceDescription": "IGT SUMBER DAYA ALAM DAN LINGKUNGAN AKSES MASYARAKAT\n 08-08-2024",
+      "producer": "Direktorat Pengendalian Kerusakan Ekosistem Gambut\nDitjen Pengendalian Pencemaran dan Kerusakan Lingkungan\nKementerian Lingkungan Hidup dan Kehutanan",
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      },
+      "extent": {
+        "xmin": 95.973610157,
+        "ymin": -8.008489397000009,
+        "xmax": 140.953614173,
+        "ymax": 4.36199056100003,
+        "spatialReference": {
+          "wkid": 4326,
+          "latestWkid": 4326
+        }
+      },
+      "maxRecordCount": 1000,
+      "capabilities": "Map,Query,Data",
+      "fields": [
+        {
+          "name": "objectid_1",
+          "type": "esriFieldTypeOID"
+        },
+        {
+          "name": "objectid",
+          "type": "esriFieldTypeInteger"
+        },
+        {
+          "name": "kode_khg",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "peat_thick",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "tnh_gambut",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "feg_peat",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "feg_50k",
+          "type": "esriFieldTypeString"
+        },
+        {
+          "name": "shape",
+          "type": "esriFieldTypeGeometry"
+        }
+      ]
+    }
+  },
+  "pagination": {
+    "layer_48": {
+      "layer_id": 48,
+      "expected_count": 9141,
+      "fetched_count": 9141,
+      "pages": 10,
+      "page_size": 1000,
+      "format": "geojson"
+    },
+    "layer_37": {
+      "layer_id": 37,
+      "expected_count": 66,
+      "fetched_count": 66,
+      "pages": 1,
+      "page_size": 1000,
+      "format": "geojson"
+    }
+  },
+  "geometry_qa": {
+    "layer_48": {
+      "raw_features": 9141,
+      "repaired_invalid": 0,
+      "dropped_empty_or_nonpoly": 0,
+      "outside_riau_boundary": 25,
+      "clipped_valid_features": 9116
+    },
+    "layer_37": {
+      "raw_features": 66,
+      "repaired_invalid": 0,
+      "dropped_empty_or_nonpoly": 0,
+      "outside_riau_boundary": 0,
+      "clipped_valid_features": 66
+    }
+  },
+  "grid_summary": {
+    "grid_cells": 853,
+    "cells_with_peat": 187,
+    "cells_with_khg": 211,
+    "total_peat_area_km2": 11914.42,
+    "total_feg_ecosystem_area_km2": 14988.33,
+    "total_khg_area_km2": 15013.3,
+    "total_lindung_area_km2": 7708.43,
+    "total_budidaya_area_km2": 7279.9,
+    "total_deep_gt3m_area_km2": 8349.48
+  }
+}

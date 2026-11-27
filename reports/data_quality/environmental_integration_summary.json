@@ -1,0 +1,30 @@
+{
+  "n_cells": 853,
+  "n_cols": 125,
+  "baseline_cols": 36,
+  "integrated_sources": [
+    "SRC-01 (VIIRS N20)",
+    "SRC-02 (GADM 4.1)",
+    "SRC-07a (Open-Meteo DEM 90m Point Sample)",
+    "SRC-07b (Copernicus DEM GLO-90 15-Tile Zonal)",
+    "SRC-04 (Open-Meteo best_match=ecmwf_ifs 0.75-deg IDW)",
+    "SRC-05 (CHIRPS v3.0 0.05-deg COGs)",
+    "SRC-06 (MODIS MOD13Q1/MCD12Q1 - PARTIAL NDVI)",
+    "SRC-08 (BIG Satu Peta KHG/FEG - PARTIAL)",
+    "SRC-09 (OSM Fire Stations & Roads - PARTIAL)",
+    "SRC-03 (VIIRS S-NPP 2021-2025 - separate validation columns)"
+  ],
+  "available_extended_features": [
+    "hotspot_density_km2",
+    "fire_days",
+    "active_years_count",
+    "frp_total_density_mw_km2",
+    "dem_glo90_mean_m",
+    "dem_glo90_std_m",
+    "era5_dry_t2m_mean_c",
+    "era5_dry_soil_moisture_mean",
+    "era5_annual_precip_mm",
+    "mcd12q1_forest_share",
+    "mcd12q1_shrub_savanna_share"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "currentVersion": 10.81,
+  "id": 37,
+  "name": "Peta Kesatuan Hidrologis Gambut",
+  "type": "Feature Layer",
+  "description": "Deskripsi :Merupakan layer Kesatuan Hidrologis Gambut dengan tipe polygon dengan skala 1:50.000.KHG adalah ekosistem gambut yang letaknya diantara dua sungai, diantara sungai dan laut dan atau pada rawa.Dasar :Peraturan Pemerintah Nomor 57 Tahun 2016 tentang Perubahan Atas Peraturan Pemerintah Nomor 71 Tahun 2014 tentang Perlindungan dan Pengelolaan Ekosistem GambutPeraturan Menteri Lingkungan Hidup dan Kehutanan Nomor 14 Tahun 2017 tentang Tatacara Inventarisasi dan Penetapan Fungsi Ekosistem GambutPerdirjen PPKL Nomor 1 Tahun 2019 tentang Pedoman Pelaksanaan Peraturan Menteri Lingkungan Hidup dan Kehutanan Nomor 14 Tahun 2017 tentang Tatacara Inventarisasi dan Penetapan Fungsi Ekosistem Gambut",
+  "geometryType": "esriGeometryPolygon",
+  "sourceSpatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "copyrightText": "Produsen Data:\n- Direktorat Pengendalian Kerusakan Ekosistem Gambut, Direktorat Jenderal Pengendalian Pencemaran dan Kerusakan Lingkungan",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "simple",
+      "symbol": {
+        "type": "esriSFS",
+        "style": "esriSFSBackwardDiagonal",
+        "color": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "outline": {
+          "type": "esriSLS",
+          "style": "esriSLSSolid",
+          "color": [
+            230,
+            0,
+            0,
+            255
+          ],
+          "width": 1
+        }
+      },
+      "label": "",
+      "description": ""
+    },
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": 95.97361015700005,
+    "ymin": -8.008489396999948,
+    "xmax": 140.95361417300012,
+    "ymax": 4.361990562000074,
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "kode_khg",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "shape",
+      "domain": null
+    },
+    {
+      "name": "objectid_1",
+      "type": "esriFieldTypeOID",
+      "alias": "objectid_1",
+      "domain": null
+    },
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeInteger",
+      "alias": "objectid",
+      "domain": null
+    },
+    {
+      "name": "kode_khg",
+      "type": "esriFieldTypeString",
+      "alias": "kode_khg",
+      "length": 50,
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "shape"
+  },
+  "indexes": null,
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 1000,
+  "supportsStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsHavingClause": true,
+    "supportsCountDistinct": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsPagination": true,
+    "supportsTrueCurve": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true
+  },
+  "supportsDatumTransformation": true,
+  "supportsCoordinatesQuantization": true,
+  "serviceItemId": "86a1e71887224f45aa041e45f0bea5f0"
+}

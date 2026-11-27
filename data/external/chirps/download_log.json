@@ -1,0 +1,72 @@
+[
+  {
+    "timestamp_utc": "2026-11-27T04:15:50.354334+00:00",
+    "source_id": "SRC-05",
+    "provider": "UCSB_CHC",
+    "endpoint": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/",
+    "http_status": 200,
+    "attempt": 1,
+    "elapsed_sec": 0.781,
+    "bytes_downloaded": 3316,
+    "cached": false,
+    "status": "AVAILABLE",
+    "message": "OK",
+    "dataset_version": "probe"
+  },
+  {
+    "timestamp_utc": "2026-11-27T04:15:50.560266+00:00",
+    "source_id": "SRC-05",
+    "provider": "UCSB_CHC",
+    "endpoint": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/cogs/",
+    "http_status": 200,
+    "attempt": 1,
+    "elapsed_sec": 0.203,
+    "bytes_downloaded": 108520,
+    "cached": false,
+    "status": "AVAILABLE",
+    "message": "OK",
+    "dataset_version": "probe"
+  },
+  {
+    "timestamp_utc": "2026-11-27T04:15:50.771111+00:00",
+    "source_id": "SRC-05",
+    "provider": "UCSB_CHC",
+    "endpoint": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/tifs/",
+    "http_status": 200,
+    "attempt": 1,
+    "elapsed_sec": 0.219,
+    "bytes_downloaded": 108520,
+    "cached": false,
+    "status": "AVAILABLE",
+    "message": "OK",
+    "dataset_version": "probe"
+  },
+  {
+    "timestamp_utc": "2026-11-27T04:15:50.971444+00:00",
+    "source_id": "SRC-05",
+    "provider": "UCSB_CHC",
+    "endpoint": "https://data.chc.ucsb.edu/products/CHIRPS-2.0/",
+    "http_status": 404,
+    "attempt": 1,
+    "elapsed_sec": 0.203,
+    "bytes_downloaded": 162,
+    "cached": false,
+    "status": "UNAVAILABLE",
+    "message": "HTTP 404",
+    "dataset_version": "probe"
+  },
+  {
+    "timestamp_utc": "2026-11-27T04:15:51.175086+00:00",
+    "source_id": "SRC-05",
+    "provider": "UCSB_CHC",
+    "endpoint": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/",
+    "http_status": 200,
+    "attempt": 1,
+    "elapsed_sec": 0.203,
+    "bytes_downloaded": 7371,
+    "cached": false,
+    "status": "AVAILABLE",
+    "message": "OK",
+    "dataset_version": "probe"
+  }
+]

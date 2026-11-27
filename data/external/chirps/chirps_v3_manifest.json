@@ -1,0 +1,536 @@
+{
+  "source_id": "SRC-05",
+  "selected_version": "CHIRPS-v3.0",
+  "probes": {
+    "v3_root": {
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/",
+      "http_status": 200
+    },
+    "v3_monthly_cogs": {
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/cogs/",
+      "http_status": 200,
+      "cog_count": 550,
+      "first_file": "chirps-v3.0.1981.01.cog",
+      "last_file": "chirps-v3.0.2026.10.cog"
+    },
+    "v3_monthly_tifs": {
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/tifs/",
+      "http_status": 200
+    },
+    "v2_legacy_root": {
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS-2.0/",
+      "http_status": 404
+    },
+    "v2_root": {
+      "url": "https://data.chc.ucsb.edu/products/CHIRPS/v2.0/",
+      "http_status": 200
+    }
+  },
+  "period": "2021-01 to 2025-12",
+  "months_downloaded": 60,
+  "months_expected": 60,
+  "failed_months": [],
+  "crop_bbox": [
+    100.0,
+    -1.2,
+    103.9,
+    3.0
+  ],
+  "dry_season_months": [
+    2,
+    3,
+    7,
+    8,
+    9
+  ],
+  "dry_month_threshold_mm": 100.0,
+  "grid_cells": 853,
+  "missing_cells_terrestrial_mask": 4,
+  "missingness_pct": 0.4689,
+  "output_parquet": "data/external/riau_chirps_grid.parquet",
+  "output_sha256": "d990545ed87fd12c172fadef38592f918e0bf768275dc34f801c429e9245832d",
+  "download_log": "data\\external\\chirps\\download_log.json",
+  "files": [
+    {
+      "year": 2021,
+      "month": 1,
+      "file": "riau_chirps_v3.0_2021_01.tif",
+      "size_bytes": 27356,
+      "sha256": "05b44451437a47cf912d79f041a6eedea64ef8cb9babefdafc35efb0dc3bcb79",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "file": "riau_chirps_v3.0_2021_02.tif",
+      "size_bytes": 27356,
+      "sha256": "f3a7b31e541f7db5da87e9aba388821ab55650a8089d2c0a864ab91a7e3648f7",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "file": "riau_chirps_v3.0_2021_03.tif",
+      "size_bytes": 27356,
+      "sha256": "55d5ff86a51d8385802f68918e30539d34707efe8c95322bf16ac2f509664480",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "file": "riau_chirps_v3.0_2021_04.tif",
+      "size_bytes": 27356,
+      "sha256": "c764066ec31f6c215cd2e00bd8edc2b34b00734c03f2d9f420fd53cafecb45ce",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "file": "riau_chirps_v3.0_2021_05.tif",
+      "size_bytes": 27356,
+      "sha256": "635911d2a2dfb60a47d3ac1dc04fd72f135e470639bdb39e27211073880e5273",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "file": "riau_chirps_v3.0_2021_06.tif",
+      "size_bytes": 27356,
+      "sha256": "8c1183466bf019b236e1dea50df95f775062adb6811a7bea27d886f935705444",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "file": "riau_chirps_v3.0_2021_07.tif",
+      "size_bytes": 27356,
+      "sha256": "3c19cdb49f6c3e0894721e14ff928b88e25b467a5b3cd98c36804b27b3de424c",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "file": "riau_chirps_v3.0_2021_08.tif",
+      "size_bytes": 27356,
+      "sha256": "2a36e95404a3c46797ba4275ade09b3e031b1a7ec7bdc49bb5de698418bb2ba0",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "file": "riau_chirps_v3.0_2021_09.tif",
+      "size_bytes": 27356,
+      "sha256": "b106d128a1cd0e2ed00ba6712ec327aca98837951e6c20da6cc33bd9cd517df4",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "file": "riau_chirps_v3.0_2021_10.tif",
+      "size_bytes": 27356,
+      "sha256": "293c4b921b26a1daac3c17ad87ab449e28a1435b652af2d166594d3104265396",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "file": "riau_chirps_v3.0_2021_11.tif",
+      "size_bytes": 27356,
+      "sha256": "a6a393306113e49e707c989c9297b39075071258005f5a95b0bc00e2114168d6",
+      "cached": true
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "file": "riau_chirps_v3.0_2021_12.tif",
+      "size_bytes": 27356,
+      "sha256": "c3cb66a8f7d57daae5030e948debb8f70fa641fc4f24ae905aaa1ac4ca831b90",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "file": "riau_chirps_v3.0_2022_01.tif",
+      "size_bytes": 27356,
+      "sha256": "3c18716359af1b43f6beb96510478d5bf064b572361e01401453810d315a4f93",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "file": "riau_chirps_v3.0_2022_02.tif",
+      "size_bytes": 27356,
+      "sha256": "c4322e3994ddd80f7f1572de9483288e567ff22002bb3d3e378ed116947b5f97",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "file": "riau_chirps_v3.0_2022_03.tif",
+      "size_bytes": 27356,
+      "sha256": "dd763f5f0d31d51fb9de587d4b124a4079ba56f83629a00e09300a36544ff8b0",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "file": "riau_chirps_v3.0_2022_04.tif",
+      "size_bytes": 27356,
+      "sha256": "f257151297ac142801cd267df8a621c6c6493419f3384220f61a6d276a7772a1",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "file": "riau_chirps_v3.0_2022_05.tif",
+      "size_bytes": 27356,
+      "sha256": "932c1670f315cd53362be5bd62e1d876fa8d2f55262b56b0d9e657985f7e0985",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "file": "riau_chirps_v3.0_2022_06.tif",
+      "size_bytes": 27356,
+      "sha256": "07bc0a8a64a991339a494e660536507b289cce23929e6d06b9f502544dae083e",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "file": "riau_chirps_v3.0_2022_07.tif",
+      "size_bytes": 27356,
+      "sha256": "5bd810f5f2e512d70ae08967d05cae489c7dab9a3b28025be85dfa598d01fced",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "file": "riau_chirps_v3.0_2022_08.tif",
+      "size_bytes": 27356,
+      "sha256": "cfdf4a208ca162ecf81695c1c686185a1bb69bd3200c8167b420d99ea3eacff8",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "file": "riau_chirps_v3.0_2022_09.tif",
+      "size_bytes": 27356,
+      "sha256": "127f3d4c7dcd9b8bf62a4b5eb04c495351d37aa877791120cd08dc21f64b615c",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "file": "riau_chirps_v3.0_2022_10.tif",
+      "size_bytes": 27356,
+      "sha256": "9bcf29ef9913742209adf4bcbfc2fd60386f2ca3644d29c70c18b14ca0fc0587",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "file": "riau_chirps_v3.0_2022_11.tif",
+      "size_bytes": 27356,
+      "sha256": "d7e602f131d22783587516383472683692bc912fa6ba32fc01fc7d6f37cf1525",
+      "cached": true
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "file": "riau_chirps_v3.0_2022_12.tif",
+      "size_bytes": 27356,
+      "sha256": "d5b2b8767fe3eebdc4b7d685a76ff2d549b2a1d18bcfbb651006017a02297466",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "file": "riau_chirps_v3.0_2023_01.tif",
+      "size_bytes": 27356,
+      "sha256": "e8f47fa5f911119ae0252c59f5219220ae06218223a6aaa82b4b9b6a113eac0d",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "file": "riau_chirps_v3.0_2023_02.tif",
+      "size_bytes": 27356,
+      "sha256": "4e8c4896b54f6cd640ff610a8f58b378b477db5263c4da34e31babe47ddef365",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "file": "riau_chirps_v3.0_2023_03.tif",
+      "size_bytes": 27356,
+      "sha256": "4c0f0e04dce27542f99f172dcaf5ad438276ad498af77ac50ffd30d3561020ce",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "file": "riau_chirps_v3.0_2023_04.tif",
+      "size_bytes": 27356,
+      "sha256": "8d8534ceeeff4312765bd59389764322c042a8ea64770939d91ac2cd2e47c047",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "file": "riau_chirps_v3.0_2023_05.tif",
+      "size_bytes": 27356,
+      "sha256": "477ba3154f52f028b1e29a69ad2154f2243298a5fd6d9c9713257ada330e1d59",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "file": "riau_chirps_v3.0_2023_06.tif",
+      "size_bytes": 27356,
+      "sha256": "cd86fd19978ddda39cf126e6f053c3fad823d9b35f2afa3d82278610d58f15b3",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "file": "riau_chirps_v3.0_2023_07.tif",
+      "size_bytes": 27356,
+      "sha256": "04c66dc9b71ae39be11ce09151733ddbe19fcca91c4166187cc9308e4c1dfacb",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "file": "riau_chirps_v3.0_2023_08.tif",
+      "size_bytes": 27356,
+      "sha256": "6a9394beabc3a4ccd34afd015738a00f1a520641104a46ed205ca003aa71b155",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "file": "riau_chirps_v3.0_2023_09.tif",
+      "size_bytes": 27356,
+      "sha256": "c61d3fe64de7d6a7c6c1b8e180d744e1afff64e1e1615c41ada1344ddf5e14fb",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "file": "riau_chirps_v3.0_2023_10.tif",
+      "size_bytes": 27356,
+      "sha256": "17474727328db469a4a9ffcd61b432a343696725129dae852c711ebbc2185075",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "file": "riau_chirps_v3.0_2023_11.tif",
+      "size_bytes": 27356,
+      "sha256": "f76516bcd7c7330ceb98d1e021382340ddd0ef19d3102e0ce1fdc6d28a54881a",
+      "cached": true
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "file": "riau_chirps_v3.0_2023_12.tif",
+      "size_bytes": 27356,
+      "sha256": "34c91444b14ef4d3de48dae057a392882270581a878a3e70f5b3303aca64282f",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "file": "riau_chirps_v3.0_2024_01.tif",
+      "size_bytes": 27356,
+      "sha256": "d552f5a065bbfa60b5544472ed2d301b05154be5817fbb7b438ac7749a1487a3",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "file": "riau_chirps_v3.0_2024_02.tif",
+      "size_bytes": 27356,
+      "sha256": "f71d7ffaf2ad8226004a632f3edfd02d38bb28aad0a30d3b0a98d035b26edd48",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "file": "riau_chirps_v3.0_2024_03.tif",
+      "size_bytes": 27356,
+      "sha256": "f7f8d8efe87cab8382407359b8a16f786b978d69cf197621ff3c197135b191b0",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "file": "riau_chirps_v3.0_2024_04.tif",
+      "size_bytes": 27356,
+      "sha256": "f8b3898d0145c98916b6c001e736ae3d923f0ce36d3188331fbfb4ace3496879",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "file": "riau_chirps_v3.0_2024_05.tif",
+      "size_bytes": 27356,
+      "sha256": "5a9bf8a3891dc140503b6b3957a4fa2616b1bb0fd65ae6f00d8dcb3273a2a133",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "file": "riau_chirps_v3.0_2024_06.tif",
+      "size_bytes": 27356,
+      "sha256": "6f4951891054e818a0d7cc47bdcbeb4a01fb175be5e849f63d1e41a7c5610f97",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "file": "riau_chirps_v3.0_2024_07.tif",
+      "size_bytes": 27356,
+      "sha256": "6abd6627a891f9352f371713f05b22eb65331c55928b6e39fc356cf1e2f009bd",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "file": "riau_chirps_v3.0_2024_08.tif",
+      "size_bytes": 27356,
+      "sha256": "ca78c68a428d0853b6e96dd42e734643faa2588e1b57ebb378ae7da67bab7182",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "file": "riau_chirps_v3.0_2024_09.tif",
+      "size_bytes": 27356,
+      "sha256": "3ba976cd12fdec4949ed0156d81ffd4cdf6d6c19b76210239b9cff3c33e78ab0",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "file": "riau_chirps_v3.0_2024_10.tif",
+      "size_bytes": 27356,
+      "sha256": "89de01a9a5b45af5893e1c491f1f184dae18c3e5d8ae1152ff28ed1ef5bb1c1a",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "file": "riau_chirps_v3.0_2024_11.tif",
+      "size_bytes": 27356,
+      "sha256": "11d8b1de68ec923d72318607a5d83fbe051b2d2c6fbb40cd609770f6f6a20d3e",
+      "cached": true
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "file": "riau_chirps_v3.0_2024_12.tif",
+      "size_bytes": 27356,
+      "sha256": "6cf1dc49706a2766209d57cf52b35c145786a6dc0c0ac1b6f279d6ae9f411b2e",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "file": "riau_chirps_v3.0_2025_01.tif",
+      "size_bytes": 27356,
+      "sha256": "2e91c46ea526e78243e4b528bf22dffb03c0c0291528b4a345145d10af43565b",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "file": "riau_chirps_v3.0_2025_02.tif",
+      "size_bytes": 27356,
+      "sha256": "4babc0d4af19c80b47225f1712e6dc939940c4f7a6a379788a714b82142183ea",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "file": "riau_chirps_v3.0_2025_03.tif",
+      "size_bytes": 27356,
+      "sha256": "be5720d747baa99c5f90e539d8c96c4727b3cc7c3cd0f7f1079118a8286cf069",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "file": "riau_chirps_v3.0_2025_04.tif",
+      "size_bytes": 27356,
+      "sha256": "93c7546ceeb235eeb0c576781d0f3c8fe50c17542cab85552a90729fee49ac0b",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "file": "riau_chirps_v3.0_2025_05.tif",
+      "size_bytes": 27356,
+      "sha256": "9d63e417b1c03565e21e011f8d2f019621efb41e6e726ca08a536fe4fd6ffd6a",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "file": "riau_chirps_v3.0_2025_06.tif",
+      "size_bytes": 27356,
+      "sha256": "e9e48d5fdd36b3c9a6046457ee9ac0c66d58e05f39825a91a3d6843d9bd72d76",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "file": "riau_chirps_v3.0_2025_07.tif",
+      "size_bytes": 27356,
+      "sha256": "8053e9ca2ddb07028b3e4357affe8d96ac1c9bc10ef900d222f966c5cb243df7",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "file": "riau_chirps_v3.0_2025_08.tif",
+      "size_bytes": 27356,
+      "sha256": "4f4f246ca2e684ed0d381f0d6c72a66be4a1c2d5226a34c4321b81f7a7588b1e",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "file": "riau_chirps_v3.0_2025_09.tif",
+      "size_bytes": 27356,
+      "sha256": "2e0a8a6b4de57152f0e9ba9856f1a9b5145be95d0a288f49a9687d0bf233fb16",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "file": "riau_chirps_v3.0_2025_10.tif",
+      "size_bytes": 27356,
+      "sha256": "ae8f95f8552a9aa128220a49f996b29a5102ab48634c02b90b7224466a2558d3",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "file": "riau_chirps_v3.0_2025_11.tif",
+      "size_bytes": 27356,
+      "sha256": "e1e8fee2c6d6d31c657631f38576ff31fbb0b91e31b7590e8be3adbe8ea03c11",
+      "cached": true
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "file": "riau_chirps_v3.0_2025_12.tif",
+      "size_bytes": 27356,
+      "sha256": "0fc6ea70019e2afc47be4c7a8b42cd901c8303729a2ee9a9ac2388130419faa7",
+      "cached": true
+    }
+  ],
+  "generated_at_utc": "2026-11-27T04:15:51.728479+00:00"
+}

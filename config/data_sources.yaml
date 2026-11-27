@@ -1,12 +1,14 @@
 sources:
   viirs_jpss1:
     source_id: SRC-01
-    provider: NASA FIRMS
+    provider: NASA FIRMS / LANCE
     satellite: N20
     instrument: VIIRS
     glob_pattern: "data/raw/viirs-jpss1_*_Indonesia.csv"
+    processed_path: "data/processed/firms_viirs_riau_polygon_clipped.parquet"
     expected_years: [2021, 2022, 2023, 2024, 2025]
-    status: available_local
+    status: AVAILABLE
+    feature_eligible: true
     required_columns:
       - latitude
       - longitude
@@ -33,31 +35,89 @@ sources:
     filter_value: Riau
     gid_1: IDN.24_1
     crs: EPSG:4326
-    status: available_local
+    status: AVAILABLE
+    feature_eligible: true
 
   viirs_snpp:
     source_id: SRC-03
-    status: not_in_repo
-    notes: "Referenced in external Colab audit (2012-2025, 435,408 rows); not present locally."
+    provider: NASA FIRMS REST API
+    dataset_id: VIIRS_SNPP_SP
+    satellite: N
+    instrument: VIIRS
+    auth_env_key: FIRMS_MAP_KEY
+    processed_clipped_path: "data/external/riau_viirs_snpp_riau_clipped.parquet"
+    processed_grid_path: "data/external/riau_viirs_snpp_grid_features.parquet"
+    expected_years: [2021, 2022, 2023, 2024, 2025]
+    status: AVAILABLE
+    feature_eligible: true
+    notes: "Kept strictly separate from SRC-01 NOAA-20; 14,531 Riau-clipped rows (2021-2025 overlap)."
 
   era5_land:
     source_id: SRC-04
-    status: not_in_repo
-    notes: "July 2020 pilot referenced in FIREGUARD ID.txt; not present locally."
+    provider: Open-Meteo Archive (ecmwf_ifs best_match) + Copernicus CDS API v2 Audit
+    endpoint: "https://archive-api.open-meteo.com/v1/archive"
+    cds_endpoint: "https://cds.climate.copernicus.eu/api/retrieve/v1/jobs"
+    auth_env_key: CDS_API_KEY
+    processed_path: "data/external/riau_era5_openmeteo_2021_2025.parquet"
+    status: AVAILABLE
+    feature_eligible: true
+    notes: "Cached 0.75-deg 26-anchor parquet is structurally valid (0 NaNs) but originates from Open-Meteo best_match=ecmwf_ifs with 4 sea-masked zero-SM anchors; CDS API v2 PAT auth verified HTTP 200."
 
   chirps:
     source_id: SRC-05
-    status: not_in_repo
+    provider: UC Santa Barbara Climate Hazards Center (CHIRPS v3.0)
+    endpoint: "https://data.chc.ucsb.edu/products/CHIRPS/v3.0/monthly/global/cogs/"
+    version: "v3.0"
+    processed_path: "data/external/riau_chirps_grid.parquet"
+    expected_years: [2021, 2022, 2023, 2024, 2025]
+    status: AVAILABLE
+    feature_eligible: true
+    notes: "Exclusive CHIRPS v3.0 (60 months); 849/853 valid cells, 4 coastal island slivers preserved as NaN (0.4689%)."
 
   modis:
     source_id: SRC-06
-    status: not_in_repo
+    provider: NASA LP DAAC / ORNL TESViS (AppEEARS fallback)
+    endpoint: "https://modis.ornl.gov/rst/api/v1/"
+    products: ["MOD13Q1", "MCD12Q1"]
+    processed_path: "data/external/riau_modis_vegetation_landcover_grid.parquet"
+    status: PARTIAL
+    feature_eligible: false
+    notes: "MCD12Q1 853/853 valid (0% missing); MOD13Q1 847/853 valid with 6 water-sliver NaNs (0.7034%) so whole-source feature_eligible=false."
 
-  peatland_dem:
+  copernicus_dem:
     source_id: SRC-07
-    status: not_in_repo
+    provider: ESA Copernicus DEM GLO-90 (AWS Open Data COGs) + Open-Meteo Elevation (Point Sample)
+    endpoint: "https://copernicus-dem-90m.s3.amazonaws.com/"
+    point_sample_path: "data/external/riau_copernicus_dem_90m.parquet"
+    zonal_path: "data/external/riau_copernicus_dem_glo90_zonal.parquet"
+    status: AVAILABLE
+    feature_eligible: true
+    notes: "Point-sample cache preserved separately from 15-tile 90m raster zonal stats (853/853 cells, 0% missing)."
+
+  peatland:
+    source_id: SRC-08
+    provider: BIG Satu Peta Indonesia (KLHK KHG/FEG MapServer 37 & 48)
+    endpoint: "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer"
+    processed_path: "data/external/riau_peatland_khg_grid.parquet"
+    status: PARTIAL
+    feature_eligible: true
+    notes: "BIG 2024-08-08 snapshot covers 23 southern/eastern/island KHG.14.* units (9,116 FEG polygons) but omits northern/central KHGs (14.07, 14.08, 14.72)."
+
+  osm_infrastructure:
+    source_id: SRC-09
+    provider: OpenStreetMap Contributors via Overpass API
+    endpoint: "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
+    fire_stations_path: "data/external/riau_osm_fire_stations.parquet"
+    roads_grid_path: "data/external/riau_osm_roads_grid.parquet"
+    status: PARTIAL
+    feature_eligible: true
+    notes: "13 fire stations + 11,639 road ways (10,026.56 km) across 853 cells; crowd-sourced rural completeness caveat."
 
   infrastructure_inventory:
-    source_id: SRC-08
-    status: not_in_repo
-    notes: "Phase 8 uses explicitly labeled synthetic operational scenarios (is_synthetic_scenario=true)."
+    source_id: SRC-10
+    provider: BNPB / BPBD Riau / KLHK Manggala Agni (Synthetic Scenario Proxy)
+    endpoint: "config/optimization.yaml"
+    audit_path: "data/external/infrastructure/riau_infrastructure_audit.json"
+    status: SYNTHETIC
+    feature_eligible: false
+    notes: "Public portal audit confirmed 0 machine-readable operational assets; Phase 8 optimization uses explicitly labeled is_synthetic_scenario=true."

@@ -1,0 +1,25 @@
+source_id,acquisition_status,source_feature_eligible,feature_name,present_in_extended_grid,domain,schema_role,feature_eligible,missing_count,missingness_pct,intended_use,governance_caveat
+SRC-01,AVAILABLE,True,hotspot_density_km2,True,Fire Activity,clustering_baseline,True,0,0.0,Primary 4-feature baseline,0% missing; authoritative NOAA-20 2021-2025
+SRC-01,AVAILABLE,True,fire_days,True,Fire Activity,clustering_baseline,True,0,0.0,Primary 4-feature baseline,0% missing; authoritative NOAA-20 2021-2025
+SRC-01,AVAILABLE,True,active_years_count,True,Fire Activity,clustering_baseline,True,0,0.0,Primary 4-feature baseline,0% missing; authoritative NOAA-20 2021-2025
+SRC-01,AVAILABLE,True,frp_total_density_mw_km2,True,Fire Activity,clustering_baseline,True,0,0.0,Primary 4-feature baseline,0% missing; authoritative NOAA-20 2021-2025
+SRC-03,AVAILABLE,True,snpp_hotspot_count,True,Secondary Fire Baseline,secondary_fire_validation,True,0,0.0,Cross-sensor validation only (never merged into SRC-01),0% missing; kept strictly separate from NOAA-20
+SRC-03,AVAILABLE,True,snpp_frp_total_density_mw_km2,True,Secondary Fire Baseline,secondary_fire_validation,True,0,0.0,Cross-sensor validation only (never merged into SRC-01),0% missing; kept strictly separate from NOAA-20
+SRC-04,AVAILABLE,True,era5_dry_t2m_mean_c,True,Meteorology,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing; Open-Meteo best_match=ecmwf_ifs 0.75-deg IDW (not pure ERA5-Land)
+SRC-04,AVAILABLE,True,era5_dry_soil_moisture_mean,True,Meteorology,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing; 4 sea-masked anchors have soil_moisture=0.0
+SRC-04,AVAILABLE,True,era5_annual_precip_mm,True,Meteorology,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing; ecmwf_ifs 0.75-deg IDW
+SRC-04,AVAILABLE,True,era5_wind_max_p95_kmh,True,Meteorology,supporting_contextual,True,0,0.0,Supporting environmental context,0% missing; ecmwf_ifs 0.75-deg IDW
+SRC-05,AVAILABLE,True,chirps_annual_precip_mean_mm,True,Precipitation,environmental_with_coastal_nan,False,4,0.4689,EDA & masked spatial validation only (not zero-NaN clustering),4/853 coastal island slivers NaN (0.47%) preserved without imputation
+SRC-05,AVAILABLE,True,chirps_dry_season_precip_mm,True,Precipitation,environmental_with_coastal_nan,False,4,0.4689,EDA & masked spatial validation only,4/853 coastal island slivers NaN (0.47%) preserved
+SRC-06,PARTIAL,False,mcd12q1_forest_share,True,Land Cover,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing across 853 cells (ORNL MCD12Q1 2021-2025)
+SRC-06,PARTIAL,False,mcd12q1_shrub_savanna_share,True,Land Cover,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing across 853 cells (ORNL MCD12Q1 2021-2025)
+SRC-06,PARTIAL,False,modis_ndvi_mean,True,Vegetation Index,environmental_with_coastal_nan,False,6,0.7034,EDA & masked analysis only (source PARTIAL),6/853 water-sliver cells NaN (0.70%) preserved; mean QA valid 51.64%
+SRC-06,PARTIAL,False,modis_ndvi_dry_mean,True,Vegetation Index,environmental_with_coastal_nan,False,6,0.7034,EDA & masked analysis only (source PARTIAL),6/853 water-sliver cells NaN (0.70%) preserved
+SRC-07,AVAILABLE,True,dem_glo90_mean_m,True,Topography,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing; 15-tile GLO-90 raster zonal mean (851 clipped + 2 bbox fallback)
+SRC-07,AVAILABLE,True,dem_glo90_std_m,True,Topography,clustering_extended,True,0,0.0,Secondary extended clustering + EDA,0% missing; true within-cell terrain ruggedness
+SRC-07,AVAILABLE,True,elevation_m,True,Topography (Point Sample),supporting_contextual,True,0,0.0,Legacy point sample preserved separately for audit,0% missing; single-point Open-Meteo sample (r=0.9535 vs GLO-90 zonal)
+SRC-08,PARTIAL,True,peat_area_ratio,True,Peatland Hydrology,supporting_contextual,True,0,0.0,Contextual vulnerability/EDA only (PARTIAL coverage),"0% missing on numeric ratio, but BIG 2024-08-08 omits northern/central KHGs (14.07/14.08/14.72)"
+SRC-08,PARTIAL,True,peat_lindung_ratio,True,Peatland Hydrology,supporting_contextual,True,0,0.0,Contextual vulnerability/EDA only (PARTIAL coverage),0% missing on numeric ratio; BIG snapshot partial coverage caveat
+SRC-09,PARTIAL,True,osm_road_density_km_km2,True,Accessibility Proxy,supporting_contextual,True,0,0.0,Contextual accessibility proxy only (rural under-mapping),0% missing; crowd-sourced OSM under-maps rural plantation tracks/fire posts
+SRC-09,PARTIAL,True,osm_dist_nearest_fire_station_km,True,Accessibility Proxy,supporting_contextual,True,0,0.0,Contextual accessibility proxy only (13 OSM POIs),0% missing; crowd-sourced OSM excludes unmapped Manggala Agni/BPBD posts
+SRC-10,SYNTHETIC,False,facility_id/fleet_count/capital_cost,False,Operational Infrastructure,forbidden_synthetic,False,0,,Phase 8 optimization scenario ONLY (is_synthetic_scenario=True),SYNTHETIC only; strictly excluded from clustering and environmental grid

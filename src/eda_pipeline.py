@@ -6,6 +6,7 @@ without relying on legacy unvalidated cluster risk labels.
 from __future__ import annotations
 
 import os
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +17,7 @@ import seaborn as sns
 
 from src.utils import ensure_dir, get_logger, load_yaml, resolve_path
 
-os.environ.setdefault("MPLCONFIGDIR", os.path.join(os.path.expanduser("~"), "AppData", "Local", "Temp"))
+os.environ.setdefault("MPLCONFIGDIR", tempfile.gettempdir())
 logger = get_logger("fireguard.eda")
 
 

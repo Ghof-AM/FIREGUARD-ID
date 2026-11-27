@@ -1,0 +1,214 @@
+{
+  "currentVersion": 10.81,
+  "id": 48,
+  "name": "Peta Fungsi Ekosistem Gambut Skala 1:50.000",
+  "type": "Feature Layer",
+  "description": "Deskripsi :Merupakan layer ekosistem gambut yang terdiri dari fungsi lindung dan fungsi budidaya dengan tipe polygon dengan skala 1:50.000.Dasar :Peraturan Pemerintah Nomor 57 Tahun 2016 tentang Perubahan Atas Peraturan Pemerintah Nomor 71 Tahun 2014 tentang Perlindungan dan Pengelolaan Ekosistem GambutPeraturan Menteri Lingkungan Hidup dan Kehutanan Nomor 14 Tahun 2017 tentang Tatacara Inventarisasi dan Penetapan Fungsi Ekosistem GambutSK Menteri Lingkungan Hidup dan Kehutanan Nomor : SK.295/Menlhk/Setjen/PKL.0/6/2017SK Menteri Lingkungan Hidup dan Kehutanan Nomor: SK.296/Menlhk/Setjen/KUM.1/4/2019SK Menteri Lingkungan Hidup dan Kehutanan Nomor: SK.938/Menlhk/Setjen/PKL.1/10/2019SK Menteri Lingkungan Hidup dan Kehutanan Nomor: SK.446/Menlhk/Setjen/KUM.1/11/2020SK Menteri Lingkungan Hidup dan Kehutanan Nomor: SK.270/MENLHK/SETJEN/KUM.1/3/2022SK Menteri Lingkungan Hidup dan Kehutanan Nomor: SK.1152/MENLHK/SETJEN/KUM.1/11/2022Perdirjen PPKL Nomor 1 Tahun 2019 tentang Pedoman Pelaksanaan Peraturan Menteri Lingkungan Hidup dan Kehutanan Nomor 14 Tahun 2017 tentang Tatacara Inventarisasi dan Penetapan Fungsi Ekosistem ",
+  "geometryType": "esriGeometryPolygon",
+  "sourceSpatialReference": {
+    "wkid": 4326,
+    "latestWkid": 4326
+  },
+  "copyrightText": "Direktorat Pengendalian Kerusakan Ekosistem Gambut\nDitjen Pengendalian Pencemaran dan Kerusakan Lingkungan\nKementerian Lingkungan Hidup dan Kehutanan",
+  "parentLayer": null,
+  "subLayers": [],
+  "minScale": 0,
+  "maxScale": 0,
+  "drawingInfo": {
+    "renderer": {
+      "type": "uniqueValue",
+      "field1": "feg_50k",
+      "field2": null,
+      "field3": null,
+      "defaultSymbol": {
+        "type": "esriSFS",
+        "style": "esriSFSSolid",
+        "color": [
+          196,
+          186,
+          245,
+          255
+        ],
+        "outline": {
+          "type": "esriSLS",
+          "style": "esriSLSSolid",
+          "color": [
+            110,
+            110,
+            110,
+            255
+          ],
+          "width": 0.4
+        }
+      },
+      "defaultLabel": "<all other values>",
+      "uniqueValueInfos": [
+        {
+          "symbol": {
+            "type": "esriSFS",
+            "style": "esriSFSSolid",
+            "color": [
+              56,
+              168,
+              0,
+              255
+            ],
+            "outline": {
+              "type": "esriSLS",
+              "style": "esriSLSSolid",
+              "color": [
+                0,
+                0,
+                0,
+                255
+              ],
+              "width": 1
+            }
+          },
+          "value": "Fungsi Lindung E.G.",
+          "label": "Fungsi Lindung E.G.",
+          "description": ""
+        },
+        {
+          "symbol": {
+            "type": "esriSFS",
+            "style": "esriSFSSolid",
+            "color": [
+              255,
+              255,
+              115,
+              255
+            ],
+            "outline": {
+              "type": "esriSLS",
+              "style": "esriSLSSolid",
+              "color": [
+                0,
+                0,
+                0,
+                255
+              ],
+              "width": 1
+            }
+          },
+          "value": "Fungsi Budidaya E.G.",
+          "label": "Fungsi Budidaya E.G.",
+          "description": ""
+        }
+      ],
+      "fieldDelimiter": ","
+    },
+    "transparency": 0,
+    "labelingInfo": null
+  },
+  "defaultVisibility": false,
+  "extent": {
+    "xmin": 95.973610157,
+    "ymin": -8.008489397000009,
+    "xmax": 140.953614173,
+    "ymax": 4.36199056100003,
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    }
+  },
+  "hasAttachments": false,
+  "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+  "displayField": "kode_khg",
+  "typeIdField": null,
+  "subtypeFieldName": null,
+  "subtypeField": null,
+  "defaultSubtypeCode": null,
+  "fields": [
+    {
+      "name": "objectid_1",
+      "type": "esriFieldTypeOID",
+      "alias": "objectid_1",
+      "domain": null
+    },
+    {
+      "name": "objectid",
+      "type": "esriFieldTypeInteger",
+      "alias": "objectid",
+      "domain": null
+    },
+    {
+      "name": "kode_khg",
+      "type": "esriFieldTypeString",
+      "alias": "kode_khg",
+      "length": 50,
+      "domain": null
+    },
+    {
+      "name": "peat_thick",
+      "type": "esriFieldTypeString",
+      "alias": "peat_thick",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "tnh_gambut",
+      "type": "esriFieldTypeString",
+      "alias": "tnh_gambut",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "feg_peat",
+      "type": "esriFieldTypeString",
+      "alias": "feg_peat",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "feg_50k",
+      "type": "esriFieldTypeString",
+      "alias": "feg_50k",
+      "length": 30,
+      "domain": null
+    },
+    {
+      "name": "shape",
+      "type": "esriFieldTypeGeometry",
+      "alias": "shape",
+      "domain": null
+    }
+  ],
+  "geometryField": {
+    "name": "shape",
+    "type": "esriFieldTypeGeometry",
+    "alias": "shape"
+  },
+  "indexes": null,
+  "subtypes": [],
+  "relationships": [],
+  "canModifyLayer": true,
+  "canScaleSymbols": false,
+  "hasLabels": false,
+  "capabilities": "Map,Query,Data",
+  "maxRecordCount": 1000,
+  "supportsStatistics": true,
+  "supportsAdvancedQueries": true,
+  "supportedQueryFormats": "JSON, geoJSON",
+  "isDataVersioned": false,
+  "ownershipBasedAccessControlForFeatures": {
+    "allowOthersToQuery": true
+  },
+  "useStandardizedQueries": true,
+  "advancedQueryCapabilities": {
+    "useStandardizedQueries": true,
+    "supportsStatistics": true,
+    "supportsHavingClause": true,
+    "supportsCountDistinct": true,
+    "supportsOrderBy": true,
+    "supportsDistinct": true,
+    "supportsPagination": true,
+    "supportsTrueCurve": true,
+    "supportsReturningQueryExtent": true,
+    "supportsQueryWithDistance": true,
+    "supportsSqlExpression": true
+  },
+  "supportsDatumTransformation": true,
+  "supportsCoordinatesQuantization": true,
+  "serviceItemId": "86a1e71887224f45aa041e45f0bea5f0"
+}
