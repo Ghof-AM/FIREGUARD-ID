@@ -1,10 +1,7 @@
 """
-FIREGUARD ID Decision-Support API (FastAPI) & Interactive Dashboard (Streamlit).
-
-Provides programmatic access and interactive exploration of:
-- Relative spatial vulnerability profiles (with QA coverage caveats)
-- Operational spatial priority rankings and factor breakdowns
-- Synthetic-scenario optimization outputs across all 6 modules
+FIREGUARD ID v2 Unified Application Entry Point:
+- Single 11-page Streamlit Decision Support & Academic Report Evidence Application
+- Preserved FastAPI REST endpoints via `create_api()` / `app`
 """
 from __future__ import annotations
 
@@ -35,17 +32,17 @@ def _load_decision_data(repo_root: Path | None = None) -> tuple[pd.DataFrame, di
 
 def create_api(repo_root: Path | None = None) -> FastAPI:
     """Builds the FastAPI decision-support application."""
-    app = FastAPI(
+    api = FastAPI(
         title="FIREGUARD ID Decision Support API",
         version="2.0.0",
         description="Unsupervised fire vulnerability profiling, spatial prioritization, and MILP resource optimization for Riau.",
     )
 
-    @app.get("/health")
+    @api.get("/health")
     def health() -> dict[str, str]:
         return {"status": "ok", "project": "FIREGUARD-ID", "pilot": "Riau Province"}
 
-    @app.get("/summary")
+    @api.get("/summary")
     def summary() -> dict[str, Any]:
         df, proj_cfg = _load_decision_data(repo_root=repo_root)
         reports_dir = resolve_path(proj_cfg["paths"]["reports_dir"], repo_root=repo_root)
@@ -65,7 +62,7 @@ def create_api(repo_root: Path | None = None) -> FastAPI:
             ],
         }
 
-    @app.get("/priorities/top")
+    @api.get("/priorities/top")
     def top_priorities(limit: int = 20) -> list[dict[str, Any]]:
         df, _ = _load_decision_data(repo_root=repo_root)
         cols = [
@@ -84,7 +81,7 @@ def create_api(repo_root: Path | None = None) -> FastAPI:
         ]
         return df.nsmallest(max(1, min(limit, 200)), "priority_rank")[cols].to_dict(orient="records")
 
-    @app.get("/grid/{grid_id}")
+    @api.get("/grid/{grid_id}")
     def grid_detail(grid_id: str) -> dict[str, Any]:
         df, _ = _load_decision_data(repo_root=repo_root)
         match = df[df["grid_id"] == grid_id]
@@ -93,7 +90,7 @@ def create_api(repo_root: Path | None = None) -> FastAPI:
         rec = match.iloc[0].to_dict()
         return {k: (None if pd.isna(v) else v) for k, v in rec.items()}
 
-    @app.get("/optimization/summary")
+    @api.get("/optimization/summary")
     def optimization_summary() -> dict[str, Any]:
         _, proj_cfg = _load_decision_data(repo_root=repo_root)
         opt_out = resolve_path(proj_cfg["paths"]["outputs_dir"], repo_root=repo_root) / "optimization"
@@ -111,53 +108,56 @@ def create_api(repo_root: Path | None = None) -> FastAPI:
                 payload[name] = json.loads(p.read_text(encoding="utf-8"))
         return payload
 
-    return app
+    return api
 
 
 app = create_api()
 
 
 def run_streamlit_dashboard() -> None:
-    """Renders interactive decision-support dashboard when launched via `streamlit run`."""
+    """Renders the unified 11-page FIREGUARD ID v2 Streamlit application."""
     import streamlit as st
 
-    st.set_page_config(page_title="FIREGUARD ID — Riau Decision Support", layout="wide")
-    st.title("FIREGUARD ID — Riau Forest & Land Fire Decision Support")
-    st.caption(
-        "NOAA-20 VIIRS (2021–2025) | Unsupervised Clustering (K-Means, HDBSCAN, DEC) | "
-        "Synthetic Operational Optimization Scenarios"
+    from src.application.pages import (
+        p01_overview,
+        p02_dataset_explorer,
+        p03_eda_spatial,
+        p04_model_design,
+        p05_model_optimization,
+        p06_model_evaluation,
+        p07_vulnerability_prioritization,
+        p08_optimization,
+        p09_map_explorer,
+        p10_reproducibility,
+        p11_report_evidence,
     )
-    df, proj_cfg = _load_decision_data()
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("0.1° Grid Cells", f"{len(df):,}")
-    c2.metric("Clipped Hotspots", f"{int(df['hotspot_count'].sum()):,}")
-    c3.metric("Tier-1 Critical Cells", f"{int((df['priority_rank'] <= 85).sum())}")
-    c4.metric("Zero-Detection Cells (QA)", f"{int(df['has_zero_detections'].sum())}")
+    from src.application.state.session_state import PAGE_NAMES, init_session_state
 
-    st.info(
-        "Methodological Guardrails: Hotspot counts are thermal anomalies (not unique fires). "
-        "Zero detections do not prove zero fire risk. Resource optimization uses synthetic inventories."
+    st.set_page_config(
+        page_title="FIREGUARD ID v2 — Riau Decision Support & L-M-O-P Hub",
+        layout="wide",
+        initial_sidebar_state="expanded",
     )
-    st.subheader("Top Operational Priority Zones")
-    top_n = st.slider("Show Top N Priority Grid Cells", min_value=10, max_value=100, value=25)
-    st.dataframe(
-        df.nsmallest(top_n, "priority_rank")[
-            [
-                "priority_rank",
-                "grid_id",
-                "center_lat",
-                "center_lon",
-                "hotspot_count",
-                "fire_days",
-                "active_years_count",
-                "vulnerability_class",
-                "priority_class",
-                "priority_score",
-                "qa_interpretation_caveat",
-            ]
-        ],
-        use_container_width=True,
-    )
+    init_session_state()
+
+    st.sidebar.title("FIREGUARD ID v2")
+    st.sidebar.caption("Riau Province | Unsupervised Clustering & MILP DSS")
+    selected_page = st.sidebar.radio("Navigation", PAGE_NAMES, key="active_page")
+
+    dispatch = {
+        PAGE_NAMES[0]: p01_overview.render,
+        PAGE_NAMES[1]: p02_dataset_explorer.render,
+        PAGE_NAMES[2]: p03_eda_spatial.render,
+        PAGE_NAMES[3]: p04_model_design.render,
+        PAGE_NAMES[4]: p05_model_optimization.render,
+        PAGE_NAMES[5]: p06_model_evaluation.render,
+        PAGE_NAMES[6]: p07_vulnerability_prioritization.render,
+        PAGE_NAMES[7]: p08_optimization.render,
+        PAGE_NAMES[8]: p09_map_explorer.render,
+        PAGE_NAMES[9]: p10_reproducibility.render,
+        PAGE_NAMES[10]: p11_report_evidence.render,
+    }
+    dispatch[selected_page]()
 
 
 if __name__ == "__main__":

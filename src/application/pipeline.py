@@ -15,9 +15,11 @@ from typing import Any
 
 import pandas as pd
 
+from src.data.environmental import integrate_environmental_features
 from src.data.pipeline import run_phase2_data_pipeline
 from src.eda_pipeline import run_phase4_eda_pipeline
 from src.evaluation.compare_models import run_phase5_comparison
+from src.evaluation.validation_v2 import run_phaseD_validation
 from src.features.pipeline import run_phase3_feature_pipeline
 from src.models.dec_model import run_dec_pipeline
 from src.models.hdbscan_model import run_hdbscan_pipeline
@@ -98,6 +100,9 @@ def run_pipeline(
             stage_outputs["data"] = {"clipped_records": res["quality_audit"]["clipped_record_count"]}
         elif stage == "features":
             res = run_phase3_feature_pipeline(repo_root=repo_root)
+            ext_dir = resolve_path(proj_cfg["paths"]["external_dir"], repo_root=repo_root)
+            if (ext_dir / "riau_copernicus_dem_90m.parquet").exists() or (ext_dir / "riau_era5_openmeteo_2021_2025.parquet").exists():
+                integrate_environmental_features(repo_root=repo_root)
             stage_outputs["features"] = {"n_grid_cells": res["n_grid_cells"], "features": res["clustering_features"]}
         elif stage == "eda":
             stage_outputs["eda"] = run_phase4_eda_pipeline(repo_root=repo_root)
@@ -106,6 +111,7 @@ def run_pipeline(
             run_hdbscan_pipeline(repo_root=repo_root)
             run_dec_pipeline(repo_root=repo_root)
             comp = run_phase5_comparison(repo_root=repo_root)
+            run_phaseD_validation(repo_root=repo_root)
             stage_outputs["clustering"] = {"recommendation": comp["recommendation"]["primary_operational_baseline"]}
         elif stage == "vulnerability":
             stage_outputs["vulnerability"] = run_phase6_vulnerability_assessment(repo_root=repo_root)
